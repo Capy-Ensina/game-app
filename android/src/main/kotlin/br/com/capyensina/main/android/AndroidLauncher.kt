@@ -11,7 +11,6 @@ class AndroidLauncher : AndroidApplication() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initialize(Main(), AndroidApplicationConfiguration().apply {
-            // Configure your application here.
             useImmersiveMode = true // Recommended, but not required.
         })
     }
