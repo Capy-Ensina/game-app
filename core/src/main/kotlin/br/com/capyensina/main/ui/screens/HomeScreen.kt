@@ -42,7 +42,6 @@ class HomeScreen(main: Main) : KtxScreen {
 
         batch.use {
             it.draw(AssetManager.logo, 100f, 160f)
-            it.draw(AssetManager.btn_confirm, 720f, 160f)
         }
     }
 }
