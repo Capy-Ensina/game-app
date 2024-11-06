@@ -12,5 +12,7 @@ class Main : KtxGame<KtxScreen>() {
 
         addScreen(HomeScreen(this))
         setScreen<HomeScreen>()
+
+
     }
 }

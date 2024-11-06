@@ -7,6 +7,6 @@ import ktx.assets.toInternalFile
 object AssetManager {
     val logo = Texture("logo.png".toInternalFile(), true)
         .apply { setFilter(Linear, Linear) }
-    val btn_confirm = Texture("confirm.png".toInternalFile(), true)
-        .apply { setFilter(Linear, Linear) }
+    /*val btn_confirm = Texture("confirm.png".toInternalFile(), true)
+        .apply { setFilter(Linear, Linear) }*/
 }

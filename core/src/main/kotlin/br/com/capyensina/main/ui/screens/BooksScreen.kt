@@ -2,26 +2,24 @@ package br.com.capyensina.main.ui.screens
 
 import br.com.capyensina.main.Main
 import br.com.capyensina.main.util.ColorTheme
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.Texture.TextureFilter.Linear
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
 import ktx.assets.toInternalFile
 import ktx.graphics.use
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import com.badlogic.gdx.Gdx
 
+class BooksScreen (main: Main) : KtxScreen {
 
-class HomeScreen(main: Main) : KtxScreen {
-    private val image = Texture("logo.png".toInternalFile(), true).apply { setFilter(Linear, Linear) }
     private val batch = SpriteBatch()
     private val shapeRenderer = ShapeRenderer()
     private val background = Texture("background.png".toInternalFile())
 
     val mainGame = main
 
-   //hud
+    //hud
     private val hudTopColor = ColorTheme.BLUE
     private val hudBottomColor = ColorTheme.BLUE
     private val hudHeight = 50f
@@ -39,12 +37,15 @@ class HomeScreen(main: Main) : KtxScreen {
     private val investimentobutton = Texture("investimentobutton.png".toInternalFile())
     private val rpgbutton = Texture("rpgbutton.png".toInternalFile())
 
+    //interface tela
+    private val infoboxdois = Texture("infoboxdois.png".toInternalFile())
+    private val redbutton = Texture("redbutton.png".toInternalFile()) // botao de opcoes dos modulos
+
     override fun render(delta: Float) {
-       // ScreenUtils.clear(0f, 0f, 0f, 1f)
+        // ScreenUtils.clear(0f, 0f, 0f, 1f)
         input()
         logic()
         draw()
-        //checkButtonClick() deu erro
     }
 
     private fun checkButtonClick() {
@@ -52,43 +53,44 @@ class HomeScreen(main: Main) : KtxScreen {
             val x = Gdx.input.x.toFloat()
             val y = Gdx.graphics.height - Gdx.input.y.toFloat()
 
-            //  botão "Configuração"
+
             if (x in 550f..1550f && y in (Gdx.graphics.height - 3270f)..(Gdx.graphics.height - 2270f)) {
                 mainGame.setScreen<BooksScreen>()
             }
 
-            //  botão "Loja"
+
             if (x in 80f..280f && y in (Gdx.graphics.height - 270f)..(Gdx.graphics.height - 70f)) {
                 mainGame.setScreen<LojaScreen>()
             }
 
-            // botão "Editar"
+
             if (x in 300f..500f && y in (Gdx.graphics.height - 270f)..(Gdx.graphics.height - 70f)) {
                 mainGame.setScreen<EditScreen>()
             }
 
-            // botão "Livros"
+
             if (x in 520f..820f && y in (Gdx.graphics.height - 270f)..(Gdx.graphics.height - 70f)) {
-                mainGame.setScreen<BooksScreen>()
+                mainGame.setScreen<BooksScreen>()  // Substitua BooksScreen pela tela correspondente
             }
 
-            //  botão "Investimentos"
+
             if (x in 850f..1050f && y in (Gdx.graphics.height - 270f)..(Gdx.graphics.height - 70f)) {
                 mainGame.setScreen<InvestimentoScreen>()
             }
 
-            //  botão "RPG"
+
             if (x in 1070f..1270f && y in (Gdx.graphics.height - 270f)..(Gdx.graphics.height - 70f)) {
                 mainGame.setScreen<RpgScreen>()
             }
         }
     }
 
+
     override fun dispose() {
         infocapicoin.disposeSafely()
         infohud.disposeSafely()
         configbutton.disposeSafely()
-        image.disposeSafely()
+        //image.disposeSafely()
         batch.disposeSafely()
         shapeRenderer.dispose()
         lojabutton.disposeSafely()
@@ -96,6 +98,8 @@ class HomeScreen(main: Main) : KtxScreen {
         booksbutton.disposeSafely()
         investimentobutton.disposeSafely()
         rpgbutton.disposeSafely()
+        infoboxdois.disposeSafely()
+        redbutton.disposeSafely()
     }
 
     private fun input(){
@@ -126,21 +130,26 @@ class HomeScreen(main: Main) : KtxScreen {
             it.rect(0f, 0f, Gdx.graphics.width.toFloat(), 300f)
         }
 
-       batch.use {
+        batch.use {
 
-           it.draw(infocapicoin, 20f, 2595f, 400f, 250f)
-           it.draw(infohud, 200f, 2235f, 1000f, 1000f)
-           it.draw(infohud, 500f, 2235f, 1000f, 1000f)
+            it.draw(infocapicoin, 20f, 2595f, 400f, 250f)
+            it.draw(infohud, 200f, 2235f, 1000f, 1000f)
+            it.draw(infohud, 500f, 2235f, 1000f, 1000f)
 
-           it.draw(configbutton, 550f, 2270f, 1000f, 1000f)
+            it.draw(configbutton, 550f, 2270f, 1000f, 1000f)
 
-           it.draw(lojabutton, 80f, 50f, 200f, 200f)
-           it.draw(editbutton, 300f, 50f, 200f, 200f)
-           it.draw(booksbutton, 520f, 50f, 300f, 300f)
-           it.draw(investimentobutton, 850f, 50f, 200f, 200f)
-           it.draw(rpgbutton, 1070f, 50f, 200f, 200f)
+            it.draw(lojabutton, 80f, 50f, 200f, 200f)
+            it.draw(editbutton, 300f, 50f, 200f, 200f)
+            it.draw(booksbutton, 520f, 50f, 300f, 300f)
+            it.draw(investimentobutton, 850f, 50f, 200f, 200f)
+            it.draw(rpgbutton, 1070f, 50f, 200f, 200f)
+
+            it.draw(infoboxdois, 500f, 200f, 500f, 500f)
+            it.draw(redbutton, 500f, 200f, 200f, 200f)
+
+
+
 
         }
-
     }
 }
