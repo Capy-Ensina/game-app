@@ -1,6 +1,7 @@
 package br.com.capyensina.main.ui.screens
 
 import br.com.capyensina.main.Main
+import br.com.capyensina.main.ui.layout.HomeLayout
 import br.com.capyensina.main.util.ColorTheme
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.Texture.TextureFilter.Linear
@@ -11,6 +12,8 @@ import ktx.assets.toInternalFile
 import ktx.graphics.use
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.scenes.scene2d.Stage
+import ktx.actors.stage
 
 
 class HomeScreen(main: Main) : KtxScreen {
@@ -38,6 +41,15 @@ class HomeScreen(main: Main) : KtxScreen {
     private val booksbutton = Texture("booksbutton.png".toInternalFile())
     private val investimentobutton = Texture("investimentobutton.png".toInternalFile())
     private val rpgbutton = Texture("rpgbutton.png".toInternalFile())
+
+    /*
+    * TESTING AREA
+    * tô vefirifanco como funciona o sistema de UI desenhada pelo Table
+    * pra isso precisa usar a classe stage e desenhas as coisas através dela
+    * se tiver lendo isso, ainda não terminei os testes
+    * */
+    private val stage = stage(batch)
+    /* Fim da Area de Testes */
 
     override fun render(delta: Float) {
        // ScreenUtils.clear(0f, 0f, 0f, 1f)
