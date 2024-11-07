@@ -10,4 +10,5 @@ class UiManager(main: Main) {
      * pra seperar os valores, pq quero subdividir os tamanhos, tipo
      * o @mediaport
      */
+
 }
