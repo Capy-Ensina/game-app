@@ -3,32 +3,25 @@ package br.com.capyensina.main.ui.screens
 import br.com.capyensina.main.Main
 import br.com.capyensina.main.util.ColorTheme
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.g2d.BitmapFont
+import com.badlogic.gdx.graphics.Texture.TextureFilter.Linear
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+import ktx.actors.stage
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
 import ktx.assets.toInternalFile
 import ktx.graphics.use
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 
-class BooksScreen (main: Main) : KtxScreen {
-
+class ConfigScreen (main: Main) : KtxScreen {
+    private val image = Texture("logo.png".toInternalFile(), true).apply { setFilter(Linear, Linear) }
     private val batch = SpriteBatch()
     private val shapeRenderer = ShapeRenderer()
     private val background = Texture("background.png".toInternalFile())
 
-    private val font = BitmapFont()
-
-    init {
-        font.color = Color.BLACK
-    }
-
     val mainGame = main
 
-    //hud
+    //hud retangulos
     private val hudTopColor = ColorTheme.BLUE
     private val hudBottomColor = ColorTheme.BLUE
     private val hudHeight = 50f
@@ -46,9 +39,8 @@ class BooksScreen (main: Main) : KtxScreen {
     private val investimentobutton = Texture("investimentobutton.png".toInternalFile())
     private val rpgbutton = Texture("rpgbutton.png".toInternalFile())
 
-    //interface tela
-    private val infoboxdois = Texture("infoboxdois.png".toInternalFile())
-    private val redbutton = Texture("redbutton.png".toInternalFile()) // botao de opcoes dos modulos
+    //imagens para a interface
+    private val infoboxquatro = Texture("infoboxquatro.png".toInternalFile())
     private val closebutton = Texture("closebutton.png".toInternalFile())
 
     override fun render(delta: Float) {
@@ -56,74 +48,56 @@ class BooksScreen (main: Main) : KtxScreen {
         input()
         logic()
         draw()
-
-        customFont.color = Color.BLACK
-        batch.begin()
-        customFont.draw(batch, "MATÉRIAS", 350f, 1790f)
-        batch.end()
     }
-
-    fun createCustomFont(size: Int): BitmapFont {
-        val fontGenerator = FreeTypeFontGenerator(Gdx.files.internal("PixelOperatorHB8.ttf"))
-        val fontParameter = FreeTypeFontGenerator.FreeTypeFontParameter().apply {
-            this.size = size
-        }
-
-        val customFont = fontGenerator.generateFont(fontParameter)
-        fontGenerator.dispose()
-        return customFont
-    }
-
-    val customFont = createCustomFont(80)
 
     private fun checkButtonClick() {
         if (Gdx.input.justTouched()) {
             val x = Gdx.input.x.toFloat()
             val y = Gdx.graphics.height - Gdx.input.y.toFloat()
 
-
+            //  botão "Configuração"
             if (x in 550f..1550f && y in (Gdx.graphics.height - 3270f)..(Gdx.graphics.height - 2270f)) {
-                mainGame.setScreen<BooksScreen>()
+                mainGame.setScreen<ConfigScreen>()
             }
 
-
+            //  botão "Loja"
             if (x in 80f..280f && y in (Gdx.graphics.height - 270f)..(Gdx.graphics.height - 70f)) {
                 mainGame.setScreen<LojaScreen>()
             }
 
-
+            // botão "Editar"
             if (x in 300f..500f && y in (Gdx.graphics.height - 270f)..(Gdx.graphics.height - 70f)) {
                 mainGame.setScreen<EditScreen>()
             }
 
-
+            // botão "Livros"
             if (x in 520f..820f && y in (Gdx.graphics.height - 270f)..(Gdx.graphics.height - 70f)) {
                 mainGame.setScreen<BooksScreen>()
             }
 
-
+            //  botão "Investimentos"
             if (x in 850f..1050f && y in (Gdx.graphics.height - 270f)..(Gdx.graphics.height - 70f)) {
                 mainGame.setScreen<InvestimentoScreen>()
             }
 
-
+            //  botão "RPG de texto"
             if (x in 1070f..1270f && y in (Gdx.graphics.height - 270f)..(Gdx.graphics.height - 70f)) {
                 mainGame.setScreen<RpgScreen>()
             }
 
-            //botao de close
-            if (x in 1000f..1400f && y in (Gdx.graphics.height - 2060f)..(Gdx.graphics.height - 1660f)) {
+            // botao de fechar
+            if (x in 1000f..1400f && y in (Gdx.graphics.height - 2520f)..(Gdx.graphics.height - 2120f)) {
                 mainGame.setScreen<HomeScreen>()
             }
+
         }
     }
-
 
     override fun dispose() {
         infocapicoin.disposeSafely()
         infohud.disposeSafely()
         configbutton.disposeSafely()
-        //image.disposeSafely()
+        image.disposeSafely()
         batch.disposeSafely()
         shapeRenderer.dispose()
         lojabutton.disposeSafely()
@@ -131,9 +105,7 @@ class BooksScreen (main: Main) : KtxScreen {
         booksbutton.disposeSafely()
         investimentobutton.disposeSafely()
         rpgbutton.disposeSafely()
-        infoboxdois.disposeSafely()
-        redbutton.disposeSafely()
-        font.disposeSafely()
+        infoboxquatro.disposeSafely()
         closebutton.disposeSafely()
     }
 
@@ -179,18 +151,12 @@ class BooksScreen (main: Main) : KtxScreen {
             it.draw(investimentobutton, 850f, 50f, 200f, 200f)
             it.draw(rpgbutton, 1070f, 50f, 200f, 200f)
 
-            it.draw(infoboxdois, 5f, 700f, 1350f, 1350f)
-            it.draw(redbutton, 200f, 1350f, 950f, 400f)
-            it.draw(redbutton, 200f, 1100f, 950f, 400f)
-            it.draw(redbutton, 200f, 850f, 950f, 400f)
-            it.draw(closebutton, 1000f, 1660f, 400f, 400f)
+            it.draw(infoboxquatro, 5f, 700f, 1350f, 1700f)
+            it.draw(closebutton, 1000f, 2120f, 400f, 400f)
+
 
 
         }
 
     }
-
-
-
-
 }

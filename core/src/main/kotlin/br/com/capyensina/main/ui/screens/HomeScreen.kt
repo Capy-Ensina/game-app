@@ -24,7 +24,7 @@ class HomeScreen(main: Main) : KtxScreen {
 
     val mainGame = main
 
-   //hud
+   //hud retangulos
     private val hudTopColor = ColorTheme.BLUE
     private val hudBottomColor = ColorTheme.BLUE
     private val hudHeight = 50f
@@ -65,7 +65,7 @@ class HomeScreen(main: Main) : KtxScreen {
 
             //  botão "Configuração"
             if (x in 550f..1550f && y in (Gdx.graphics.height - 3270f)..(Gdx.graphics.height - 2270f)) {
-                mainGame.setScreen<BooksScreen>()
+                mainGame.setScreen<ConfigScreen>()
             }
 
             //  botão "Loja"
@@ -88,7 +88,7 @@ class HomeScreen(main: Main) : KtxScreen {
                 mainGame.setScreen<InvestimentoScreen>()
             }
 
-            //  botão "RPG"
+            //  botão "RPG de texto"
             if (x in 1070f..1270f && y in (Gdx.graphics.height - 270f)..(Gdx.graphics.height - 70f)) {
                 mainGame.setScreen<RpgScreen>()
             }
