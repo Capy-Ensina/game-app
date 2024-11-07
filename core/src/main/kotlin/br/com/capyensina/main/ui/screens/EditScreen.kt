@@ -132,7 +132,7 @@ class EditScreen (main: Main) : KtxScreen {
             it.draw(infohud, 200f, 2235f, 1000f, 1000f)
             it.draw(infohud, 500f, 2235f, 1000f, 1000f)
 
-            it.draw(configbutton, 550f, 2270f, 1000f, 1000f)
+            it.draw(configbutton, 1020f, 2565f, 300f, 300f)
 
             it.draw(lojabutton, 80f, 50f, 200f, 200f)
             it.draw(editbutton, 300f, 50f, 200f, 200f)

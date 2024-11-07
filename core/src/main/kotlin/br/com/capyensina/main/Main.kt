@@ -22,6 +22,6 @@ class Main : KtxGame<KtxScreen>() {
         addScreen(LojaScreen(this))
         addScreen(InvestimentoScreen(this))
 
-        setScreen<HomeScreen>()
+        setScreen<BooksScreen>()
     }
 }

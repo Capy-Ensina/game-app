@@ -3,19 +3,28 @@ package br.com.capyensina.main.ui.screens
 import br.com.capyensina.main.Main
 import br.com.capyensina.main.util.ColorTheme
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
 import ktx.assets.toInternalFile
 import ktx.graphics.use
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 
 class BooksScreen (main: Main) : KtxScreen {
 
     private val batch = SpriteBatch()
     private val shapeRenderer = ShapeRenderer()
     private val background = Texture("background.png".toInternalFile())
+
+    private val font = BitmapFont()
+
+    init {
+        font.color = Color.BLACK
+    }
 
     val mainGame = main
 
@@ -46,7 +55,26 @@ class BooksScreen (main: Main) : KtxScreen {
         input()
         logic()
         draw()
+
+        // Exemplo de uso na função render
+        customFont.color = Color.BLACK
+        batch.begin()
+        customFont.draw(batch, "MATÉRIAS", 350f, 1790f)
+        batch.end()
     }
+
+    fun createCustomFont(size: Int): BitmapFont {
+        val fontGenerator = FreeTypeFontGenerator(Gdx.files.internal("PixelOperatorHB8.ttf"))
+        val fontParameter = FreeTypeFontGenerator.FreeTypeFontParameter().apply {
+            this.size = size
+        }
+
+        val customFont = fontGenerator.generateFont(fontParameter)
+        fontGenerator.dispose()
+        return customFont
+    }
+
+    val customFont = createCustomFont(80)
 
     private fun checkButtonClick() {
         if (Gdx.input.justTouched()) {
@@ -100,6 +128,7 @@ class BooksScreen (main: Main) : KtxScreen {
         rpgbutton.disposeSafely()
         infoboxdois.disposeSafely()
         redbutton.disposeSafely()
+        font.disposeSafely()
     }
 
     private fun input(){
@@ -136,7 +165,7 @@ class BooksScreen (main: Main) : KtxScreen {
             it.draw(infohud, 200f, 2235f, 1000f, 1000f)
             it.draw(infohud, 500f, 2235f, 1000f, 1000f)
 
-            it.draw(configbutton, 550f, 2270f, 1000f, 1000f)
+            it.draw(configbutton, 1020f, 2565f, 300f, 300f)
 
             it.draw(lojabutton, 80f, 50f, 200f, 200f)
             it.draw(editbutton, 300f, 50f, 200f, 200f)
@@ -144,12 +173,16 @@ class BooksScreen (main: Main) : KtxScreen {
             it.draw(investimentobutton, 850f, 50f, 200f, 200f)
             it.draw(rpgbutton, 1070f, 50f, 200f, 200f)
 
-            it.draw(infoboxdois, 500f, 200f, 500f, 500f)
-            it.draw(redbutton, 500f, 200f, 200f, 200f)
-
-
-
+            it.draw(infoboxdois, 5f, 700f, 1350f, 1350f)
+            it.draw(redbutton, 200f, 1350f, 950f, 400f)
+            it.draw(redbutton, 200f, 1100f, 950f, 400f)
+            it.draw(redbutton, 200f, 850f, 950f, 400f)
 
         }
+
     }
+
+
+
+
 }
