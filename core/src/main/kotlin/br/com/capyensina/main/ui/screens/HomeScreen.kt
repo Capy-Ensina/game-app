@@ -44,7 +44,6 @@ class HomeScreen(main: Main) : KtxScreen {
         input()
         logic()
         draw()
-        //checkButtonClick() deu erro
     }
 
     private fun checkButtonClick() {
@@ -99,7 +98,7 @@ class HomeScreen(main: Main) : KtxScreen {
     }
 
     private fun input(){
-
+        checkButtonClick()
     }
 
     private fun logic(){
