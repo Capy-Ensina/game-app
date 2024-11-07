@@ -55,8 +55,7 @@ class BooksScreen (main: Main) : KtxScreen {
         input()
         logic()
         draw()
-
-        // Exemplo de uso na função render
+        
         customFont.color = Color.BLACK
         batch.begin()
         customFont.draw(batch, "MATÉRIAS", 350f, 1790f)
