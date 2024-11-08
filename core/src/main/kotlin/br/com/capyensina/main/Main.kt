@@ -12,6 +12,7 @@ import br.com.capyensina.main.ui.screens.QuizScreen
 import br.com.capyensina.main.ui.screens.RpgScreen
 import br.com.capyensina.main.ui.screens.SplashScreen
 import br.com.capyensina.main.ui.screens.TextScreen
+import br.com.capyensina.main.ui.screens.TutorialScreen
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import ktx.app.KtxGame
 import ktx.app.KtxScreen
@@ -42,9 +43,10 @@ class Main : KtxGame<KtxScreen>() {
         addScreen(TextScreen(this))
         addScreen(QuizScreen(this))
         addScreen(SplashScreen(this))
+        addScreen(TutorialScreen(this))
 
         // Set start screen, must at least be after adding screens
-        //setScreen<SplashScreen>()
-        setScreen<HomeScreen>()
+        //setScreen<QuizScreen>()
+        setScreen<TutorialScreen>()
     }
 }
