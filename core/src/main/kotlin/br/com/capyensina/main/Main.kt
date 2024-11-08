@@ -25,7 +25,7 @@ class Main : KtxGame<KtxScreen>() {
     override fun create() {
         KtxAsync.initiate()
 
-        // Initialize UI utils, must at least earlier than Layouts
+        // Initialize UI utils, at least, must be earlier than Layouts
         skinManager = SkinManager()
 
         // Initialize Layouts
@@ -43,7 +43,7 @@ class Main : KtxGame<KtxScreen>() {
         addScreen(QuizScreen(this))
         addScreen(SplashScreen(this))
 
-        // Set start screen, must at least be after adding screens
+        // Set start screen, at least, must be after adding screens
         //setScreen<SplashScreen>()
         setScreen<HomeScreen>()
     }
