@@ -5,18 +5,16 @@ import br.com.capyensina.main.util.ColorTheme
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.Texture.TextureFilter.Linear
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import com.badlogic.gdx.utils.ScreenUtils
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
 import ktx.assets.toInternalFile
 import ktx.graphics.use
 
-class TextScreen(main: Main) : KtxScreen {
+class SplashScreen (main: Main) : KtxScreen {
     private val batch = SpriteBatch()
     private val shapeRenderer = ShapeRenderer()
     private val font = BitmapFont()
@@ -24,23 +22,19 @@ class TextScreen(main: Main) : KtxScreen {
 
     val mainGame = main
 
-    // Retângulos
-    private val hudTopColor = ColorTheme.ORANGE
-
-
-    private val backgroundmarrom = Texture("backgroundmarrom.png".toInternalFile())
-
-    private val finalizarbutton = Texture("finalizarbutton.png".toInternalFile())
+    private val carregandoscreen = Texture("carregandoscreen.png".toInternalFile())
+    private val capicoin = Texture("capicoin.png".toInternalFile())
+    private val loadingum = Texture("loadingum.png".toInternalFile())
+    private val startbutton = Texture("startbutton.png".toInternalFile())
 
     override fun render(delta: Float) {
-
         input()
         logic()
         draw()
 
         customFont.color = Color.BLACK
         batch.use {
-            customFont.draw(it, "INTRODUÇÃO I", 370f, 2750f)
+            customFont.draw(it, "CARREGANDO...", 300f, 980f)
         }
     }
 
@@ -54,25 +48,15 @@ class TextScreen(main: Main) : KtxScreen {
         return customFont
     }
 
-    private fun checkButtonClick() {
-        if (Gdx.input.justTouched()) {
-            val x = Gdx.input.x.toFloat()
-            val y = Gdx.graphics.height - Gdx.input.y.toFloat()
-
-        }
-    }
-
     override fun dispose() {
-        batch.disposeSafely()
-        shapeRenderer.dispose()
-        font.disposeSafely()
-        customFont.disposeSafely()
-        finalizarbutton.disposeSafely()
-        backgroundmarrom.disposeSafely()
+        carregandoscreen.disposeSafely()
+        loadingum.disposeSafely()
+        capicoin.disposeSafely()
+        startbutton.disposeSafely()
     }
 
     private fun input() {
-        checkButtonClick()
+
     }
 
     private fun logic() {
@@ -82,17 +66,13 @@ class TextScreen(main: Main) : KtxScreen {
     private fun draw() {
 
         batch.use {
-            it.draw(backgroundmarrom, 0f, 0f, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())
+            it.draw(carregandoscreen, 0f, 0f, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())
+
+            it.draw(loadingum, 200f, 920f, 900f, 400f)
+            it.draw(capicoin, 300f, 1200f, 700f, 700f)
+
+            //it.draw(startbutton, 160f, 800f, 1000f, 1000f) botao de start
         }
 
-        shapeRenderer.use(ShapeRenderer.ShapeType.Filled) {
-            it.color = ColorTheme.ORANGE
-            it.rect(0f, Gdx.graphics.height - 220f, Gdx.graphics.width.toFloat(), 300f)
-        }
-
-
-        batch.use {
-            it.draw(finalizarbutton, 320f, 70f, 700f, 400f)
-        }
     }
 }

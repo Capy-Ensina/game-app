@@ -22,13 +22,9 @@ class BooksScreen (main: Main) : KtxScreen {
 
     private val font = BitmapFont()
 
-    init {
-        font.color = Color.BLACK
-    }
-
     val mainGame = main
 
-    //hud
+    //hud retangulos
     private val hudTopColor = ColorTheme.BLUE
     private val hudBottomColor = ColorTheme.BLUE
     private val hudHeight = 50f
@@ -52,7 +48,6 @@ class BooksScreen (main: Main) : KtxScreen {
     private val closebutton = Texture("closebutton.png".toInternalFile())
 
     override fun render(delta: Float) {
-        // ScreenUtils.clear(0f, 0f, 0f, 1f)
         input()
         logic()
         draw()
@@ -118,12 +113,10 @@ class BooksScreen (main: Main) : KtxScreen {
         }
     }
 
-
     override fun dispose() {
         infocapicoin.disposeSafely()
         infohud.disposeSafely()
         configbutton.disposeSafely()
-        //image.disposeSafely()
         batch.disposeSafely()
         shapeRenderer.dispose()
         lojabutton.disposeSafely()
@@ -146,8 +139,6 @@ class BooksScreen (main: Main) : KtxScreen {
     }
 
     private fun draw(){
-        //ScreenUtils.clear(ColorTheme.YELLOW)
-
         val screenWidth = Gdx.graphics.width.toFloat()
         val screenHeight = Gdx.graphics.height.toFloat()
 

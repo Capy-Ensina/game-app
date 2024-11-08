@@ -9,10 +9,10 @@ object ColorTheme {
     val YELLOW = Color(0.94902f,  0.71765f,  0.01961f, 1f)
     val BLACK = Color(0.0f,0.0f,0.0f,1f)
 
-    //val ORANGE = Color(229.0f,129.0f,63.0f,1f)
-     val ORANGE = Color(229 / 255f, 129 / 255f, 63 / 255f, 1.0f)
 
-    val BROWN  = Color(151.0f,76.0f,32.0f,1f)
-    val GREEN = Color(173.0f,193.0f,120.0f,1f)
-    val RED = Color(226.0f,109.0f,92.0f,1f)
+    val ORANGE = Color(229 / 255f, 129 / 255f, 63 / 255f, 1.0f)
+    val GREEN = Color(173 / 255f, 193 / 255f, 120 / 255f, 1f)
+    val BROWN = Color(151 / 255f, 76 / 255f, 32 / 255f, 1f)
+    val RED = Color(226 / 255f, 109 / 255f, 92 / 255f, 1f)
+
 }

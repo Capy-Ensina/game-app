@@ -5,18 +5,17 @@ import br.com.capyensina.main.util.ColorTheme
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.Texture.TextureFilter.Linear
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import com.badlogic.gdx.utils.ScreenUtils
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
 import ktx.assets.toInternalFile
 import ktx.graphics.use
 
-class TextScreen(main: Main) : KtxScreen {
+class QuizScreen (main: Main) : KtxScreen {
+
     private val batch = SpriteBatch()
     private val shapeRenderer = ShapeRenderer()
     private val font = BitmapFont()
@@ -25,22 +24,26 @@ class TextScreen(main: Main) : KtxScreen {
     val mainGame = main
 
     // Retângulos
-    private val hudTopColor = ColorTheme.ORANGE
+    private val hudTopColor = ColorTheme.GREEN
 
+    private val backgroundamarelo = Texture("backgroundamarelo.png".toInternalFile())
 
-    private val backgroundmarrom = Texture("backgroundmarrom.png".toInternalFile())
+    //imagens da interface
+    private val redquestion = Texture("redquestion.png".toInternalFile())
+    private val blueaswerA = Texture("blueanswerA.png".toInternalFile())
+    private val blueaswerB = Texture("blueanswerB.png".toInternalFile())
+    private val blueaswerC = Texture("blueanswerC.png".toInternalFile())
+    private val blueaswerD = Texture("blueanswerD.png".toInternalFile())
 
-    private val finalizarbutton = Texture("finalizarbutton.png".toInternalFile())
 
     override fun render(delta: Float) {
-
         input()
         logic()
         draw()
 
         customFont.color = Color.BLACK
         batch.use {
-            customFont.draw(it, "INTRODUÇÃO I", 370f, 2750f)
+            customFont.draw(it, "QUIZ", 500f, 2750f)
         }
     }
 
@@ -67,8 +70,12 @@ class TextScreen(main: Main) : KtxScreen {
         shapeRenderer.dispose()
         font.disposeSafely()
         customFont.disposeSafely()
-        finalizarbutton.disposeSafely()
-        backgroundmarrom.disposeSafely()
+        backgroundamarelo.disposeSafely()
+        redquestion.disposeSafely()
+        blueaswerA.disposeSafely()
+        blueaswerB.disposeSafely()
+        blueaswerC.disposeSafely()
+        blueaswerD.disposeSafely()
     }
 
     private fun input() {
@@ -82,17 +89,31 @@ class TextScreen(main: Main) : KtxScreen {
     private fun draw() {
 
         batch.use {
-            it.draw(backgroundmarrom, 0f, 0f, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())
+            it.draw(
+                backgroundamarelo, 0f, 0f, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat()
+            )
         }
 
         shapeRenderer.use(ShapeRenderer.ShapeType.Filled) {
-            it.color = ColorTheme.ORANGE
+            it.color = ColorTheme.GREEN
             it.rect(0f, Gdx.graphics.height - 220f, Gdx.graphics.width.toFloat(), 300f)
         }
 
-
         batch.use {
-            it.draw(finalizarbutton, 320f, 70f, 700f, 400f)
+            //questao um
+            it.draw(redquestion, 120f, 2200f, 1100f, 400f)
+            it.draw(blueaswerA, 160f, 1960f, 950f, 350f)
+            it.draw(blueaswerB, 160f, 1700f, 930f, 350f)
+            it.draw(blueaswerC, 160f, 1440f, 930f, 350f)
+            it.draw(blueaswerD, 160f, 1240f, 950f, 300f)
+
+            // questao dois
+            it.draw(redquestion, 120f, 900f, 1100f, 400f)
+            it.draw(blueaswerA, 160f, 660f, 950f, 350f)
+            it.draw(blueaswerB, 160f, 400f, 930f, 350f)
+            it.draw(blueaswerC, 160f, 140f, 930f, 350f)
+            it.draw(blueaswerD, 160f, -65f, 950f, 300f)
+
         }
     }
 }

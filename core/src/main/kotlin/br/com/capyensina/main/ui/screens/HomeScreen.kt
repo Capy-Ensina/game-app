@@ -17,7 +17,7 @@ import ktx.actors.stage
 
 
 class HomeScreen(main: Main) : KtxScreen {
-    private val image = Texture("logo.png".toInternalFile(), true).apply { setFilter(Linear, Linear) }
+   // private val image = Texture("logo.png".toInternalFile(), true).apply { setFilter(Linear, Linear) }
     private val batch = SpriteBatch()
     private val shapeRenderer = ShapeRenderer()
     private val background = Texture("background.png".toInternalFile())
@@ -27,8 +27,10 @@ class HomeScreen(main: Main) : KtxScreen {
    //hud retangulos
     private val hudTopColor = ColorTheme.BLUE
     private val hudBottomColor = ColorTheme.BLUE
+
+    /*
     private val hudHeight = 50f
-    private val screenWidth = 800f
+    private val screenWidth = 800f*/
 
     //imagens e botao da hud superior
     private val infocapicoin = Texture("infocapicoin.png".toInternalFile())
@@ -99,7 +101,7 @@ class HomeScreen(main: Main) : KtxScreen {
         infocapicoin.disposeSafely()
         infohud.disposeSafely()
         configbutton.disposeSafely()
-        image.disposeSafely()
+        //image.disposeSafely()
         batch.disposeSafely()
         shapeRenderer.dispose()
         lojabutton.disposeSafely()
