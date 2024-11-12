@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.scenes.scene2d.ui.TextField
 import ktx.style.skin
 
-class HomeLayout(main: Main) {
+class HomeLayout(main: Main) {/*
 
     lateinit var table: Table
 
@@ -22,5 +22,5 @@ class HomeLayout(main: Main) {
         table.add(nameText).width(100f)
         table.row()
         table.add(nameLabel).width(100f)
-    }
+    }*/
 }

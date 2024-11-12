@@ -1,7 +1,9 @@
 package br.com.capyensina.main.ui.screens
 
 import br.com.capyensina.main.Main
+import br.com.capyensina.main.components.Clickable
 import br.com.capyensina.main.util.ColorTheme
+import br.com.capyensina.main.util.MySpriteBatch
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.Texture
@@ -13,10 +15,12 @@ import ktx.assets.disposeSafely
 import ktx.assets.toInternalFile
 import ktx.graphics.use
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
+import com.badlogic.gdx.math.Rectangle
+import org.w3c.dom.css.Rect
 
 class BooksScreen (main: Main) : KtxScreen {
 
-    private val batch = SpriteBatch()
+    private val batch = MySpriteBatch()
     private val shapeRenderer = ShapeRenderer()
     private val background = Texture("background.png".toInternalFile())
 
@@ -46,6 +50,10 @@ class BooksScreen (main: Main) : KtxScreen {
     private val infoboxdois = Texture("infoboxdois.png".toInternalFile())
     private val redbutton = Texture("redbutton.png".toInternalFile()) // botao de opcoes dos modulos
     private val closebutton = Texture("closebutton.png".toInternalFile())
+    private val closeButton = Clickable(
+        Texture("closebutton.png".toInternalFile()),
+        Rectangle(1000f, 1660f, 400f, 400f)
+    )
 
     override fun render(delta: Float) {
         input()
@@ -106,10 +114,12 @@ class BooksScreen (main: Main) : KtxScreen {
                 mainGame.setScreen<RpgScreen>()
             }
 
-            //botao de close
+            /*botao de close
             if (x in 1000f..1400f && y in (Gdx.graphics.height - 2060f)..(Gdx.graphics.height - 1660f)) {
                 mainGame.setScreen<HomeScreen>()
-            }
+            }*/
+
+            if (closeButton.collider.contains(x, y)) mainGame.setScreen<HomeScreen>()
         }
     }
 
@@ -174,7 +184,8 @@ class BooksScreen (main: Main) : KtxScreen {
             it.draw(redbutton, 200f, 1350f, 950f, 400f)
             it.draw(redbutton, 200f, 1100f, 950f, 400f)
             it.draw(redbutton, 200f, 850f, 950f, 400f)
-            it.draw(closebutton, 1000f, 1660f, 400f, 400f)
+            //it.draw(closebutton, 1000f, 1660f, 400f, 400f)
+            it.draw(closeButton)
 
 
         }

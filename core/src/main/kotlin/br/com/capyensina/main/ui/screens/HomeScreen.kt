@@ -44,15 +44,6 @@ class HomeScreen(main: Main) : KtxScreen {
     private val investimentobutton = Texture("investimentobutton.png".toInternalFile())
     private val rpgbutton = Texture("rpgbutton.png".toInternalFile())
 
-    /*
-    * TESTING AREA
-    * tô vefirifanco como funciona o sistema de UI desenhada pelo Table
-    * pra isso precisa usar a classe stage e desenhas as coisas através dela
-    * se tiver lendo isso, ainda não terminei os testes
-    * */
-    private val stage = stage(batch)
-    /* Fim da Area de Testes */
-
     override fun render(delta: Float) {
        // ScreenUtils.clear(0f, 0f, 0f, 1f)
         input()

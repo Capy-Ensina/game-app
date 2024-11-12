@@ -30,7 +30,7 @@ class Main : KtxGame<KtxScreen>() {
         skinManager = SkinManager()
 
         // Initialize Layouts
-        //homeLayout = HomeLayout(this) TODO - Malcoln fazer isso funcionar
+        //homeLayout = HomeLayout(this)
 
         // Initialize Screens
         addScreen(HomeScreen(this))
@@ -47,6 +47,6 @@ class Main : KtxGame<KtxScreen>() {
 
         // Set start screen, at least, must be after adding screens
         //setScreen<QuizScreen>()
-        setScreen<TutorialScreen>()
+        setScreen<BooksScreen>()
     }
 }
