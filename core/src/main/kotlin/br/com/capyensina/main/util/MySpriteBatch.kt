@@ -1,13 +1,13 @@
 package br.com.capyensina.main.util
 
 import br.com.capyensina.main.components.Clickable
-import com.badlogic.gdx.graphics.g2d.Batch
+import br.com.capyensina.main.components.TextBox
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 
 class MySpriteBatch : SpriteBatch() {
 
-    fun draw(clickable: Clickable){
-        draw(clickable.texture, clickable.collider.x, clickable.collider.y, clickable.collider.width, clickable.collider.height)
+    fun draw(arg: Clickable) {
+        draw(arg.texture, arg.collider.x, arg.collider.y, arg.collider.width, arg.collider.height)
     }
 
 }
