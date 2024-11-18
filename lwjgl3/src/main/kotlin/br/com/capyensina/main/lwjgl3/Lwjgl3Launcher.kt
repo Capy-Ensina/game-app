@@ -13,7 +13,9 @@ fun main() {
       return
     Lwjgl3Application(Main(), Lwjgl3ApplicationConfiguration().apply {
         setTitle("Capy-Ensina")
-        setWindowedMode(640, 480)
+        val WORLD_HEIGHT = 2992/4
+        val WORLD_WIDTH = 1344/4
+        setWindowedMode(WORLD_WIDTH, WORLD_HEIGHT)
         setWindowIcon(*(arrayOf(128, 64, 32, 16).map { "libgdx$it.png" }.toTypedArray()))
     })
 }

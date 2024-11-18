@@ -15,4 +15,6 @@ object ColorTheme {
     val BROWN = Color(151 / 255f, 76 / 255f, 32 / 255f, 1f)
     val RED = Color(226 / 255f, 109 / 255f, 92 / 255f, 1f)
 
+    val BACKGROUND_COLOR = BLUE
+
 }

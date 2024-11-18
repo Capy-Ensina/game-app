@@ -46,7 +46,7 @@ class ConfigScreen (main: Main) : KtxScreen {
         if (Gdx.input.justTouched()) {
             val x = Gdx.input.x.toFloat()
             val y = Gdx.graphics.height - Gdx.input.y.toFloat()
-            mainGame.hudManager.logic(Vector2(x, y))
+            mainGame.hudManager.input(Vector2(x, y))
         }
     }
 

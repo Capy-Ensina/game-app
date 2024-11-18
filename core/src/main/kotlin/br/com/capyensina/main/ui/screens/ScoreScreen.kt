@@ -39,7 +39,7 @@ class ScoreScreen (main: Main) : KtxScreen {
             val y = Gdx.graphics.height - Gdx.input.y.toFloat()
             val clickPos = Vector2(x, y)
 
-            mainGame.hudManager.logic(clickPos)
+            mainGame.hudManager.input(clickPos)
         }
     }
 

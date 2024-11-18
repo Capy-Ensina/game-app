@@ -4,7 +4,6 @@ import br.com.capyensina.main.Main
 import br.com.capyensina.main.components.Clickable
 import br.com.capyensina.main.components.disposeSafely
 import br.com.capyensina.main.ui.screens.BooksScreen
-import br.com.capyensina.main.ui.screens.ConfigScreen
 import br.com.capyensina.main.ui.screens.EditScreen
 import br.com.capyensina.main.ui.screens.InvestimentoScreen
 import br.com.capyensina.main.ui.screens.LojaScreen
@@ -16,7 +15,6 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
-import ktx.graphics.use
 
 class HudManager(main: Main) {
     private val mainGame = main
@@ -24,19 +22,19 @@ class HudManager(main: Main) {
     //imagens e botao da hud superior
     private val capicoinInfo = Clickable(
         AssetManager.capicoinInfo,
-        Rectangle(20f, 2595f, 400f, 250f)
+        Rectangle(20f, main.WORLD_HEIGHT - 250f, 400f, 250f)
     )
     private val hudInfoOne = Clickable(
         AssetManager.hudInfo,
-        Rectangle(200f, 2235f, 1000f, 1000f)
+        Rectangle(200f, main.WORLD_HEIGHT - 600f, 1000f, 1000f)
     )
     private val hudInfoTwo = Clickable(
         AssetManager.hudInfo,
-        Rectangle(500f, 2235f, 1000f, 1000f)
+        Rectangle(500f, main.WORLD_HEIGHT - 600f, 1000f, 1000f)
     )
     private val configButton = Clickable(
         AssetManager.configButton,
-        Rectangle(1020f, 2565f, 300f, 300f)
+        Rectangle(1020f, main.WORLD_HEIGHT - 280f, 300f, 300f)
     )
 
     // Imagens dos botões inferiores
@@ -61,7 +59,7 @@ class HudManager(main: Main) {
         Rectangle(1070f, 50f, 200f, 200f)
     )
 
-    fun logic(clickPos: Vector2){
+    fun input(clickPos: Vector2){
         //  botão "Configuração"
         if (configButton.collider.contains(clickPos)) {
             mainGame.textBoxManager.configTextBox.isActive = true
@@ -97,7 +95,12 @@ class HudManager(main: Main) {
         batch.draw(rpgButton)
     }
 
-    fun drawShape(shapeRenderer: ShapeRenderer){
+    @Deprecated(
+        "Using phone size",
+        replaceWith = ReplaceWith("drawBackground"),
+        DeprecationLevel.WARNING
+    )
+    fun drawLegacyShape(shapeRenderer: ShapeRenderer){
         // Retângulo superior
         shapeRenderer.color = ColorTheme.BLUE
         shapeRenderer.rect(0f, Gdx.graphics.height - 220f, Gdx.graphics.width.toFloat(), 300f)
@@ -107,8 +110,40 @@ class HudManager(main: Main) {
         shapeRenderer.rect(0f, 0f, Gdx.graphics.width.toFloat(), 300f)
     }
 
+    fun drawShape(shapeRenderer: ShapeRenderer){
+        // Retângulo superior
+        shapeRenderer.color = ColorTheme.BLUE
+        shapeRenderer.rect(0f, mainGame.WORLD_HEIGHT - 220f, mainGame.WORLD_WIDTH, 300f)
+
+        // Retângulo inferior
+        shapeRenderer.color = ColorTheme.BLUE
+        shapeRenderer.rect(0f, 0f, mainGame.WORLD_WIDTH, 300f)
+    }
+
+    fun drawDebugShape(shapeRenderer: ShapeRenderer){
+        // Retângulo superior
+        shapeRenderer.color = ColorTheme.BLUE
+        shapeRenderer.rect(0f, mainGame.WORLD_HEIGHT - 220f, mainGame.WORLD_WIDTH, 300f)
+
+        // Retângulo inferior
+        shapeRenderer.color = ColorTheme.BLUE
+        shapeRenderer.rect(0f, 0f, mainGame.WORLD_WIDTH, 300f)
+    }
+
     fun drawBackground(batch: MySpriteBatch){
-        //batch.draw(AssetManager.mainBg, 0f, 0f, mainGame.WORLD_WIDTH, mainGame.WORLD_HEIGHT)
+        batch.draw(AssetManager.mainBg, 0f, 0f, mainGame.WORLD_WIDTH, mainGame.WORLD_HEIGHT)
+    }
+
+    fun drawDebugBackground(batch: MySpriteBatch){
+        batch.draw(AssetManager.mainBg, 0f, 0f, mainGame.WORLD_WIDTH, mainGame.WORLD_HEIGHT)
+    }
+
+    @Deprecated(
+        "Using phone size",
+        replaceWith = ReplaceWith("drawBackground"),
+        DeprecationLevel.WARNING
+    )
+    fun drawLegacyBackground(batch: MySpriteBatch){
         batch.draw(AssetManager.mainBg, 0f, 0f, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())
     }
 

@@ -1,26 +1,16 @@
 package br.com.capyensina.main.ui.screens.debug
 
 import br.com.capyensina.main.Main
-import br.com.capyensina.main.components.TextBox
 import br.com.capyensina.main.util.AssetManager
-import br.com.capyensina.main.util.BoxSize
+import br.com.capyensina.main.util.ColorTheme
 import br.com.capyensina.main.util.MySpriteBatch
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
-import com.badlogic.gdx.graphics.PerspectiveCamera
-import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.g2d.BitmapFont
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.viewport.ExtendViewport
-import com.badlogic.gdx.utils.viewport.FillViewport
-import com.badlogic.gdx.utils.viewport.FitViewport
-import com.badlogic.gdx.utils.viewport.ScreenViewport
 import ktx.app.KtxScreen
-import ktx.assets.toInternalFile
 import ktx.graphics.use
 
 class DebugScreen(main: Main) : KtxScreen {
@@ -37,26 +27,43 @@ class DebugScreen(main: Main) : KtxScreen {
 
     private val customFont = AssetManager.getFont()
 
-    //private val camera = OrthographicCamera()
-    private val viewport = FitViewport(main.WORLD_WIDTH, main.WORLD_HEIGHT)
+    private val camera = OrthographicCamera()
+    private val viewport = ExtendViewport(main.WORLD_WIDTH, main.WORLD_HEIGHT, camera)
 
     init {
-        mainGame.textBoxManager.configTextBox.isActive = true
-        viewport.camera.position.set(viewport.camera.viewportWidth/2,viewport.camera.viewportHeight/2,0f);
+        camera.position.set(
+            mainGame.WORLD_WIDTH/2,
+            mainGame.WORLD_HEIGHT/2,
+            0f
+        )
+        viewport.apply()
+        resize(Gdx.graphics.width, Gdx.graphics.height)
     }
 
     override fun render(delta: Float) {
+        camera.update()
+        batch.projectionMatrix = camera.combined
+        shapeRenderer.projectionMatrix = camera.combined
+
         input()
         logic()
         draw()
     }
 
+    override fun resize(width: Int, height: Int) {
+        viewport.update(width, height);
+    }
+
     fun input(){
         if (Gdx.input.justTouched()) {
-            val x = Gdx.input.x.toFloat()
-            val y = Gdx.graphics.height - Gdx.input.y.toFloat()
-            mainGame.hudManager.logic(Vector2(x, y))
-            mainGame.textBoxManager.input(Vector2(x, y))
+            // Transforma o click na tela em uma posição dentro do mundo
+            val worldPos = viewport.unproject(Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()))
+
+            // Verifica cliquesna Hud
+            mainGame.hudManager.input(worldPos)
+
+            // Verifica cliques nos popups
+            mainGame.textBoxManager.input(worldPos)
         }
     }
 
@@ -65,33 +72,34 @@ class DebugScreen(main: Main) : KtxScreen {
     }
 
     fun draw(){
-        //camera.update()
-        Gdx.gl.glClearColor(0f, 0f, 0f, 1f)
+
+        Gdx.gl.glClearColor(
+            ColorTheme.BACKGROUND_COLOR.r,
+            ColorTheme.BACKGROUND_COLOR.g,
+            ColorTheme.BACKGROUND_COLOR.b,
+            ColorTheme.BACKGROUND_COLOR.a
+        )
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
-        viewport.apply()
-        batch.projectionMatrix = viewport.camera.combined
 
         batch.use {
             // 1. Background
-            mainGame.hudManager.drawBackground(it)
+            mainGame.hudManager.drawDebugBackground(it)
 
             // 2. Content
-            customFont.draw(it, "INTRODUÇÃO I", 370f, 1750f)
+            customFont.draw(it, "INTRODUÇÃO I", mainGame.WORLD_WIDTH/2, mainGame.WORLD_HEIGHT)
 
             // Deve-se desenhar os popups por ultimo
-            mainGame.textBoxManager.configTextBox.draw(it)
+            mainGame.textBoxManager.draw(it)
         }
 
         // 3. HUD
-        /*
         shapeRenderer.use(ShapeRenderer.ShapeType.Filled) {
-            mainGame.hudManager.drawShape(it)
-        }
-        */
-        batch.use {
-            mainGame.hudManager.draw(batch)
+            mainGame.hudManager.drawDebugShape(it)
         }
 
+        batch.use {
+            mainGame.hudManager.draw(it)
+        }
     }
 
 }

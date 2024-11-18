@@ -1,59 +1,53 @@
 package br.com.capyensina.main.ui.screens
 
 import br.com.capyensina.main.Main
-import br.com.capyensina.main.components.Clickable
-import br.com.capyensina.main.components.dispose
-import br.com.capyensina.main.components.disposeSafely
-import br.com.capyensina.main.ui.layout.HomeLayout
-import br.com.capyensina.main.util.AssetManager
 import br.com.capyensina.main.util.ColorTheme
 import br.com.capyensina.main.util.MySpriteBatch
-import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.Texture.TextureFilter.Linear
-import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
-import ktx.assets.toInternalFile
 import ktx.graphics.use
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.math.Rectangle
+import com.badlogic.gdx.graphics.GL20
+import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.math.Vector2
-import com.badlogic.gdx.scenes.scene2d.Stage
-import ktx.actors.stage
-import ktx.assets.Asset
+import com.badlogic.gdx.utils.viewport.ExtendViewport
 
 
-class HomeScreen(main: Main) : KtxScreen {
+class HomeScreen(mainGame: Main) : KtxScreen {
     private val batch = MySpriteBatch()
     private val shapeRenderer = ShapeRenderer()
-    private val background = AssetManager.mainBg
+    private val main = mainGame
 
-    val mainGame = main
+    private val camera = OrthographicCamera()
+    private val viewport = ExtendViewport(main.WORLD_WIDTH, main.WORLD_HEIGHT, camera)
 
-    //hud retangulos
-    private val hudTopColor = ColorTheme.BLUE
-    private val hudBottomColor = ColorTheme.BLUE
-
-    /*
-    private val hudHeight = 50f
-    private val screenWidth = 800f*/
+    /* A camera precisa ser posicionada de modo que a tela inteira seja visivel, ou seja,
+     * no meio da viewport
+     */
+    init {
+        camera.position.set(
+            mainGame.WORLD_WIDTH/2,
+            mainGame.WORLD_HEIGHT/2,
+            0f
+        )
+        viewport.apply()
+    }
 
     override fun render(delta: Float) {
-        //ScreenUtils.clear(0f, 0f, 0f, 1f)
+        // Atualiza os valores da câmera, e manda o batch e o shapeRenderer usarem ela
+        camera.update()
+        batch.projectionMatrix = camera.combined
+        shapeRenderer.projectionMatrix = camera.combined
+
         input()
         logic()
         draw()
     }
 
-    private fun checkButtonClick() {
-        if (Gdx.input.justTouched()) {
-            val x = Gdx.input.x.toFloat()
-            val y = Gdx.graphics.height - Gdx.input.y.toFloat()
-            val clickPos = Vector2(x, y)
-
-            mainGame.hudManager.logic(clickPos)
-        }
+    // Sempre que "mudar de tamanho" a viewport PRECISA ser atualizada
+    override fun resize(width: Int, height: Int) {
+        viewport.update(width, height)
     }
 
     override fun dispose() {
@@ -62,7 +56,16 @@ class HomeScreen(main: Main) : KtxScreen {
     }
 
     private fun input(){
-        checkButtonClick()
+        if (Gdx.input.justTouched()) {
+            // Transforma o click na tela em uma posição dentro do mundo
+            val worldPos = viewport.unproject(Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()))
+
+            // Verifica cliques na Hud
+            main.hudManager.input(worldPos)
+
+            // Verifica cliques nos popups
+            main.textBoxManager.input(worldPos)
+        }
     }
 
     private fun logic(){
@@ -70,26 +73,40 @@ class HomeScreen(main: Main) : KtxScreen {
     }
 
     private fun draw(){
-        //ScreenUtils.clear(ColorTheme.YELLOW)
-        val screenWidth = Gdx.graphics.width.toFloat()
-        val screenHeight = Gdx.graphics.height.toFloat()
+        // Limpa a tela com a cor definida como BACKGROUND_COLOR
+        Gdx.gl.glClearColor(
+            ColorTheme.BACKGROUND_COLOR.r,
+            ColorTheme.BACKGROUND_COLOR.g,
+            ColorTheme.BACKGROUND_COLOR.b,
+            ColorTheme.BACKGROUND_COLOR.a
+        )
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
+        // Desenhar background e conteúdo na tela
         batch.use {
-            //it.draw(background, 0f, 0f, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())
+            // Background - deve ser desenhado primeiro
+            main.hudManager.drawBackground(it)
+
+            // Conteúdo da página aqui
+
+
+            // PopUP - deve ser desenhado por último, mas antes da HUD
+            main.textBoxManager.draw(it)
         }
 
+
+        // HUD - Ultima coisa a ser desenhada na tela, ficando acima de tudo
         shapeRenderer.use(ShapeRenderer.ShapeType.Filled) {
-            // Retângulo superior
-            it.color = ColorTheme.BLUE
-            it.rect(0f, Gdx.graphics.height - 220f, Gdx.graphics.width.toFloat(), 300f)
-
-            // Retângulo inferior
-            it.color = ColorTheme.BLUE
-            it.rect(0f, 0f, Gdx.graphics.width.toFloat(), 300f)
+            /* NOTA 18/11/2024 15:46 - Malcoln
+             * Talvez possa ser interessante não desenhar a forma, mas sim deixar "transparente"
+             * já que ao limpar a tela, o fundo está ficando completamente azul.
+             */
+            main.hudManager.drawShape(it)
         }
 
+        // HUD - Desenhando botões
         batch.use {
-            mainGame.hudManager.draw(it)
+            main.hudManager.draw(it)
         }
     }
 }

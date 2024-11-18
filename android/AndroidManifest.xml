@@ -6,6 +6,7 @@
   <application
       android:allowBackup="true"
       android:fullBackupContent="true"
+      android:immersive="true"
       android:icon="@mipmap/capicoin"
       android:isGame="true"
       android:appCategory="game"

@@ -6,6 +6,7 @@ import br.com.capyensina.main.components.TextBox
 import br.com.capyensina.main.ui.screens.HomeScreen
 import br.com.capyensina.main.util.AssetManager
 import br.com.capyensina.main.util.BoxSize
+import br.com.capyensina.main.util.MySpriteBatch
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
 
@@ -39,6 +40,7 @@ class TextBoxManager(mainGame: Main) {
         if (configTextBox.isActive) configTextBox.input(clickPos)
     }
 
-
-
+    fun draw(batch: MySpriteBatch){
+        if (configTextBox.isActive) configTextBox.draw(batch)
+    }
 }

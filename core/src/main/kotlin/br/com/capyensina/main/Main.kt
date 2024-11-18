@@ -24,14 +24,19 @@ import ktx.async.KtxAsync
 
 class Main : KtxGame<KtxScreen>() {
 
-    val WORLD_HEIGHT = 1300f
-    val WORLD_WIDTH = 3000f
+    val WORLD_HEIGHT = 2992f
+    val WORLD_WIDTH = 1344f
 
     lateinit var skinManager: SkinManager
+        private set
     lateinit var homeLayout: HomeLayout
+        private set
     lateinit var hudManager: HudManager
+        private set
     lateinit var textBoxManager: TextBoxManager
-    lateinit var database: Database
+        private set
+    //lateinit var database: Database
+        //private set
 
     override fun create() {
         KtxAsync.initiate()
@@ -40,28 +45,35 @@ class Main : KtxGame<KtxScreen>() {
         skinManager = SkinManager()
         hudManager = HudManager(this)
         textBoxManager = TextBoxManager(this)
-        database = Database(this)
+        //database = Database(this)
 
         // Initialize Layouts
         //homeLayout = HomeLayout(this)
 
         // Initialize Screens
         addScreen(HomeScreen(this))
-        addScreen(ConfigScreen(this))/*
-        addScreen(RpgScreen(this))
-        addScreen(BooksScreen(this))
-        addScreen(EditScreen(this))
-        addScreen(LojaScreen(this))
-        addScreen(InvestimentoScreen(this))
-        addScreen(TextScreen(this))
-        addScreen(QuizScreen(this))
-        addScreen(SplashScreen(this))
-        addScreen(TutorialScreen(this))*/
-        addScreen(DebugScreen(this))
+
+        // Telas que agora serão popups:
+        //addScreen(ConfigScreen(this))
+        //addScreen(BooksScreen(this))
+        //addScreen(LojaScreen(this))
+        //addScreen(EditScreen(this))
+
+        // TODO Telas que vamos verificar se cabe no escopo do MVP
+        //addScreen(RpgScreen(this))
+        //addScreen(InvestimentoScreen(this))
+        //addScreen(TutorialScreen(this))
+
+        // TODO Telas que falta atualizar
+        //addScreen(SplashScreen(this))
+        //addScreen(TextScreen(this))
+        //addScreen(QuizScreen(this))
         addScreen(ScoreScreen(this))
+
+        addScreen(DebugScreen(this))
 
         // Set start screen, at least, must be after adding screens
         //setScreen<QuizScreen>()
-        setScreen<RpgScreen>()
+        setScreen<HomeScreen>()
     }
 }
