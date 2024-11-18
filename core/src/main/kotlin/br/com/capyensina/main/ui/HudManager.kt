@@ -108,7 +108,8 @@ class HudManager(main: Main) {
     }
 
     fun drawBackground(batch: MySpriteBatch){
-        batch.draw(AssetManager.mainBg, 0f, 0f, mainGame.WORLD_WIDTH, mainGame.WORLD_HEIGHT)
+        //batch.draw(AssetManager.mainBg, 0f, 0f, mainGame.WORLD_WIDTH, mainGame.WORLD_HEIGHT)
+        batch.draw(AssetManager.mainBg, 0f, 0f, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())
     }
 
     fun dispose(){

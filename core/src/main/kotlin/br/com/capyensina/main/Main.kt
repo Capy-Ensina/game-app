@@ -13,6 +13,7 @@ import br.com.capyensina.main.ui.screens.InvestimentoScreen
 import br.com.capyensina.main.ui.screens.LojaScreen
 import br.com.capyensina.main.ui.screens.QuizScreen
 import br.com.capyensina.main.ui.screens.RpgScreen
+import br.com.capyensina.main.ui.screens.ScoreScreen
 import br.com.capyensina.main.ui.screens.SplashScreen
 import br.com.capyensina.main.ui.screens.TextScreen
 import br.com.capyensina.main.ui.screens.TutorialScreen
@@ -57,9 +58,10 @@ class Main : KtxGame<KtxScreen>() {
         addScreen(SplashScreen(this))
         addScreen(TutorialScreen(this))*/
         addScreen(DebugScreen(this))
+        addScreen(ScoreScreen(this))
 
         // Set start screen, at least, must be after adding screens
         //setScreen<QuizScreen>()
-        setScreen<DebugScreen>()
+        setScreen<RpgScreen>()
     }
 }
