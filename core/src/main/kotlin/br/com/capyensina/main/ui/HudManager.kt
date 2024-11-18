@@ -64,7 +64,6 @@ class HudManager(main: Main) {
     fun logic(clickPos: Vector2){
         //  botão "Configuração"
         if (configButton.collider.contains(clickPos)) {
-            // TODO fazer esse botão funcionar
             mainGame.textBoxManager.configTextBox.isActive = true
         }
 
@@ -109,7 +108,7 @@ class HudManager(main: Main) {
     }
 
     fun drawBackground(batch: MySpriteBatch){
-        batch.draw(AssetManager.mainBg, 0f, 0f, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())
+        batch.draw(AssetManager.mainBg, 0f, 0f, mainGame.WORLD_WIDTH, mainGame.WORLD_HEIGHT)
     }
 
     fun dispose(){

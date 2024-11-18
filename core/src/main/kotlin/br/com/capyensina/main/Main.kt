@@ -23,11 +23,14 @@ import ktx.async.KtxAsync
 
 class Main : KtxGame<KtxScreen>() {
 
+    val WORLD_HEIGHT = 1300f
+    val WORLD_WIDTH = 3000f
+
     lateinit var skinManager: SkinManager
     lateinit var homeLayout: HomeLayout
     lateinit var hudManager: HudManager
     lateinit var textBoxManager: TextBoxManager
-    //lateinit var database: Database
+    lateinit var database: Database
 
     override fun create() {
         KtxAsync.initiate()
@@ -35,8 +38,8 @@ class Main : KtxGame<KtxScreen>() {
         // Initialize UI utils, at least, must be earlier than Layouts
         skinManager = SkinManager()
         hudManager = HudManager(this)
-        textBoxManager = TextBoxManager()
-        //database = Database(this)
+        textBoxManager = TextBoxManager(this)
+        database = Database(this)
 
         // Initialize Layouts
         //homeLayout = HomeLayout(this)

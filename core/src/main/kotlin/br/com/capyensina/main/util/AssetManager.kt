@@ -1,6 +1,9 @@
 package br.com.capyensina.main.util
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.BitmapFont
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 import ktx.assets.toInternalFile
 
 object AssetManager {
@@ -26,7 +29,17 @@ object AssetManager {
     val infoBoxMedium = Texture("text-box/infoboxdois.png".toInternalFile())
     val infoBoxSmall = Texture("text-box/infoboxum.png".toInternalFile())
 
-    //
+    // Fontes
+    fun getFont(): BitmapFont {
+        val fontGenerator = FreeTypeFontGenerator(Gdx.files.internal("font/PixelOperatorHB8.ttf"))
+        val fontParameter = FreeTypeFontGenerator.FreeTypeFontParameter().apply {
+            this.color = ColorTheme.BLACK
+            this.size = 70
+        }
+        val customFont = fontGenerator.generateFont(fontParameter)
+        fontGenerator.dispose()
+        return customFont
+    }
 }
 
 
