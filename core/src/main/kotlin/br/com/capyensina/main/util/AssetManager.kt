@@ -29,7 +29,7 @@ object AssetManager {
     val infoBoxMedium = Texture("text-box/infoboxdois.png".toInternalFile())
     val infoBoxSmall = Texture("text-box/infoboxum.png".toInternalFile())
 
-    // Fontes
+    // Fontes TITULOS MAIS IMPORTANTES
     fun getFont(): BitmapFont {
         val fontGenerator = FreeTypeFontGenerator(Gdx.files.internal("font/PixelOperatorHB8.ttf"))
         val fontParameter = FreeTypeFontGenerator.FreeTypeFontParameter().apply {
@@ -40,6 +40,32 @@ object AssetManager {
         fontGenerator.dispose()
         return customFont
     }
+
+    // TITULOS NORMAIS
+    fun getFontTextBold(): BitmapFont {
+        val fontGenerator = FreeTypeFontGenerator(Gdx.files.internal("font/PixelOperator-Bold.ttf"))
+        val fontParameter = FreeTypeFontGenerator.FreeTypeFontParameter().apply {
+            this.color = ColorTheme.BLACK
+            this.size = 80
+        }
+        val customFont = fontGenerator.generateFont(fontParameter)
+        fontGenerator.dispose()
+        return customFont
+    }
+   // TEXTOS
+    fun getFontText(): BitmapFont {
+        val fontGenerator = FreeTypeFontGenerator(Gdx.files.internal("font/PixelOperator.ttf"))
+        val fontParameter = FreeTypeFontGenerator.FreeTypeFontParameter().apply {
+            this.color = ColorTheme.BLACK
+            this.size = 90
+        }
+        val customFont = fontGenerator.generateFont(fontParameter)
+        fontGenerator.dispose()
+        return customFont
+    }
+
+
+
 }
 
 

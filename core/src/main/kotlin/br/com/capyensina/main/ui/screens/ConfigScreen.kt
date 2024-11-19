@@ -6,17 +6,23 @@ import br.com.capyensina.main.components.disposeSafely
 import br.com.capyensina.main.util.AssetManager
 import br.com.capyensina.main.util.MySpriteBatch
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
+import ktx.assets.toInternalFile
 import ktx.graphics.use
 
 class ConfigScreen (main: Main) : KtxScreen {
     private val batch = MySpriteBatch()
     private val shapeRenderer = ShapeRenderer()
     private val mainGame = main
+
+    private val soundOn = Texture("icons/soundon.png".toInternalFile())
+    private val soundOff = Texture("icons/soundoff.png".toInternalFile())
+    private val customFont = AssetManager.getFont()
 
     //imagens para a interface
     private val infoBox = Clickable (
@@ -32,6 +38,12 @@ class ConfigScreen (main: Main) : KtxScreen {
         input()
         logic()
         draw()
+
+        batch.use {
+            customFont.draw(it, "SOM", 300f, 2000f)
+            customFont.draw(it, "MÚSICA", 300f, 1800f)
+
+        }
     }
 
     override fun dispose() {
@@ -68,6 +80,12 @@ class ConfigScreen (main: Main) : KtxScreen {
 
             it.draw(infoBox)
             it.draw(closeButton)
+        }
+
+        batch.use{
+            it.draw(soundOn, 600f, 1890f, 150f, 150f )
+            it.draw(soundOff, 750f, 1690f, 150f, 150f )
+
         }
     }
 

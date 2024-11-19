@@ -11,10 +11,12 @@ import br.com.capyensina.main.ui.screens.EditScreen
 import br.com.capyensina.main.ui.screens.HomeScreen
 import br.com.capyensina.main.ui.screens.InvestimentoScreen
 import br.com.capyensina.main.ui.screens.LojaScreen
+import br.com.capyensina.main.ui.screens.NameScreen
 import br.com.capyensina.main.ui.screens.QuizScreen
 import br.com.capyensina.main.ui.screens.RpgScreen
 import br.com.capyensina.main.ui.screens.ScoreScreen
 import br.com.capyensina.main.ui.screens.SplashScreen
+import br.com.capyensina.main.ui.screens.StoryScreen
 import br.com.capyensina.main.ui.screens.TextScreen
 import br.com.capyensina.main.ui.screens.TutorialScreen
 import br.com.capyensina.main.ui.screens.debug.DebugScreen
@@ -54,8 +56,8 @@ class Main : KtxGame<KtxScreen>() {
         addScreen(HomeScreen(this))
 
         // Telas que agora serão popups:
-        //addScreen(ConfigScreen(this))
-        //addScreen(BooksScreen(this))
+        addScreen(ConfigScreen(this))
+        addScreen(BooksScreen(this))
         //addScreen(LojaScreen(this))
         //addScreen(EditScreen(this))
 
@@ -64,16 +66,18 @@ class Main : KtxGame<KtxScreen>() {
         //addScreen(InvestimentoScreen(this))
         //addScreen(TutorialScreen(this))
 
-        // TODO Telas que falta atualizar
+        // TODO Telas que falta atualizar (responsividade)
         //addScreen(SplashScreen(this))
-        //addScreen(TextScreen(this))
-        //addScreen(QuizScreen(this))
+        addScreen(TextScreen(this))
+        addScreen(QuizScreen(this))
         addScreen(ScoreScreen(this))
+        addScreen(NameScreen(this))
+        addScreen(StoryScreen(this))
 
         addScreen(DebugScreen(this))
 
         // Set start screen, at least, must be after adding screens
         //setScreen<QuizScreen>()
-        setScreen<HomeScreen>()
+        setScreen<StoryScreen>()
     }
 }

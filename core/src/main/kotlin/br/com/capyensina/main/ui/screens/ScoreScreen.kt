@@ -3,80 +3,113 @@ package br.com.capyensina.main.ui.screens
 import br.com.capyensina.main.Main
 import br.com.capyensina.main.util.AssetManager
 import br.com.capyensina.main.util.ColorTheme
-import br.com.capyensina.main.util.MySpriteBatch
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Color
+import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.BitmapFont
+import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import com.badlogic.gdx.math.Vector2
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
+import ktx.assets.toInternalFile
 import ktx.graphics.use
 
 class ScoreScreen (main: Main) : KtxScreen {
-    private val batch = MySpriteBatch()
+    private val batch = SpriteBatch()
     private val shapeRenderer = ShapeRenderer()
-    private val background = AssetManager.mainBg
+    private val font = BitmapFont()
+    //private val customFont = createCustomFont(60)
+    private val customFont = AssetManager.getFont()
+
 
     val mainGame = main
 
-    //hud retangulos
-    private val hudTopColor = ColorTheme.BLUE
-    private val hudBottomColor = ColorTheme.BLUE
+    // Retângulos
+    private val hudTopColor = ColorTheme.GREEN
 
-    /*
-    private val hudHeight = 50f
-    private val screenWidth = 800f*/
+    private val backgroundAmarelo = Texture("bg/backgroundamarelo.png".toInternalFile())
+
+    //imagens da interface
+    private val infoBoxTres = Texture("text-box/infoboxum.png".toInternalFile())
+    private val continuarButton = Texture("button/continuarbutton.png".toInternalFile())
+    private val stars = Texture("stars/estrela.png")
 
     override fun render(delta: Float) {
-        //ScreenUtils.clear(0f, 0f, 0f, 1f)
         input()
         logic()
         draw()
+
+        //customFont.color = Color.BLACK
+        batch.use {
+            customFont.draw(it, "PONTUAÇÃO", 400f, 2750f)
+            customFont.draw(it, "Parabéns!", 400f, 1880f)
+        }
     }
+
+   /* fun createCustomFont(size: Int): BitmapFont {
+        val fontGenerator = FreeTypeFontGenerator(Gdx.files.internal("PixelOperatorHB8.ttf"))
+        val fontParameter = FreeTypeFontGenerator.FreeTypeFontParameter().apply {
+            this.size = size
+        }
+        val customFont = fontGenerator.generateFont(fontParameter)
+        fontGenerator.dispose()
+        return customFont
+    }*/
 
     private fun checkButtonClick() {
         if (Gdx.input.justTouched()) {
             val x = Gdx.input.x.toFloat()
             val y = Gdx.graphics.height - Gdx.input.y.toFloat()
-            val clickPos = Vector2(x, y)
 
-            mainGame.hudManager.input(clickPos)
         }
     }
 
     override fun dispose() {
         batch.disposeSafely()
-        shapeRenderer.disposeSafely()
+        shapeRenderer.dispose()
+        font.disposeSafely()
+        customFont.disposeSafely()
+        backgroundAmarelo.disposeSafely()
+        infoBoxTres.disposeSafely()
+        continuarButton.disposeSafely()
+        stars.disposeSafely()
+
     }
 
-    private fun input(){
+    private fun input() {
         checkButtonClick()
     }
 
-    private fun logic(){
+    private fun logic() {
 
     }
 
-    private fun draw(){
-        //ScreenUtils.clear(ColorTheme.YELLOW)
-        val screenWidth = Gdx.graphics.width.toFloat()
-        val screenHeight = Gdx.graphics.height.toFloat()
+    private fun draw() {
 
         batch.use {
-            //it.draw(background, 0f, 0f, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())
+            it.draw(
+                backgroundAmarelo, 0f, 0f, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat()
+            )
         }
 
         shapeRenderer.use(ShapeRenderer.ShapeType.Filled) {
-            // Retângulo superior
-            it.color = ColorTheme.BLUE
+            it.color = ColorTheme.GREEN
             it.rect(0f, Gdx.graphics.height - 220f, Gdx.graphics.width.toFloat(), 300f)
-
-            // Retângulo inferior
-            it.color = ColorTheme.BLUE
-            it.rect(0f, 0f, Gdx.graphics.width.toFloat(), 300f)
         }
 
         batch.use {
-            mainGame.hudManager.draw(it)
+
+            it.draw(infoBoxTres, 15f, 1050f, 1350f, 1200f)
+            it.draw(continuarButton, 200f, 800f, 900f, 450f)
+
+            // cordenada das estrelas caso precise sei lá
+            it.draw(stars, 220f, 1550f, 200f, 200f) // Estrela 1
+            it.draw(stars, 400f, 1550f, 200f, 200f) // Estrela 2
+            it.draw(stars, 580f, 1550f, 200f, 200f) // Estrela 3
+            it.draw(stars, 760f, 1550f, 200f, 200f) // Estrela 4
+            it.draw(stars, 940f, 1550f, 200f, 200f) // Estrela 5
+
         }
     }
 }

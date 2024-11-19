@@ -1,6 +1,7 @@
 package br.com.capyensina.main.ui.screens
 
 import br.com.capyensina.main.Main
+import br.com.capyensina.main.util.AssetManager
 import br.com.capyensina.main.util.ColorTheme
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
@@ -18,27 +19,28 @@ class SplashScreen (main: Main) : KtxScreen {
     private val batch = SpriteBatch()
     private val shapeRenderer = ShapeRenderer()
     private val font = BitmapFont()
-    private val customFont = createCustomFont(60)
+    //private val customFont = createCustomFont(60)
+    private val customFont = AssetManager.getFont()
 
     val mainGame = main
 
-    private val carregandoscreen = Texture("carregandoscreen.png".toInternalFile())
+    private val carregandoscreen = Texture("bg/carregandoscreen.png".toInternalFile())
     private val capicoin = Texture("capicoin.png".toInternalFile())
     private val loadingum = Texture("loadingum.png".toInternalFile())
-    private val startbutton = Texture("startbutton.png".toInternalFile())
+    private val startbutton = Texture("button/startbutton.png".toInternalFile())
 
     override fun render(delta: Float) {
         input()
         logic()
         draw()
 
-        customFont.color = Color.BLACK
+
         batch.use {
             customFont.draw(it, "CARREGANDO...", 300f, 980f)
         }
     }
 
-    fun createCustomFont(size: Int): BitmapFont {
+    /*fun createCustomFont(size: Int): BitmapFont {
         val fontGenerator = FreeTypeFontGenerator(Gdx.files.internal("PixelOperatorHB8.ttf"))
         val fontParameter = FreeTypeFontGenerator.FreeTypeFontParameter().apply {
             this.size = size
@@ -46,7 +48,7 @@ class SplashScreen (main: Main) : KtxScreen {
         val customFont = fontGenerator.generateFont(fontParameter)
         fontGenerator.dispose()
         return customFont
-    }
+    }*/
 
     override fun dispose() {
         carregandoscreen.disposeSafely()
