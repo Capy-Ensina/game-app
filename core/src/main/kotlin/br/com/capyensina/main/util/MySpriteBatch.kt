@@ -2,6 +2,7 @@ package br.com.capyensina.main.util
 
 import br.com.capyensina.main.components.Clickable
 import br.com.capyensina.main.components.TextBox
+import br.com.capyensina.main.components.Textable
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 
 class MySpriteBatch : SpriteBatch() {
@@ -20,6 +21,10 @@ class MySpriteBatch : SpriteBatch() {
     fun draw(arg: TextBox) {
         draw(arg.background)
         draw(arg.exitButton)
+    }
+
+    fun draw(arg: Textable) {
+        arg.font.draw(this, arg.text, arg.position.x, arg.position.y)
     }
 
 }

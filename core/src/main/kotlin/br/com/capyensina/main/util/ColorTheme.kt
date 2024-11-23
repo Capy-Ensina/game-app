@@ -7,6 +7,7 @@ object ColorTheme {
     val CARAMEL = Color(0.94902f,  0.62353f,  0.01961f, 1f)
     val GOLDEN = Color(0.94902f,  0.87451f,  0.50196f, 1f)
     val YELLOW = Color(0.94902f,  0.71765f,  0.01961f, 1f)
+    val PEACH_YELLOW = Color(1f, 0.88235f, 0.65882f, 1f)
     val BLACK = Color(0.0f,0.0f,0.0f,1f)
 
     val WHITE = Color(1.0f, 1.0f, 1.0f, 1f)
@@ -17,5 +18,6 @@ object ColorTheme {
     val RED = Color(226 / 255f, 109 / 255f, 92 / 255f, 1f)
 
     val BACKGROUND_COLOR = BLUE
+    val TEXT_BACKGROUND_COLOR = PEACH_YELLOW
 
 }

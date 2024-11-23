@@ -94,7 +94,7 @@ class DebugScreen(main: Main) : KtxScreen {
 
         // 3. HUD
         shapeRenderer.use(ShapeRenderer.ShapeType.Filled) {
-            mainGame.hudManager.drawDebugShape(it)
+            //mainGame.hudManager.drawDebugShape(it)
         }
 
         batch.use {

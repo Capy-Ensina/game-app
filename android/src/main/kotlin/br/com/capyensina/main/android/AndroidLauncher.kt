@@ -1,6 +1,10 @@
 package br.com.capyensina.main.android
 
+import android.os.Build
 import android.os.Bundle
+import android.view.Window
+import android.widget.Toolbar
+import androidx.annotation.RequiresApi
 
 import com.badlogic.gdx.backends.android.AndroidApplication
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration
@@ -12,6 +16,7 @@ class AndroidLauncher : AndroidApplication() {
         super.onCreate(savedInstanceState)
         initialize(Main(), AndroidApplicationConfiguration().apply {
             useImmersiveMode = true // Recommended, but not required.
+            renderUnderCutout = false
         })
     }
 }

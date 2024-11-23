@@ -16,7 +16,6 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport
 
 class HomeScreen(mainGame: Main) : KtxScreen {
     private val batch = MySpriteBatch()
-    private val shapeRenderer = ShapeRenderer()
     private val main = mainGame
 
     private val camera = OrthographicCamera()
@@ -27,8 +26,8 @@ class HomeScreen(mainGame: Main) : KtxScreen {
      */
     init {
         camera.position.set(
-            mainGame.WORLD_WIDTH/2,
-            mainGame.WORLD_HEIGHT/2,
+            main.WORLD_WIDTH/2,
+            main.WORLD_HEIGHT/2,
             0f
         )
         viewport.apply()
@@ -38,7 +37,6 @@ class HomeScreen(mainGame: Main) : KtxScreen {
         // Atualiza os valores da câmera, e manda o batch e o shapeRenderer usarem ela
         camera.update()
         batch.projectionMatrix = camera.combined
-        shapeRenderer.projectionMatrix = camera.combined
 
         input()
         logic()
@@ -52,7 +50,6 @@ class HomeScreen(mainGame: Main) : KtxScreen {
 
     override fun dispose() {
         batch.disposeSafely()
-        shapeRenderer.disposeSafely()
     }
 
     private fun input(){
@@ -92,20 +89,8 @@ class HomeScreen(mainGame: Main) : KtxScreen {
 
             // PopUP - deve ser desenhado por último, mas antes da HUD
             main.textBoxManager.draw(it)
-        }
 
-
-        // HUD - Ultima coisa a ser desenhada na tela, ficando acima de tudo
-        shapeRenderer.use(ShapeRenderer.ShapeType.Filled) {
-            /* NOTA 18/11/2024 15:46 - Malcoln
-             * Talvez possa ser interessante não desenhar a forma, mas sim deixar "transparente"
-             * já que ao limpar a tela, o fundo está ficando completamente azul.
-             */
-            main.hudManager.drawShape(it)
-        }
-
-        // HUD - Desenhando botões
-        batch.use {
+            // HUD
             main.hudManager.draw(it)
         }
     }

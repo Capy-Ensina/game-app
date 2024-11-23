@@ -38,12 +38,6 @@ class ConfigScreen (main: Main) : KtxScreen {
         input()
         logic()
         draw()
-
-        batch.use {
-            customFont.draw(it, "SOM", 300f, 2000f)
-            customFont.draw(it, "MÚSICA", 300f, 1800f)
-
-        }
     }
 
     override fun dispose() {
@@ -86,6 +80,8 @@ class ConfigScreen (main: Main) : KtxScreen {
             it.draw(soundOn, 600f, 1890f, 150f, 150f )
             it.draw(soundOff, 750f, 1690f, 150f, 150f )
 
+            customFont.draw(it, "SOM", 300f, 2000f)
+            customFont.draw(it, "MÚSICA", 300f, 1800f)
         }
     }
 

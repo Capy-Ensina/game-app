@@ -56,15 +56,6 @@ class BooksScreen(mainGame: Main) : KtxScreen {
         draw()
 
         batch.use {
-            customFont.draw(it, "MÓDULO I", 400f, 1790f)
-
-            customFontBold.draw(it, "Finanças I", 500f, 1590f)
-
-            customFontBold.draw(it, "Economia I", 500f, 1350f)
-
-            customFontBold.draw(it, "Investimento I", 400f, 1090f)
-
-
         }
 
     }
@@ -143,6 +134,10 @@ class BooksScreen(mainGame: Main) : KtxScreen {
             it.draw(redbutton, 200f, 850f, 950f, 400f)
             it.draw(closebutton, 1000f, 1660f, 400f, 400f)
 
+            customFont.draw(it, "MÓDULO I", 400f, 1790f)
+            customFontBold.draw(it, "Finanças I", 500f, 1590f)
+            customFontBold.draw(it, "Economia I", 500f, 1350f)
+            customFontBold.draw(it, "Investimento I", 400f, 1090f)
         }
     }
 }

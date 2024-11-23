@@ -1,64 +1,98 @@
 package br.com.capyensina.main.ui.screens
 
 import br.com.capyensina.main.Main
+import br.com.capyensina.main.components.Clickable
+import br.com.capyensina.main.components.disposeSafely
 import br.com.capyensina.main.util.AssetManager
 import br.com.capyensina.main.util.ColorTheme
+import br.com.capyensina.main.util.MySpriteBatch
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.Color
+import com.badlogic.gdx.graphics.GL20
+import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+import com.badlogic.gdx.math.Rectangle
+import com.badlogic.gdx.math.Vector2
+import com.badlogic.gdx.utils.viewport.ExtendViewport
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
 import ktx.assets.toInternalFile
 import ktx.graphics.use
 
-class SplashScreen (main: Main) : KtxScreen {
-    private val batch = SpriteBatch()
-    private val shapeRenderer = ShapeRenderer()
-    private val font = BitmapFont()
-    //private val customFont = createCustomFont(60)
+class SplashScreen (mainGame: Main) : KtxScreen {
+    val main = mainGame
+    private val batch = MySpriteBatch()
     private val customFont = AssetManager.getFont()
+    private val camera = OrthographicCamera()
+    private val viewport = ExtendViewport(main.WORLD_WIDTH, main.WORLD_HEIGHT, camera)
 
-    val mainGame = main
 
-    private val carregandoscreen = Texture("bg/carregandoscreen.png".toInternalFile())
-    private val capicoin = Texture("capicoin.png".toInternalFile())
-    private val loadingum = Texture("loadingum.png".toInternalFile())
-    private val startbutton = Texture("button/startbutton.png".toInternalFile())
+    // Botões
+    private val startButton = Clickable(
+        AssetManager.startButton,
+        Rectangle(160f, 800f, 1000f, 1000f)
+    ) {
+        main.setScreen<NameScreen>()
+    }
+
+    // Imagens
+    private val loadingBackground = Clickable(
+        AssetManager.loadBg,
+        Rectangle(0f, 0f, main.WORLD_WIDTH, main.WORLD_HEIGHT)
+    )
+    private val capicoin = Clickable(
+        AssetManager.capicoinIcon,
+        Rectangle(300f, 1200f, 700f, 700f)
+    )
+    private val loadingBar = Clickable(
+        AssetManager.loadingOneIcon,
+        Rectangle(200f, 920f, 900f, 400f)
+    )
+
+    private var isLoading = true
+
+    init {
+        camera.position.set(
+            main.WORLD_WIDTH/2,
+            main.WORLD_HEIGHT/2,
+            0f
+        )
+        viewport.apply()
+    }
 
     override fun render(delta: Float) {
+        camera.update()
+        batch.projectionMatrix = camera.combined
+
         input()
         logic()
         draw()
-
-
-        batch.use {
-            customFont.draw(it, "CARREGANDO...", 300f, 980f)
-        }
     }
 
-    /*fun createCustomFont(size: Int): BitmapFont {
-        val fontGenerator = FreeTypeFontGenerator(Gdx.files.internal("PixelOperatorHB8.ttf"))
-        val fontParameter = FreeTypeFontGenerator.FreeTypeFontParameter().apply {
-            this.size = size
-        }
-        val customFont = fontGenerator.generateFont(fontParameter)
-        fontGenerator.dispose()
-        return customFont
-    }*/
+    override fun resize(width: Int, height: Int) {
+        viewport.update(width, height)
+    }
 
     override fun dispose() {
-        carregandoscreen.disposeSafely()
-        loadingum.disposeSafely()
+        loadingBar.disposeSafely()
         capicoin.disposeSafely()
-        startbutton.disposeSafely()
+        startButton.disposeSafely()
     }
 
     private fun input() {
+        if (Gdx.input.justTouched()) {
+            // Transforma o click na tela em uma posição dentro do mundo
+            val worldPos = viewport.unproject(Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()))
 
+            // Tocar na tela para "terminar de carregar"
+            if (isLoading) {
+                isLoading = false
+            } else {
+                if (startButton.collider.contains(worldPos)) startButton.action()
+            }
+        }
     }
 
     private fun logic() {
@@ -66,15 +100,25 @@ class SplashScreen (main: Main) : KtxScreen {
     }
 
     private fun draw() {
+        Gdx.gl.glClearColor(
+        ColorTheme.BACKGROUND_COLOR.r,
+        ColorTheme.BACKGROUND_COLOR.g,
+        ColorTheme.BACKGROUND_COLOR.b,
+        ColorTheme.BACKGROUND_COLOR.a
+        )
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
         batch.use {
-            it.draw(carregandoscreen, 0f, 0f, Gdx.graphics.width.toFloat(), Gdx.graphics.height.toFloat())
+            it.draw(loadingBackground)
 
-            it.draw(loadingum, 200f, 920f, 900f, 400f)
-            it.draw(capicoin, 300f, 1200f, 700f, 700f)
+            it.draw(capicoin)
 
-            //it.draw(startbutton, 160f, 800f, 1000f, 1000f) botao de start
+            if (isLoading){
+                it.draw(loadingBar)
+                customFont.draw(it, "CARREGANDO...", 300f, 980f)
+            } else {
+                it.draw(startButton)
+            }
         }
-
     }
 }

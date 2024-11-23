@@ -12,76 +12,101 @@ import br.com.capyensina.main.util.AssetManager
 import br.com.capyensina.main.util.ColorTheme
 import br.com.capyensina.main.util.MySpriteBatch
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
 
-class HudManager(main: Main) {
-    private val mainGame = main
+class HudManager(mainGame: Main) {
+    private val main = mainGame
 
     //imagens e botao da hud superior
     private val capicoinInfo = Clickable(
         AssetManager.capicoinInfo,
         Rectangle(20f, main.WORLD_HEIGHT - 250f, 400f, 250f)
-    )
+    ) { }
     private val hudInfoOne = Clickable(
         AssetManager.hudInfo,
         Rectangle(200f, main.WORLD_HEIGHT - 600f, 1000f, 1000f)
-    )
+    ) { }
     private val hudInfoTwo = Clickable(
         AssetManager.hudInfo,
         Rectangle(500f, main.WORLD_HEIGHT - 600f, 1000f, 1000f)
-    )
+    ) { }
+
     private val configButton = Clickable(
         AssetManager.configButton,
         Rectangle(1020f, main.WORLD_HEIGHT - 280f, 300f, 300f)
-    )
+    ) { main.textBoxManager.configTextBox.isActive = true }
+
+    private val backgroundTop = Clickable(
+        AssetManager.whiteRectBg,
+        Rectangle(0f, main.WORLD_HEIGHT - 220f, main.WORLD_WIDTH, 300f)
+    ) { }
+
+    private val textBackgroundTop = Clickable(
+        AssetManager.whiteRectBg,
+        Rectangle(-100f, main.WORLD_HEIGHT - 220f, main.WORLD_WIDTH + 200f, 300f)
+    ) { }
 
     // Imagens dos botões inferiores
     private val editButton = Clickable(
-        AssetManager.editButton,
+        AssetManager.editButtonLocked,
         Rectangle(300f, 50f, 200f, 200f)
-    )
+    ) { }
+
     private val shopButton = Clickable(
-        AssetManager.shopButton,
+        AssetManager.shopButtonLocked,
         Rectangle(80f, 50f, 200f, 200f)
-    )
+    ) { }
+
     private val booksButton = Clickable(
         AssetManager.booksButton,
         Rectangle(520f, 50f, 300f, 300f)
-    )
+    ) { main.textBoxManager.moduleOneTextBox.isActive = true }
+
     private val investimentButton = Clickable(
-        AssetManager.investimentButton,
+        AssetManager.investimentButtonLocked,
         Rectangle(850f, 50f, 200f, 200f)
-    )
+    ) { }
+
     private val rpgButton = Clickable(
-        AssetManager.rpgButton,
+        AssetManager.rpgButtonLocked,
         Rectangle(1070f, 50f, 200f, 200f)
-    )
+    ) { }
+
+    private val backgroundBottom = Clickable(
+        AssetManager.whiteRectBg,
+        Rectangle(0f, 0f, mainGame.WORLD_WIDTH, 300f)
+    ) { }
+
 
     fun input(clickPos: Vector2){
         //  botão "Configuração"
-        if (configButton.collider.contains(clickPos)) {
-            mainGame.textBoxManager.configTextBox.isActive = true
-        }
+        if (configButton.collider.contains(clickPos)) configButton.action()
 
         //  botão "Loja"
-        if (shopButton.collider.contains(clickPos)) mainGame.setScreen<LojaScreen>()
+        if (shopButton.collider.contains(clickPos)) shopButton.action()
 
         // botão "Editar"
-        if (editButton.collider.contains(clickPos)) mainGame.setScreen<EditScreen>()
+        if (editButton.collider.contains(clickPos)) editButton.action()
 
         // botão "Livros"
-        if (booksButton.collider.contains(clickPos)) mainGame.setScreen<BooksScreen>()
+        if (booksButton.collider.contains(clickPos)) booksButton.action()
 
         //  botão "Investimentos"
-        if (investimentButton.collider.contains(clickPos)) mainGame.setScreen<InvestimentoScreen>()
+        if (investimentButton.collider.contains(clickPos)) investimentButton.action()
 
         //  botão "RPG de texto"
-        if (rpgButton.collider.contains(clickPos)) mainGame.setScreen<RpgScreen>()
+        if (rpgButton.collider.contains(clickPos)) rpgButton.action()
     }
 
-    fun draw(batch: MySpriteBatch){
+    fun draw(batch: MySpriteBatch, color: Color = ColorTheme.BACKGROUND_COLOR){
+        batch.color = color
+        batch.draw(backgroundTop)
+        batch.draw(backgroundBottom)
+        batch.color = Color.WHITE
+
         batch.draw(capicoinInfo)
         batch.draw(hudInfoOne)
         batch.draw(hudInfoTwo)
@@ -93,6 +118,12 @@ class HudManager(main: Main) {
         batch.draw(booksButton)
         batch.draw(investimentButton)
         batch.draw(rpgButton)
+    }
+
+    fun drawTextScreen(batch: MySpriteBatch, color: Color = ColorTheme.ORANGE){
+        batch.color = color
+        batch.draw(textBackgroundTop)
+        batch.color = Color.WHITE
     }
 
     @Deprecated(
@@ -113,29 +144,22 @@ class HudManager(main: Main) {
     fun drawShape(shapeRenderer: ShapeRenderer){
         // Retângulo superior
         shapeRenderer.color = ColorTheme.BLUE
-        shapeRenderer.rect(0f, mainGame.WORLD_HEIGHT - 220f, mainGame.WORLD_WIDTH, 300f)
+        shapeRenderer.rect(0f, main.WORLD_HEIGHT - 220f, main.WORLD_WIDTH, 300f)
 
         // Retângulo inferior
         shapeRenderer.color = ColorTheme.BLUE
-        shapeRenderer.rect(0f, 0f, mainGame.WORLD_WIDTH, 300f)
+        shapeRenderer.rect(0f, 0f, main.WORLD_WIDTH, 300f)
     }
 
-    fun drawDebugShape(shapeRenderer: ShapeRenderer){
-        // Retângulo superior
-        shapeRenderer.color = ColorTheme.BLUE
-        shapeRenderer.rect(0f, mainGame.WORLD_HEIGHT - 220f, mainGame.WORLD_WIDTH, 300f)
-
-        // Retângulo inferior
-        shapeRenderer.color = ColorTheme.BLUE
-        shapeRenderer.rect(0f, 0f, mainGame.WORLD_WIDTH, 300f)
+    fun drawDebugShape(batch: MySpriteBatch){
     }
 
     fun drawBackground(batch: MySpriteBatch){
-        batch.draw(AssetManager.mainBg, 0f, 0f, mainGame.WORLD_WIDTH, mainGame.WORLD_HEIGHT)
+        batch.draw(AssetManager.mainBg, 0f, 0f, main.WORLD_WIDTH, main.WORLD_HEIGHT)
     }
 
     fun drawDebugBackground(batch: MySpriteBatch){
-        batch.draw(AssetManager.mainBg, 0f, 0f, mainGame.WORLD_WIDTH, mainGame.WORLD_HEIGHT)
+        batch.draw(AssetManager.mainBg, 0f, 0f, main.WORLD_WIDTH, main.WORLD_HEIGHT)
     }
 
     @Deprecated(

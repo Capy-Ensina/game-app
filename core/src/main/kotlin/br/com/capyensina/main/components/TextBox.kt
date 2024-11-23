@@ -10,15 +10,26 @@ import com.badlogic.gdx.math.Vector2
 import ktx.assets.Asset
 import ktx.assets.toInternalFile
 
-class TextBox(size: Int) {
+open class TextBox(size: Int) {
     var background: Clickable
     var exitButton: Clickable
     var content = emptyArray<Clickable>()
+    var textContent = emptyArray<Textable>()
 
     var isActive = false
 
     init {
         when(size){
+            BoxSize.MEDIUM -> {
+                background = Clickable (
+                    AssetManager.infoBoxMedium,
+                    Rectangle(5f, 700f, 1350f, 1350f)
+                )
+                exitButton = Clickable (
+                    AssetManager.closeButton,
+                    Rectangle(1000f, 1660f, 400f, 400f)
+                )
+            }
             BoxSize.BIGGEST -> {
                 background = Clickable (
                     AssetManager.infoBoxBiggest,
@@ -53,7 +64,7 @@ class TextBox(size: Int) {
     fun logic(){
         if (!isActive) return
         for (clickable in content){
-            clickable.action
+            clickable.action()
         }
     }
 
@@ -63,6 +74,9 @@ class TextBox(size: Int) {
         batch.draw(exitButton)
         for (clickable in content){
             batch.draw(clickable)
+        }
+        for (textAble in textContent){
+            batch.draw(textAble)
         }
     }
 
