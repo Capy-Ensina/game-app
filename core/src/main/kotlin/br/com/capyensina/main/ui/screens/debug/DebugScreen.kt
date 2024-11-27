@@ -1,19 +1,28 @@
 package br.com.capyensina.main.ui.screens.debug
 
 import br.com.capyensina.main.Main
+import br.com.capyensina.main.components.Clickable
+import br.com.capyensina.main.minigame.quiz.QuizManager
+import br.com.capyensina.main.minigame.quiz.QuizQuestion
+import br.com.capyensina.main.minigame.quiz.QuizQuestions
+import br.com.capyensina.main.ui.screens.HomeScreen
+import br.com.capyensina.main.ui.screens.ScoreScreen
 import br.com.capyensina.main.util.AssetManager
 import br.com.capyensina.main.util.ColorTheme
 import br.com.capyensina.main.util.MySpriteBatch
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.viewport.ExtendViewport
 import ktx.app.KtxScreen
+import ktx.assets.file
 import ktx.graphics.use
 
-class DebugScreen(main: Main) : KtxScreen {
+class DebugScreen(mainGame: Main) : KtxScreen {
 
     /* NOTA 17/11/2024 20:04 - Malcoln
      * Testas suas coisas aqui, para evitar deixar código desnecessário nas telas que já estão
@@ -22,18 +31,27 @@ class DebugScreen(main: Main) : KtxScreen {
      */
 
     private val batch = MySpriteBatch()
-    private val shapeRenderer = ShapeRenderer()
-    private val mainGame = main
+    private val main = mainGame
 
     private val customFont = AssetManager.getFont()
 
     private val camera = OrthographicCamera()
     private val viewport = ExtendViewport(main.WORLD_WIDTH, main.WORLD_HEIGHT, camera)
 
+    private val quizManager = QuizManager(4)
+
+    private var quizIndex = 0
+    private var score = 0.0
+
+    private val skipButton = Clickable(
+        AssetManager.skipButton,
+        Rectangle(650f, 30f, 900f, 900f)
+    ) { nextQuestion() }
+
     init {
         camera.position.set(
-            mainGame.WORLD_WIDTH/2,
-            mainGame.WORLD_HEIGHT/2,
+            main.WORLD_WIDTH/2,
+            main.WORLD_HEIGHT/2,
             0f
         )
         viewport.apply()
@@ -43,7 +61,6 @@ class DebugScreen(main: Main) : KtxScreen {
     override fun render(delta: Float) {
         camera.update()
         batch.projectionMatrix = camera.combined
-        shapeRenderer.projectionMatrix = camera.combined
 
         input()
         logic()
@@ -60,10 +77,14 @@ class DebugScreen(main: Main) : KtxScreen {
             val worldPos = viewport.unproject(Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()))
 
             // Verifica cliquesna Hud
-            mainGame.hudManager.input(worldPos)
+            main.hudManager.input(worldPos)
 
             // Verifica cliques nos popups
-            mainGame.textBoxManager.input(worldPos)
+            main.textBoxManager.input(worldPos)
+
+            quizManager.getActualQuestion().input(worldPos)
+
+            if (skipButton.collider.contains(worldPos)) skipButton.action()
         }
     }
 
@@ -72,33 +93,35 @@ class DebugScreen(main: Main) : KtxScreen {
     }
 
     fun draw(){
-
         Gdx.gl.glClearColor(
-            ColorTheme.BACKGROUND_COLOR.r,
-            ColorTheme.BACKGROUND_COLOR.g,
-            ColorTheme.BACKGROUND_COLOR.b,
-            ColorTheme.BACKGROUND_COLOR.a
+            ColorTheme.TEXT_BACKGROUND_COLOR.r,
+            ColorTheme.TEXT_BACKGROUND_COLOR.g,
+            ColorTheme.TEXT_BACKGROUND_COLOR.b,
+            ColorTheme.TEXT_BACKGROUND_COLOR.a
         )
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
         batch.use {
-            // 1. Background
-            mainGame.hudManager.drawDebugBackground(it)
+            main.hudManager.drawTextScreen(it, ColorTheme.GREEN)
 
-            // 2. Content
-            customFont.draw(it, "INTRODUÇÃO I", mainGame.WORLD_WIDTH/2, mainGame.WORLD_HEIGHT)
+            customFont.draw(it, "QUIZ", 550f, 2900f)
 
-            // Deve-se desenhar os popups por ultimo
-            mainGame.textBoxManager.draw(it)
+            quizManager.getActualQuestion().draw(it)
+
+            customFont.draw(it, "SCORE: $score", 550f, 2700f)
+
+            it.draw(skipButton)
+
+            main.textBoxManager.draw(it)
         }
+    }
 
-        // 3. HUD
-        shapeRenderer.use(ShapeRenderer.ShapeType.Filled) {
-            //mainGame.hudManager.drawDebugShape(it)
-        }
-
-        batch.use {
-            mainGame.hudManager.draw(it)
+    private fun nextQuestion(){
+        if (!quizManager.nextQuestion()) {
+            score = quizManager.score
+            main.playerScoreManager.lastScore = score
+            main.textBoxManager.updateScoreText()
+            main.textBoxManager.scoreTextBox.isActive = true
         }
     }
 

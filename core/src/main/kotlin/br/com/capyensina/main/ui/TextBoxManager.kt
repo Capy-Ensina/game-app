@@ -9,8 +9,10 @@ import br.com.capyensina.main.ui.screens.TextScreen
 import br.com.capyensina.main.util.AssetManager
 import br.com.capyensina.main.util.BoxSize
 import br.com.capyensina.main.util.MySpriteBatch
+import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
+import ktx.assets.toInternalFile
 
 class TextBoxManager(mainGame: Main) {
     val main = mainGame
@@ -18,6 +20,7 @@ class TextBoxManager(mainGame: Main) {
     val configTextBox = TextBox(BoxSize.BIGGEST)
     val loreTextBox = TextBox(BoxSize.BIGGEST)
     val moduleOneTextBox  = TextBox(BoxSize.MEDIUM)
+    val scoreTextBox  = TextBox(BoxSize.BIGGEST)
 
     init {
         /* NOTA 17/11/2024 20:23 - Malcoln
@@ -92,18 +95,29 @@ class TextBoxManager(mainGame: Main) {
                 AssetManager.getFontTextBold(),
                 Vector2(400f, 1090f)
             )
-
         )
+
+        scoreTextBox.content = arrayOf(
+            Clickable(
+                Texture("button/continuarbutton.png".toInternalFile()),
+                Rectangle(200f, 950f, 900f, 450f)
+            ) { main.setScreen<HomeScreen>() }
+        )
+
+        //customFont.draw(it, "Parabéns!", 400f, 2030f)
+        updateScoreText()
     }
 
     fun input(clickPos: Vector2){
         if (configTextBox.isActive) configTextBox.input(clickPos)
         if (moduleOneTextBox.isActive) moduleOneTextBox.input(clickPos)
+        if (scoreTextBox.isActive) scoreTextBox.input(clickPos)
     }
 
     fun draw(batch: MySpriteBatch){
         if (configTextBox.isActive) configTextBox.draw(batch)
         if (moduleOneTextBox.isActive) moduleOneTextBox.draw(batch)
+        if (scoreTextBox.isActive) scoreTextBox.draw(batch)
     }
 
     private fun changeConfigTextBoxSoundIcon(index: Int){
@@ -115,4 +129,18 @@ class TextBoxManager(mainGame: Main) {
 
     }
 
+    fun updateScoreText() {
+        scoreTextBox.textContent = arrayOf(
+            Textable(
+                "Parabéns!",
+                AssetManager.getFont(),
+                Vector2(400f, 2030f)
+            ),
+            Textable(
+                "Pontuação: ${main.playerScoreManager.lastScore}",
+                AssetManager.getFont(),
+                Vector2(240f, 1700f)
+            )
+        )
+    }
 }

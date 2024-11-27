@@ -3,6 +3,7 @@ package br.com.capyensina.main.util
 import br.com.capyensina.main.components.Clickable
 import br.com.capyensina.main.components.TextBox
 import br.com.capyensina.main.components.Textable
+import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 
 class MySpriteBatch : SpriteBatch() {
@@ -16,6 +17,12 @@ class MySpriteBatch : SpriteBatch() {
 
     fun draw(arg: Clickable) {
         draw(arg.texture, arg.collider.x, arg.collider.y, arg.collider.width, arg.collider.height)
+    }
+
+    fun draw(arg: Clickable, tint: Color) {
+        this.color = tint
+        draw(arg.texture, arg.collider.x, arg.collider.y, arg.collider.width, arg.collider.height)
+        this.color = Color.WHITE
     }
 
     fun draw(arg: TextBox) {

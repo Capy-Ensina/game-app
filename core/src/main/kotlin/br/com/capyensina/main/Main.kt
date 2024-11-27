@@ -1,5 +1,6 @@
 package br.com.capyensina.main
 
+import br.com.capyensina.main.minigame.PlayerScoreManager
 import br.com.capyensina.main.ui.HudManager
 import br.com.capyensina.main.ui.TextBoxManager
 import br.com.capyensina.main.ui.screens.HomeScreen
@@ -23,6 +24,8 @@ class Main : KtxGame<KtxScreen>() {
         private set
     lateinit var textBoxManager: TextBoxManager
         private set
+    lateinit var playerScoreManager: PlayerScoreManager
+        private set
     //lateinit var database: Database
         //private set
 
@@ -30,6 +33,8 @@ class Main : KtxGame<KtxScreen>() {
         KtxAsync.initiate()
 
         // Initialize UI utils, at least, must be earlier than Layouts
+        playerScoreManager = PlayerScoreManager(this)
+
         hudManager = HudManager(this)
         textBoxManager = TextBoxManager(this)
         //database = Database(this)
@@ -42,6 +47,7 @@ class Main : KtxGame<KtxScreen>() {
         addScreen(ScoreScreen(this))
         addScreen(NameScreen(this))
         addScreen(StoryScreen(this))
+
 
         // Telas que já foram transformadas em popups
         //addScreen(ConfigScreen(this))
@@ -58,6 +64,6 @@ class Main : KtxGame<KtxScreen>() {
         addScreen(DebugScreen(this))
 
         // Set start screen, at least, must be after adding screens
-        setScreen<SplashScreen>()
+        setScreen<DebugScreen>()
     }
 }

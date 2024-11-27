@@ -123,10 +123,13 @@ class QuizScreen (mainGame: Main) : KtxScreen {
             it.draw(blueaswerC, 160f, 1440f, 930f, 350f)
             it.draw(blueaswerD, 160f, 1240f, 950f, 300f)*/
 
-
-
             it.draw(redquestion, 120f + deslocamentoX, 2200f + deslocamentoY, 1100f * aumento, 400f * aumento)
-            it.draw(blueaswerA, 160f + deslocamentoX, 1960f + deslocamentoY - (50f * aumento), 950f * aumento, 350f * aumento)
+            it.draw(blueaswerA,
+                160f + deslocamentoX,
+                1960f + deslocamentoY - (50f * aumento),
+                950f * aumento,
+                350f * aumento
+            )
             it.draw(blueaswerB, 160f + deslocamentoX, 1700f + deslocamentoY - (100f * aumento), 930f * aumento, 350f * aumento)
             it.draw(blueaswerC, 160f + deslocamentoX, 1440f + deslocamentoY - (150f * aumento), 930f * aumento, 350f * aumento)
             it.draw(blueaswerD, 160f + deslocamentoX, 1240f + deslocamentoY - (200f * aumento), 950f * aumento, 300f * aumento)
@@ -151,6 +154,7 @@ class QuizScreen (mainGame: Main) : KtxScreen {
         batch.use {
             val text = "Por que educação financeira é importante?"
 
+
             val textWidth = 900f
             val x = 450f + deslocamentoX
             val y = 2520f + deslocamentoY
@@ -162,9 +166,10 @@ class QuizScreen (mainGame: Main) : KtxScreen {
 
         // Resposta A
         batch.use {
-            val text = "Porque capivaras gostam de dinheiro."
+            //val text = "Porque capivaras gostam de dinheiro."
+            val text = "M".repeat(32)
 
-            val textWidth = 800f
+            val textWidth = 750f
             val x = 420f + deslocamentoX
             val y = 2180f + deslocamentoY
 

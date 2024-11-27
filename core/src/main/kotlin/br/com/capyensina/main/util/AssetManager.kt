@@ -55,6 +55,13 @@ object AssetManager {
     val soundOn = Texture("icons/soundon.png".toInternalFile())
     val soundOff = Texture("icons/soundoff.png".toInternalFile())
 
+    // QUIZ
+    val question = Texture("button/redquestion.png".toInternalFile())
+    val answerA = Texture("button/blueanswerA.png".toInternalFile())
+    val answerB = Texture("button/blueanswerB.png".toInternalFile())
+    val answerC = Texture("button/blueanswerC.png".toInternalFile())
+    val answerD = Texture("button/blueanswerD.png".toInternalFile())
+
     // Fontes TITULOS MAIS IMPORTANTES
     fun getFont(): BitmapFont {
         val fontGenerator = FreeTypeFontGenerator(Gdx.files.internal("font/PixelOperatorHB8.ttf"))
@@ -90,9 +97,6 @@ object AssetManager {
         fontGenerator.dispose()
         return customFont
     }
-
-
-
 }
 
 
