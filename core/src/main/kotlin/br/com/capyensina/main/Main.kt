@@ -1,6 +1,7 @@
 package br.com.capyensina.main
 
 import br.com.capyensina.main.minigame.PlayerScoreManager
+import br.com.capyensina.main.minigame.quiz.QuizManager
 import br.com.capyensina.main.ui.HudManager
 import br.com.capyensina.main.ui.TextBoxManager
 import br.com.capyensina.main.ui.screens.HomeScreen
@@ -26,6 +27,8 @@ class Main : KtxGame<KtxScreen>() {
         private set
     lateinit var playerScoreManager: PlayerScoreManager
         private set
+    lateinit var quizManager: QuizManager
+        private set
     //lateinit var database: Database
         //private set
 
@@ -37,6 +40,7 @@ class Main : KtxGame<KtxScreen>() {
 
         hudManager = HudManager(this)
         textBoxManager = TextBoxManager(this)
+        quizManager = QuizManager()
         //database = Database(this)
 
         // Initialize Screens
@@ -64,6 +68,6 @@ class Main : KtxGame<KtxScreen>() {
         addScreen(DebugScreen(this))
 
         // Set start screen, at least, must be after adding screens
-        setScreen<DebugScreen>()
+        setScreen<SplashScreen>()
     }
 }

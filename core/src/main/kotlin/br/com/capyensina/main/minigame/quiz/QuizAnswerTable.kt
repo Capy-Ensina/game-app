@@ -14,6 +14,10 @@ class QuizAnswerTable (
         selected[index] = true
     }
 
+    fun unselectAnswer(){
+        selected = mutableListOf(false, false, false, false)
+    }
+
     fun isCorrect(): Boolean{
         return selected[correctIndex]
     }

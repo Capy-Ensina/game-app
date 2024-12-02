@@ -38,7 +38,7 @@ class DebugScreen(mainGame: Main) : KtxScreen {
     private val camera = OrthographicCamera()
     private val viewport = ExtendViewport(main.WORLD_WIDTH, main.WORLD_HEIGHT, camera)
 
-    private val quizManager = QuizManager(4)
+    private val quizManager = main.quizManager
 
     private var quizIndex = 0
     private var score = 0.0
@@ -122,6 +122,7 @@ class DebugScreen(mainGame: Main) : KtxScreen {
             main.playerScoreManager.lastScore = score
             main.textBoxManager.updateScoreText()
             main.textBoxManager.scoreTextBox.isActive = true
+            main.setScreen<HomeScreen>()
         }
     }
 

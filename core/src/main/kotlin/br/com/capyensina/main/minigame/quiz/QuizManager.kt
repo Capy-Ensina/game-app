@@ -1,28 +1,50 @@
 package br.com.capyensina.main.minigame.quiz
 
-class QuizManager(
-    var numberOfQuestions: Int,
-    var minDifficulty: Int = 1,
-    var maxDifficulty: Int = 100
-) {
+import kotlin.random.Random
+
+class QuizManager() {
 
     private var actualQuestionIndex: Int = 0
     private var quiz: List<QuizQuestion>
     var score = 0.0
         private set
     private var isRunning = true
+    private var numberOfQuestions = 1
 
     init {
+        regenerateQuestions(numberOfQuestions)
+
+        if (numberOfQuestions > QuizQuestions.questions.size)
+        { numberOfQuestions = QuizQuestions.questions.size }
+
         quiz = generateQuiz()
     }
 
-
     private fun generateQuiz(): List<QuizQuestion>{
-        return QuizQuestions.questions
+        val list = emptyList<QuizQuestion>().toMutableList()
+
+        for (index in getRandomList(numberOfQuestions, QuizQuestions.questions.size)){
+            list += QuizQuestions.questions[index]
+        }
+
+        return list.toList()
     }
 
     fun getActualQuestion(): QuizQuestion{
         return quiz[actualQuestionIndex]
+    }
+
+    private fun getRandomList(tam: Int, lim: Int): List<Int> {
+        require(tam <= lim)
+
+        val numbers = mutableSetOf<Int>()
+
+        while (numbers.size < tam) {
+            val number = Random.nextInt(lim)
+            numbers.add(number)
+        }
+
+        return numbers.toList()
     }
 
     fun nextQuestion(): Boolean{
@@ -35,5 +57,18 @@ class QuizManager(
             isRunning = false
             return false
         } else return false
+    }
+
+    fun regenerateQuestions(numberOfQuestions: Int){
+        this.numberOfQuestions = numberOfQuestions
+
+        quiz = generateQuiz()
+        score = 0.0
+        isRunning = true
+        actualQuestionIndex = 0
+
+        for (question in quiz){
+            question.unselectAnswer()
+        }
     }
 }

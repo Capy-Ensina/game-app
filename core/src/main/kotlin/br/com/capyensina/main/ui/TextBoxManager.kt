@@ -61,7 +61,7 @@ class TextBoxManager(mainGame: Main) {
             Clickable(
                 AssetManager.redButton,
                 Rectangle(200f, 1350f, 950f, 400f)
-            ) { mainGame.setScreen<TextScreen>() },
+            ) { mainGame.setScreen<TextScreen>(); moduleOneTextBox.isActive = false },
             // Economia I
             Clickable(
                 AssetManager.redButton,
@@ -101,7 +101,7 @@ class TextBoxManager(mainGame: Main) {
             Clickable(
                 Texture("button/continuarbutton.png".toInternalFile()),
                 Rectangle(200f, 950f, 900f, 450f)
-            ) { main.setScreen<HomeScreen>() }
+            ) { main.setScreen<HomeScreen>(); scoreTextBox.isActive = false }
         )
 
         //customFont.draw(it, "Parabéns!", 400f, 2030f)

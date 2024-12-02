@@ -23,6 +23,11 @@ import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.viewport.ExtendViewport
 
+/* Nota Malcoln 02/12 09:54
+ * Não apaga essa linha kkkkkkkkkkkkkk
+ * de verdade, isso aqui tá sendo usado em mta parte do código, e esqueci de mudar, então agora vida
+ * que segue :p
+ */
 val layout = GlyphLayout() // trem dos textos longos com quebra de linha
 
 class TextScreen(mainGame: Main) : KtxScreen {
@@ -44,7 +49,7 @@ class TextScreen(mainGame: Main) : KtxScreen {
     private val finalizarbutton = Clickable(
         AssetManager.finishButton,
         Rectangle(320f, 70f, 700f, 400f)
-    ) { main.setScreen<QuizScreen>() }
+    ) { main.setScreen<QuizScreen>(); main.quizManager.regenerateQuestions(5) }
 
     init {
         camera.position.set(

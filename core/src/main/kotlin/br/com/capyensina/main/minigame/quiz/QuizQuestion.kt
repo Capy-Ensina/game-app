@@ -93,4 +93,8 @@ class QuizQuestion(
     }
 
     fun getScore(): Double{ return if (answerTable.isCorrect()) 1.0 else 0.0 }
+
+    fun unselectAnswer(){
+        answerTable.unselectAnswer()
+    }
 }

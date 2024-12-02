@@ -15,47 +15,66 @@ object QuizQuestions {
                 correctIndex = 1
             ),
             difficulty = 1
-        ),
-        QuizQuestion(
+        ),QuizQuestion(
             id = 2,
             subject = "finanças",
-            questionText = "O que é uma despesa?",
+            questionText = "Qual é a primeira etapa do planejamento financeiro pessoal?",
             answerTable = QuizAnswerTable(
-                answerA = "Perder dinheiro.",
-                answerB = "Gasto com uma necessidade.",
-                answerC = "O contrário de custo.",
-                answerD = "É o mesmo que custo.",
-                correctIndex = 1
+                answerA = "Definir objetivos financeiros.",
+                answerB = "Investir em ações de risco.",
+                answerC = "Comprar uma casa.",
+                answerD = "Gastar todo o salário.",
+                correctIndex = 0
             ),
             difficulty = 1
-        ),
-        QuizQuestion(
+        ),QuizQuestion(
             id = 3,
             subject = "finanças",
-            questionText = "O que é uma despesa?",
+            questionText = "O que significa criar um orçamento pessoal?",
             answerTable = QuizAnswerTable(
-                answerA = "Perder dinheiro.",
-                answerB = "Gasto com uma necessidade.",
-                answerC = "O contrário de custo.",
-                answerD = "É o mesmo que custo.",
+                answerA = "Registrar e planejar receitas e despesas.",
+                answerB = "Investir em criptomoedas.",
+                answerC = "Evitar qualquer tipo de dívida.",
+                answerD = "Gastar sem se preocupar.",
+                correctIndex = 0
+            ),
+            difficulty = 1
+        ),QuizQuestion(
+            id = 4,
+            subject = "finanças",
+            questionText = "Qual é a importância de um fundo de emergência?",
+            answerTable = QuizAnswerTable(
+                answerA = "Permite gastar mais em lazer.",
+                answerB = "Ajuda a lidar com imprevistos financeiros.",
+                answerC = "Serve para aumentar o limite do cartão de crédito.",
+                answerD = "É desnecessário se você já tem dívidas.",
                 correctIndex = 1
             ),
             difficulty = 1
-        ),
-        QuizQuestion(
-            id = 4,
+        ),QuizQuestion(
+            id = 5,
             subject = "finanças",
-            questionText = "O que é um custo?",
+            questionText = "O que é um objetivo financeiro SMART?",
             answerTable = QuizAnswerTable(
-                answerA = "Perder dinheiro.",
-                answerB = "Gasto com uma necessidade.",
-                answerC = "O contrário de custo.",
-                answerD = "EU SOU A CERTA.",
-                correctIndex = 3
+                answerA = "Objetivo baseado em sorte.",
+                answerB = "Objetivo que é específico, mensurável, atingível, relevante e com prazo.",
+                answerC = "Objetivo que depende de empréstimos.",
+                answerD = "Objetivo focado exclusivamente em investimentos de risco.",
+                correctIndex = 1
+            ),
+            difficulty = 2
+        ),QuizQuestion(
+            id = 6,
+            subject = "finanças",
+            questionText = "Qual a principal vantagem de controlar despesas mensais?",
+            answerTable = QuizAnswerTable(
+                answerA = "Saber exatamente para onde vai seu dinheiro.",
+                answerB = "Evitar pagar impostos.",
+                answerC = "Aumentar dívidas rapidamente.",
+                answerD = "Ficar mais confuso com suas finanças.",
+                correctIndex = 0
             ),
             difficulty = 1
-        ),
+        )
     )
-
-    fun getQuestionsLength(): Int { return questions.size }
 }
