@@ -69,5 +69,6 @@ class Main : KtxGame<KtxScreen>() {
 
     private fun logic(){
         animationManager.logic()
+        quizManager.logic()
     }
 }

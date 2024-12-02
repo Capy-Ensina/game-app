@@ -31,7 +31,6 @@ class QuizScreen (val main: Main) : KtxScreen {
     private val viewport = ExtendViewport(main.WORLD_WIDTH, main.WORLD_HEIGHT, camera)
 
     private var quizIndex = 0
-    private var score = 0.0
 
     // Retângulos
     private val hudTopColor = ColorTheme.GREEN
@@ -111,10 +110,12 @@ class QuizScreen (val main: Main) : KtxScreen {
 
     private fun nextQuestion(){
         if (!main.quizManager.nextQuestion()) {
-            score = main.quizManager.score
-            main.playerScoreManager.lastScore = score
+            main.playerScoreManager.lastScore = main.quizManager.score
+            main.playerScoreManager.lastTime = main.quizManager.timerSeconds
+
             main.textBoxManager.updateScoreText()
             main.textBoxManager.scoreTextBox.isActive = true
+
             main.playerScoreManager.sendScoreToDatabase()
         }
     }

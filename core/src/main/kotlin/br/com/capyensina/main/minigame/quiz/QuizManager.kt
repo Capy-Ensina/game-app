@@ -1,8 +1,9 @@
 package br.com.capyensina.main.minigame.quiz
 
+import com.badlogic.gdx.Gdx
 import kotlin.random.Random
 
-class QuizManager() {
+class QuizManager {
 
     private var actualQuestionIndex: Int = 0
     private var quiz: List<QuizQuestion>
@@ -10,6 +11,9 @@ class QuizManager() {
         private set
     private var isRunning = true
     private var numberOfQuestions = 1
+
+    private var timer = 0f
+    var timerSeconds = 0
 
     init {
         regenerateQuestions(numberOfQuestions)
@@ -59,6 +63,12 @@ class QuizManager() {
         } else return false
     }
 
+    private fun startTimer(){
+        if (!isRunning) return
+        timer = 0f
+        timerSeconds = 0
+    }
+
     fun regenerateQuestions(numberOfQuestions: Int){
         this.numberOfQuestions = numberOfQuestions
 
@@ -69,6 +79,19 @@ class QuizManager() {
 
         for (question in quiz){
             question.unselectAnswer()
+        }
+
+        startTimer()
+    }
+
+    fun logic(){
+        if (!isRunning) return
+
+        timer += Gdx.graphics.deltaTime
+
+        if (timer >= 1f){
+            timer = 0f
+            timerSeconds += 1
         }
     }
 }
