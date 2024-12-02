@@ -32,7 +32,8 @@ class NameScreen (mainGame: Main) : KtxScreen {
     private val infoBoxUm = Clickable(
         Texture("text-box/infoboxum.png".toInternalFile()),
         Rectangle(15f, 1100f, 1350f, 1200f)
-    )
+    ) { Gdx.input.getTextInput(main.textInputListener, "Digite seu nome", "", "Usuário") }
+
     private val stars = Texture("stars/estrela.png")
     private val skipButton = Clickable(
         Texture("button/skipbutton.png".toInternalFile()),
@@ -61,21 +62,18 @@ class NameScreen (mainGame: Main) : KtxScreen {
         viewport.update(width, height)
     }
 
-    private fun checkButtonClick() {
-        if (Gdx.input.justTouched()) {
-            // Transforma o click na tela em uma posição dentro do mundo
-            val worldPos = viewport.unproject(Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()))
-
-            if (skipButton.collider.contains(worldPos)) skipButton.action()
-        }
-    }
-
     override fun dispose() {
 
     }
 
     private fun input() {
-        checkButtonClick()
+        if (Gdx.input.justTouched()) {
+            // Transforma o click na tela em uma posição dentro do mundo
+            val worldPos = viewport.unproject(Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()))
+
+            if (skipButton.collider.contains(worldPos)) skipButton.action()
+            if (infoBoxUm.collider.contains(worldPos)) infoBoxUm.action()
+        }
     }
 
     private fun logic() {
@@ -96,7 +94,7 @@ class NameScreen (mainGame: Main) : KtxScreen {
             it.draw(skipButton)
 
             customFontBold.draw(it, "Digite seu nome :D", 330f, 1900f)
-            customFont.draw(it, "_________________", 300f, 1650f)
+            customFont.draw(it, main.playerScoreManager.name, 300f, 1650f)
         }
     }
 }

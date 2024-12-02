@@ -13,6 +13,7 @@ import br.com.capyensina.main.ui.screens.SplashScreen
 import br.com.capyensina.main.ui.screens.StoryScreen
 import br.com.capyensina.main.ui.screens.TextScreen
 import br.com.capyensina.main.ui.screens.debug.DebugScreen
+import br.com.capyensina.main.util.MyTextInputListener
 import ktx.app.KtxGame
 import ktx.app.KtxScreen
 import ktx.async.KtxAsync
@@ -32,6 +33,7 @@ class Main : KtxGame<KtxScreen>() {
         private set
     lateinit var animationManager: AnimationManager
         private set
+    lateinit var textInputListener: MyTextInputListener
     //lateinit var database: Database
         //private set
 
@@ -45,6 +47,7 @@ class Main : KtxGame<KtxScreen>() {
         textBoxManager = TextBoxManager(this)
         quizManager = QuizManager()
         animationManager = AnimationManager(this)
+        textInputListener = MyTextInputListener(this)
         //database = Database(this)
 
         // Initialize Screens
