@@ -18,7 +18,7 @@ object QuizQuestions {
         ),QuizQuestion(
             id = 2,
             subject = "finanças",
-            questionText = "Qual é a primeira etapa do planejamento financeiro pessoal?",
+            questionText = "Qual é a primeira etapa do planejamento financeiro?",
             answerTable = QuizAnswerTable(
                 answerA = "Definir objetivos financeiros.",
                 answerB = "Investir em ações de risco.",
@@ -57,7 +57,7 @@ object QuizQuestions {
             questionText = "O que é um objetivo financeiro SMART?",
             answerTable = QuizAnswerTable(
                 answerA = "Objetivo baseado em sorte.",
-                answerB = "Objetivo que é específico, mensurável, atingível, relevante e com prazo.",
+                answerB = "É específico, mensurável, atingível, relevante e com prazo.",
                 answerC = "Objetivo que depende de empréstimos.",
                 answerD = "Objetivo focado exclusivamente em investimentos de risco.",
                 correctIndex = 1
