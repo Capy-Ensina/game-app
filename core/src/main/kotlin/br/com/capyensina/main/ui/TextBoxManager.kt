@@ -9,6 +9,7 @@ import br.com.capyensina.main.ui.screens.TextScreen
 import br.com.capyensina.main.util.AssetManager
 import br.com.capyensina.main.util.BoxSize
 import br.com.capyensina.main.util.MySpriteBatch
+import br.com.capyensina.main.util.TextManager
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
@@ -61,12 +62,20 @@ class TextBoxManager(mainGame: Main) {
             Clickable(
                 AssetManager.redButton,
                 Rectangle(200f, 1350f, 950f, 400f)
-            ) { mainGame.setScreen<TextScreen>(); moduleOneTextBox.isActive = false },
+            ) {
+                TextManager.actualTextActivity = TextManager.financeLessonOne
+                mainGame.setScreen<TextScreen>()
+                moduleOneTextBox.isActive = false
+              },
             // Economia I
             Clickable(
                 AssetManager.redButton,
                 Rectangle(200f, 1100f, 950f, 400f)
-            ),
+            ){
+                TextManager.actualTextActivity = TextManager.financeLessonTwo
+                mainGame.setScreen<TextScreen>()
+                moduleOneTextBox.isActive = false
+             },
             // Investimento I
             Clickable(
                 AssetManager.redButton,

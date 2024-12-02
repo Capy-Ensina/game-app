@@ -12,14 +12,16 @@ class QuizManager {
     private var isRunning = true
     private var numberOfQuestions = 1
 
+    private lateinit var setOfQuestions: List<QuizQuestion>
+
     private var timer = 0f
     var timerSeconds = 0
 
     init {
-        regenerateQuestions(numberOfQuestions)
+        regenerateQuestions(numberOfQuestions, QuizQuestions.financeQuestions)
 
-        if (numberOfQuestions > QuizQuestions.questions.size)
-        { numberOfQuestions = QuizQuestions.questions.size }
+        if (numberOfQuestions > setOfQuestions.size)
+        { numberOfQuestions = setOfQuestions.size }
 
         quiz = generateQuiz()
     }
@@ -27,8 +29,8 @@ class QuizManager {
     private fun generateQuiz(): List<QuizQuestion>{
         val list = emptyList<QuizQuestion>().toMutableList()
 
-        for (index in getRandomList(numberOfQuestions, QuizQuestions.questions.size)){
-            list += QuizQuestions.questions[index]
+        for (index in getRandomList(numberOfQuestions, setOfQuestions.size)){
+            list += setOfQuestions[index]
         }
 
         return list.toList()
@@ -69,8 +71,9 @@ class QuizManager {
         timerSeconds = 0
     }
 
-    fun regenerateQuestions(numberOfQuestions: Int){
+    fun regenerateQuestions(numberOfQuestions: Int, setOfQuestions: List<QuizQuestion>){
         this.numberOfQuestions = numberOfQuestions
+        this.setOfQuestions = setOfQuestions
 
         quiz = generateQuiz()
         score = 0.0

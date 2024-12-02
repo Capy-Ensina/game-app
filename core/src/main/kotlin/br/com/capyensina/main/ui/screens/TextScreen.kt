@@ -3,9 +3,11 @@ package br.com.capyensina.main.ui.screens
 import br.com.capyensina.main.Main
 import br.com.capyensina.main.components.Clickable
 import br.com.capyensina.main.components.disposeSafely
+import br.com.capyensina.main.minigame.quiz.QuizQuestions
 import br.com.capyensina.main.util.AssetManager
 import br.com.capyensina.main.util.ColorTheme
 import br.com.capyensina.main.util.MySpriteBatch
+import br.com.capyensina.main.util.TextManager
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.GL20
@@ -46,12 +48,23 @@ class TextScreen(mainGame: Main) : KtxScreen {
     // Retângulos
     private val hudTopColor = ColorTheme.ORANGE
 
+    /* Nota Malcoln 02/12 18:41
+     * O finalizarButton é quem é responsável pela geração do quiz que será apresentado na
+     * próxima tela, então quaiquer alterações no set de perguntas, quantidade, tem que ser
+     * feito aqui
+     */
+
     private val finalizarbutton = Clickable(
         AssetManager.finishButton,
         Rectangle(320f, 70f, 700f, 400f)
-    ) { main.setScreen<QuizScreen>(); main.quizManager.regenerateQuestions(5) }
+    ) {
+        main.setScreen<QuizScreen>()
+        main.quizManager.regenerateQuestions(5, TextManager.actualTextActivity.setOfQuestions)
+      }
+
 
     init {
+        TextManager.actualTextActivity = TextManager.financeLessonOne
         camera.position.set(
             main.WORLD_WIDTH/2,
             main.WORLD_HEIGHT/2,
@@ -90,7 +103,9 @@ class TextScreen(mainGame: Main) : KtxScreen {
         viewport.update(width, height)
     }
 
-    private fun logic() { }
+    private fun logic() {
+
+    }
 
     private fun draw() {
         Gdx.gl.glClearColor(
@@ -106,11 +121,11 @@ class TextScreen(mainGame: Main) : KtxScreen {
 
             it.draw(finalizarbutton)
 
-            customFont.draw(it, "INTRODUÇÃO I", 330f, 2900f)
-            customFontBold.draw(it, "Capivaras do Tesouro", 300f, 2650f)
+            customFont.draw(it, TextManager.actualTextActivity.subject, 330f, 2900f)
+            customFontBold.draw(it, TextManager.actualTextActivity.title, 300f, 2650f)
 
             // para textos grandes
-            val text = "A educação financeira é essencial para o desenvolvimento de habilidades que permitem gerenciar recursos de forma consciente e eficiente. Ela envolve a compreensão de conceitos fundamentais, como planejamento financeiro, controle de gastos, investimentos, e a importância de poupar para o futuro. Ao adquirir conhecimentos sobre como lidar com o dinheiro, as pessoas podem tomar decisões mais informadas, evitando dívidas excessivas e aproveitando melhor suas oportunidades econômicas."
+            val text = TextManager.actualTextActivity.lesson
 
             val textWidth = 1200f
             val x = 60f
