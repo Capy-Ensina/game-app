@@ -6,7 +6,6 @@ import br.com.capyensina.main.util.MySpriteBatch
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
 import ktx.graphics.use
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
@@ -20,6 +19,7 @@ class HomeScreen(mainGame: Main) : KtxScreen {
 
     private val camera = OrthographicCamera()
     private val viewport = ExtendViewport(main.WORLD_WIDTH, main.WORLD_HEIGHT, camera)
+
 
     /* A camera precisa ser posicionada de modo que a tela inteira seja visivel, ou seja,
      * no meio da viewport
@@ -85,7 +85,7 @@ class HomeScreen(mainGame: Main) : KtxScreen {
             main.hudManager.drawBackground(it)
 
             // Conteúdo da página aqui
-
+            //it.draw(mainCharacterAnim.getKeyFrame(main.animationManager.elapsed), 20.0f, 20.0f)
 
             // PopUP - deve ser desenhado por último, mas antes da HUD
             main.textBoxManager.draw(it)

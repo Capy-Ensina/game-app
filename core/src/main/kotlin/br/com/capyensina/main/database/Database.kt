@@ -3,15 +3,17 @@ package br.com.capyensina.main.database
 import br.com.capyensina.main.Main
 import com.badlogic.gdx.utils.Json
 import com.badlogic.gdx.utils.SerializationException
-import ktx.json.JsonSerializer
-import ktx.json.fromJson
 import java.io.BufferedReader
 import java.net.HttpURLConnection
 import java.net.URL
 
+/* Nota Malcoln 02/12 11:58
+ * A classe não está sendo iniciada na Main, se alterar algo nela, atualiza lá
+ * e adiciona o que precisar no PlayerScoreManager
+ */
+
 class Database(main: Main) {
     var users: Array<User>
-
 
     init {
         //sendGet()

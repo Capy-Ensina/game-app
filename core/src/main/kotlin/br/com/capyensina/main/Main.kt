@@ -2,6 +2,7 @@ package br.com.capyensina.main
 
 import br.com.capyensina.main.minigame.PlayerScoreManager
 import br.com.capyensina.main.minigame.quiz.QuizManager
+import br.com.capyensina.main.ui.AnimationManager
 import br.com.capyensina.main.ui.HudManager
 import br.com.capyensina.main.ui.TextBoxManager
 import br.com.capyensina.main.ui.screens.HomeScreen
@@ -29,6 +30,8 @@ class Main : KtxGame<KtxScreen>() {
         private set
     lateinit var quizManager: QuizManager
         private set
+    lateinit var animationManager: AnimationManager
+        private set
     //lateinit var database: Database
         //private set
 
@@ -36,11 +39,12 @@ class Main : KtxGame<KtxScreen>() {
         KtxAsync.initiate()
 
         // Initialize UI utils, at least, must be earlier than Layouts
-        playerScoreManager = PlayerScoreManager(this)
+        playerScoreManager = PlayerScoreManager(this) // must be first
 
         hudManager = HudManager(this)
         textBoxManager = TextBoxManager(this)
         quizManager = QuizManager()
+        animationManager = AnimationManager(this)
         //database = Database(this)
 
         // Initialize Screens
@@ -52,22 +56,18 @@ class Main : KtxGame<KtxScreen>() {
         addScreen(NameScreen(this))
         addScreen(StoryScreen(this))
 
-
-        // Telas que já foram transformadas em popups
-        //addScreen(ConfigScreen(this))
-        //addScreen(BooksScreen(this))
-        //addScreen(LojaScreen(this))
-        //addScreen(EditScreen(this))
-
-        // Telas que vamos verificar se cabe no escopo do MVP
-        // Resposta = Não cabe
-        //addScreen(RpgScreen(this))
-        //addScreen(InvestimentoScreen(this))
-        //addScreen(TutorialScreen(this))
-
         addScreen(DebugScreen(this))
 
         // Set start screen, at least, must be after adding screens
         setScreen<SplashScreen>()
+    }
+
+    override fun render() {
+        logic()
+        super.render()
+    }
+
+    private fun logic(){
+        animationManager.logic()
     }
 }

@@ -115,6 +115,7 @@ class QuizScreen (val main: Main) : KtxScreen {
             main.playerScoreManager.lastScore = score
             main.textBoxManager.updateScoreText()
             main.textBoxManager.scoreTextBox.isActive = true
+            main.playerScoreManager.sendScoreToDatabase()
         }
     }
 }
