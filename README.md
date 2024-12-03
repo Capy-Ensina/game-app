@@ -141,7 +141,7 @@ O Instituto PROA nasceu em 2007 com o objetivo de capacitar e inserir jovens de 
 - [ ] Adição de novas matérias: Economia I, II, III
 - [ ] Adição de novas matérias: Investimentos I, II, III
 - [ ] Mudança de cores
-- [ ] Mudançã de fonte
+- [ ] Mudança de fonte
 - [ ] Customização de casa
 - [ ] Customização de personagem
 - [ ] Loja de itens para casa e personagem
