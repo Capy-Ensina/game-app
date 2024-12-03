@@ -4,6 +4,7 @@
 *** Caso queira mudar qualquercoisa aqui, pode enviar seu 
 *** commit alterando o que deseja :D
 -->
+<div align="center">
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -11,6 +12,7 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
+</div>
 
 <!-- PROJECT LOGO -->
 <br/>
