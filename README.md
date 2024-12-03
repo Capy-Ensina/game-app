@@ -5,6 +5,13 @@
 *** commit alterando o que deseja :D
 -->
 
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
 <!-- PROJECT LOGO -->
 <br/>
 <div align="center">
@@ -23,10 +30,6 @@
 <details>
   <summary>Atividades</summary>
   <ol>
-    <!-- Primeiro: Sobre -->
-    <li>
-      <a href="#sobre-o-proa">Sobre o Proa</a>
-    </li>
     <!-- Segundo: Descrição (com sublista) -->
     <li>
       <a href="#descrição-do-projeto">Descrição</a>
@@ -34,21 +37,21 @@
         <li><a href="#funcionalidades">Funcionalidades</a></li>
       </ul>
     </li>
+    <!-- Primeiro: Sobre -->
+    <li>
+      <a href="#sobre-o-proa">Sobre o Proa</a>
+    </li>
     <!-- Terceiro: Tecnologias Usadas -->
     <li>
       <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>
-    </li>
-    <!-- Quarto: Como executar o projeto -->
-    <li>
-      <a href="#como-executar-o-projeto">Como Executar o Projeto</a>
     </li>
     <!-- Quinto: Capturas de tela -->
     <li>
       <a href="#capturas-de-tela">Capturas de tela</a>
     </li>
-    <!-- Sexto: Desafios -->
+    <!-- Sexto: Capturas de tela -->
     <li>
-      <a href="#desafios-implementados">Desafios Implementados</a>
+      <a href="#equipe">Equipe</a>
     </li>
     <!-- Sétimo: Futuras Melhorias -->
     <li>
@@ -106,13 +109,30 @@ O Instituto PROA nasceu em 2007 com o objetivo de capacitar e inserir jovens de 
 
 <!-- Capturas de tela -->
 ## Capturas de tela
-
+<div align="center">
+  <img src="readme-images/splash.png" alt="Menu" width="200" height="432">
+  <img src="readme-images/historia.png" alt="Menu" width="200" height="432">
+  <img src="readme-images/materias.png" alt="Menu" width="200" height="432">
+  <img src="readme-images/introducao.png" alt="Menu" width="200" height="432">
+  <img src="readme-images/quiz.png" alt="Menu" width="200" height="432">
+  <img src="readme-images/quiz2.png" alt="Menu" width="200" height="432">
+  <img src="readme-images/fimdoquiz.png" alt="Menu" width="200" height="432">
+</div>
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 <!-- END: Capturas de tela -->
 
+## Equipe
+- Francielly - Product Owner e Frontend   <a href="https://github.com/fraanDev"><img src="https://skillicons.dev/icons?i=github" width="15" height="15"/></a>
+- Malcoln - Scrum Master e Game Designer  <a href="https://github.com/MalcolnLMR"><img src="https://skillicons.dev/icons?i=github" width="15" height="15"/></a>
+- Glenda - Backend e Análista de dados    <a href="https://github.com/glendalvesx"><img src="https://skillicons.dev/icons?i=github" width="15" height="15"/></a>
+- Otavio - Frontend e Designer Gráfico    <a href="https://github.com/otavio2703"><img src="https://skillicons.dev/icons?i=github" width="15" height="15"/></a>
+- Miriã - Fullstack e UI Designer         <a href="https://github.com/miri12345"><img src="https://skillicons.dev/icons?i=github" width="15" height="15"/></a>
+- Guilherme - Fullstack e Financeiro      <a href="https://github.com/Guilherme-026"><img src="https://skillicons.dev/icons?i=github" width="15" height="15"/></a>
+- Jonathan - Frontend e Social Media      <a href="https://github.com/JonathanDevHub"><img src="https://skillicons.dev/icons?i=github" width="15" height="15"/></a>
+
 <!-- Futuras Melhorias -->
-## Futuras Melhorias
+## Futuras Melhorias e Roadmap
 ### Médio Prazo
 
 - [ ] Adição de novas matérias: Finanças I, II, III
@@ -123,6 +143,7 @@ O Instituto PROA nasceu em 2007 com o objetivo de capacitar e inserir jovens de 
 - [ ] Customização de casa
 - [ ] Customização de personagem
 - [ ] Loja de itens para casa e personagem
+- [ ] Mais Minigames!
 
 
 ### Longo Prazo
@@ -131,8 +152,8 @@ O Instituto PROA nasceu em 2007 com o objetivo de capacitar e inserir jovens de 
 - [ ] Salvar progresso em nuvem
 - [ ] Minigames em equipe
 - [ ] Sistema de empresas (Guilda)
-- [ ] Trabalhos em empresas
-
+- [ ] Adição de novas matérias: Tributação Brasileira para cidadãos I, II, III
+- [ ] Adição de novas matérias: Tributação Brasileira para empresas I, II, III
 
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
@@ -145,3 +166,16 @@ Distrubuído através da licença MIT.
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 <!-- END: LICENSE -->
+
+[contributors-shield]: https://img.shields.io/github/contributors/Capy-Ensina/game-app.svg?style=for-the-badge
+[contributors-url]: https://github.com/Capy-Ensina/game-app/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/Capy-Ensina/game-app?style=for-the-badge
+[forks-url]: https://github.com/Capy-Ensina/game-app/network/members
+[stars-shield]: https://img.shields.io/github/stars/Capy-Ensina/game-app.svg?style=for-the-badge
+[stars-url]: https://github.com/Capy-Ensina/game-app/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Capy-Ensina/game-app.svg?style=for-the-badge
+[issues-url]: https://github.com/Capy-Ensina/game-app/issues
+[license-shield]: https://img.shields.io/github/license/Capy-Ensina/game-app.svg?style=for-the-badge
+[license-url]: https://github.com/Capy-Ensina/game-app/blob/master/LICENSE.txt
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/company/capy-ensina
