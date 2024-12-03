@@ -123,7 +123,7 @@ O Instituto PROA nasceu em 2007 com o objetivo de capacitar e inserir jovens de 
 <!-- END: Capturas de tela -->
 
 ## Equipe
-- Francielly - Product Owner e Frontend   <a href="https://github.com/fraanDev"><img src="https://skillicons.dev/icons?i=github" width="15" height="15"/></a>
+- Francielly - Product Owner e Frontend   <a href="https://github.com/fraanDev" target="_blank"><img src="https://skillicons.dev/icons?i=github" width="15" height="15"/></a>
 - Malcoln - Scrum Master e Game Designer  <a href="https://github.com/MalcolnLMR"><img src="https://skillicons.dev/icons?i=github" width="15" height="15"/></a>
 - Glenda - Backend e Análista de dados    <a href="https://github.com/glendalvesx"><img src="https://skillicons.dev/icons?i=github" width="15" height="15"/></a>
 - Otavio - Frontend e Designer Gráfico    <a href="https://github.com/otavio2703"><img src="https://skillicons.dev/icons?i=github" width="15" height="15"/></a>
