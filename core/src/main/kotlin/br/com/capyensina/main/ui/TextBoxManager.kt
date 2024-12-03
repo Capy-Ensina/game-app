@@ -27,6 +27,13 @@ class TextBoxManager(mainGame: Main) {
         /* NOTA 17/11/2024 20:23 - Malcoln
          * Esse é um exemplo de como configurar o conteúdo que irá aparecer dentro do TextBox, não
          * adicione nada relevante dentre a "tag" exemplo, pois esta será apagada posteriormente.
+         *
+         * NOTA 03/12/2024 19:48 - Malcoln
+         * eh, apaguei e acho que ninguém viu, mas vida que segue, enfim, vou explicar como funciona
+         * mais ou menos essa classe:
+         * Um textBox precisa ter seu conteúdo configurado aqui, e ele é um Array de Clickables
+         * e se ele tiver TEXTO é muito importante que este seja separado no TEXTCONTENT, pois é
+         * essa função que tem capacidade de lidar com escrever o texto na tela
          */
 
         configTextBox.content = arrayOf(
@@ -113,8 +120,7 @@ class TextBoxManager(mainGame: Main) {
             ) { main.setScreen<HomeScreen>(); scoreTextBox.isActive = false }
         )
 
-        //customFont.draw(it, "Parabéns!", 400f, 2030f)
-        updateScoreText()
+        updateScoreText() // O texto é feito nesta função, pois ele precisa ser atualizado depois
     }
 
     fun input(clickPos: Vector2){
@@ -156,5 +162,12 @@ class TextBoxManager(mainGame: Main) {
                 Vector2(240f, 1600f)
             )
         )
+    }
+
+    fun closeAll(){
+        configTextBox.close()
+        loreTextBox.close()
+        moduleOneTextBox.close()
+        scoreTextBox.close()
     }
 }

@@ -80,5 +80,14 @@ open class TextBox(size: Int) {
         }
     }
 
+    fun show(closeIfOpen: Boolean = false){
+        isActive = if (closeIfOpen){ !isActive } else { true }
+    }
+
+    fun close(){
+        isActive = false
+    }
+
+
 
 }

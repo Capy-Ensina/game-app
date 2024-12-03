@@ -20,7 +20,7 @@ import com.badlogic.gdx.math.Vector2
 class HudManager(mainGame: Main) {
     private val main = mainGame
 
-    //imagens e botao da hud superior
+    //todo imagens e botao da hud superior
     private val capicoinInfo = Clickable(
         AssetManager.capicoinInfo,
         Rectangle(20f, main.WORLD_HEIGHT - 250f, 400f, 250f)
@@ -37,7 +37,11 @@ class HudManager(mainGame: Main) {
     private val configButton = Clickable(
         AssetManager.configButton,
         Rectangle(1020f, main.WORLD_HEIGHT - 280f, 300f, 300f)
-    ) { main.textBoxManager.configTextBox.isActive = true }
+    ) { // todo mudar isso quando for para produção, tá ruim
+        main.textBoxManager.scoreTextBox.close()
+        main.textBoxManager.moduleOneTextBox.close()
+        main.textBoxManager.configTextBox.show(true)
+      }
 
     private val backgroundTop = Clickable(
         AssetManager.whiteRectBg,
@@ -49,7 +53,7 @@ class HudManager(mainGame: Main) {
         Rectangle(-100f, main.WORLD_HEIGHT - 220f, main.WORLD_WIDTH + 200f, 300f)
     ) { }
 
-    // Imagens dos botões inferiores
+    //todo Imagens dos botões inferiores
     private val editButton = Clickable(
         AssetManager.editButtonLocked,
         Rectangle(300f, 50f, 200f, 200f)
@@ -63,7 +67,11 @@ class HudManager(mainGame: Main) {
     private val booksButton = Clickable(
         AssetManager.booksButton,
         Rectangle(520f, 50f, 300f, 300f)
-    ) { main.textBoxManager.moduleOneTextBox.isActive = true }
+    ) { // todo mudar isso quando for para produção, tá ruim
+        main.textBoxManager.scoreTextBox.close()
+        main.textBoxManager.configTextBox.close()
+        main.textBoxManager.moduleOneTextBox.show(true)
+      }
 
     private val investimentButton = Clickable(
         AssetManager.investimentButtonLocked,
@@ -99,6 +107,15 @@ class HudManager(mainGame: Main) {
 
         //  botão "RPG de texto"
         if (rpgButton.collider.contains(clickPos)) rpgButton.action()
+
+        //  botão "contador de capycoins"
+        if (capicoinInfo.collider.contains(clickPos)) capicoinInfo.action()
+
+        //  botão "hudInfoOne"
+        if (hudInfoOne.collider.contains(clickPos)) hudInfoOne.action()
+
+        //  botão "hudInfoTwo"
+        if (hudInfoTwo.collider.contains(clickPos)) hudInfoTwo.action()
     }
 
     fun draw(batch: MySpriteBatch, color: Color = ColorTheme.BACKGROUND_COLOR){

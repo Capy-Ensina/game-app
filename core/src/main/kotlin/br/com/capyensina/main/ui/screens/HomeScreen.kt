@@ -100,6 +100,8 @@ class HomeScreen(mainGame: Main) : KtxScreen {
             it.draw(image1)
 
 
+
+
             // PopUP - deve ser desenhado por último, mas antes da HUD
             main.textBoxManager.draw(it)
 
