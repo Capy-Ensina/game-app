@@ -55,7 +55,7 @@
     </li>
     <!-- Sétimo: Futuras Melhorias -->
     <li>
-      <a href="#futuras-melhorias">Futuras Melhorias</a>
+      <a href="#futuras-melhorias-e-roadmap">Futuras Melhorias</a>
     </li>
     <!-- Oitavo: Licença -->
     <li>
