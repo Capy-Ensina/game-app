@@ -8,7 +8,7 @@
 <!-- PROJECT LOGO -->
 <br/>
 <div align="center">
-  <img src="readme-images/proa-logo.png" alt="Logo" width="120" height="120">
+  <img src="readme-images/capyensina.png" alt="Logo" width="120" height="120">
   
   <h2 align="center">Capy Ensina</h2>
 
