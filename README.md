@@ -1,35 +1,130 @@
-# Capy-Ensina
+<!-- Usei este modelo como base de edição: https://github.com/othneildrew/Best-README-Template -->
+<a id="readme-top"></a>
+<!--
+*** Caso queira mudar qualquercoisa aqui, pode enviar seu 
+*** commit alterando o que deseja :D
+-->
 
-A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
+<!-- PROJECT LOGO -->
+<br/>
+<div align="center">
+  <img src="images/proa-logo.png" alt="Logo" width="120" height="120">
+  
+  <h2 align="center">Capy Ensina</h2>
 
-This project was generated with a Kotlin project template that includes Kotlin application launchers and [KTX](https://libktx.github.io/) utilities.
+  <p align="center">
+    Este repositório representa as atividades que desenvolvi enquanto estava estudando no proa!
+    <br/>
+  </p>
+</div>
+<!-- END: PROJECT LOGO -->
 
-## Platforms
+<!-- Tabela de resumo -->
+<details>
+  <summary>Atividades</summary>
+  <ol>
+    <!-- Primeiro: Sobre -->
+    <li>
+      <a href="#sobre-o-proa">Sobre o Proa</a>
+    </li>
+    <!-- Segundo: Descrição (com sublista) -->
+    <li>
+      <a href="#descrição-do-projeto">Descrição</a>
+      <ul>
+        <li><a href="#funcionalidades">Funcionalidades</a></li>
+      </ul>
+    </li>
+    <!-- Terceiro: Tecnologias Usadas -->
+    <li>
+      <a href="#tecnologias-utilizadas">Tecnologias Utilizadas</a>
+    </li>
+    <!-- Quarto: Como executar o projeto -->
+    <li>
+      <a href="#como-executar-o-projeto">Como Executar o Projeto</a>
+    </li>
+    <!-- Quinto: Capturas de tela -->
+    <li>
+      <a href="#capturas-de-tela">Capturas de tela</a>
+    </li>
+    <!-- Sexto: Desafios -->
+    <li>
+      <a href="#desafios-implementados">Desafios Implementados</a>
+    </li>
+    <!-- Sétimo: Futuras Melhorias -->
+    <li>
+      <a href="#futuras-melhorias">Futuras Melhorias</a>
+    </li>
+    <!-- Oitavo: Licença -->
+    <li>
+      <a href="#licença">Licença</a>
+    </li>
+  </ol>
+</details>
+<!-- END: Tabela de resumo -->
 
-- `core`: Main module with the application logic shared by all platforms.
-- `lwjgl3`: Primary desktop platform using LWJGL3; was called 'desktop' in older docs.
-- `android`: Android mobile platform. Needs Android SDK.
+<!-- SOBRE O PROA -->
+## Sobre o Proa
+<a id="#sobre-o-proa"></a>
+O Instituto PROA nasceu em 2007 com o objetivo de capacitar e inserir jovens de baixa renda, vindos de escolas públicas, no mercado de trabalho. Por meio de desenvolvimento pessoal e profissional, o PROA já impactou mais de 70 mil jovens e hoje atua em 11 Estados: SP, RJ, MG, SC, RS, PR, PE, BA, GO, DF e MS com dois projetos: o PROPROFISSÃO e a Plataforma PROA.
+</br>
+<a href="https://www.proa.org.br">Instituto Proa</a>
 
-## Gradle
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
-This project uses [Gradle](https://gradle.org/) to manage dependencies.
-The Gradle wrapper was included, so you can run Gradle tasks using `gradlew.bat` or `./gradlew` commands.
-Useful Gradle tasks and flags:
+<!-- Descrição de projeto -->
+## Descrição de projeto
+<a id="#desc"></a>
 
-- `--continue`: when using this flag, errors will not stop the tasks from running.
-- `--daemon`: thanks to this flag, Gradle daemon will be used to run chosen tasks.
-- `--offline`: when using this flag, cached dependency archives will be used.
-- `--refresh-dependencies`: this flag forces validation of all dependencies. Useful for snapshot versions.
-- `android:lint`: performs Android project validation.
-- `build`: builds sources and archives of every project.
-- `cleanEclipse`: removes Eclipse project data.
-- `cleanIdea`: removes IntelliJ project data.
-- `clean`: removes `build` folders, which store compiled classes and built archives.
-- `eclipse`: generates Eclipse project data.
-- `idea`: generates IntelliJ project data.
-- `lwjgl3:jar`: builds application's runnable jar, which can be found at `lwjgl3/build/libs`.
-- `lwjgl3:run`: starts the application.
-- `test`: runs unit tests (if any).
 
-Note that most tasks that are not specific to a single project can be run with `name:` prefix, where the `name` should be replaced with the ID of a specific project.
-For example, `core:clean` removes `build` folder only from the `core` project.
+<!-- Funcionalidades -->
+#### Funcionalidades
+
+- **exemplo** blablalba
+
+<!-- END: Funcionalidades -->
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+<!-- END: Descrição de projeto -->
+
+<!-- Tecnologias -->
+## Tecnologias Utilizadas
+
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+<!-- END: Tecnologias -->
+
+<!-- Como Executar o Projeto -->
+## Como Executar o Projeto
+
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+<!-- END: Como Executar o Projeto -->
+
+<!-- Capturas de tela -->
+## Capturas de tela
+
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+<!-- END: Capturas de tela -->
+
+<!-- Desafios Implementados -->
+## Desafios Implementados
+
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+<!-- END: Desafios Implementados -->
+
+<!-- Futuras Melhorias -->
+## Futuras Melhorias
+
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+<!-- END: Futuras Melhorias -->
+
+<!-- LICENSE -->
+## Licença
+
+Distrubuído através da licença MIT.
+
+<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
+<!-- END: LICENSE -->

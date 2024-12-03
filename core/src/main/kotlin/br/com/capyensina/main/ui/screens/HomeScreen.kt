@@ -1,6 +1,8 @@
 package br.com.capyensina.main.ui.screens
 
 import br.com.capyensina.main.Main
+import br.com.capyensina.main.components.Clickable
+import br.com.capyensina.main.util.AssetManager
 import br.com.capyensina.main.util.ColorTheme
 import br.com.capyensina.main.util.MySpriteBatch
 import ktx.app.KtxScreen
@@ -9,6 +11,7 @@ import ktx.graphics.use
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
+import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.viewport.ExtendViewport
 
@@ -19,6 +22,11 @@ class HomeScreen(mainGame: Main) : KtxScreen {
 
     private val camera = OrthographicCamera()
     private val viewport = ExtendViewport(main.WORLD_WIDTH, main.WORLD_HEIGHT, camera)
+
+    private val image1 = Clickable(
+        AssetManager.closeButton,
+        Rectangle(0f , 0f, 100f, 100f)
+    )
 
 
     /* A camera precisa ser posicionada de modo que a tela inteira seja visivel, ou seja,
@@ -60,6 +68,8 @@ class HomeScreen(mainGame: Main) : KtxScreen {
             // Verifica cliques na Hud
             main.hudManager.input(worldPos)
 
+
+
             // Verifica cliques nos popups
             main.textBoxManager.input(worldPos)
         }
@@ -86,6 +96,8 @@ class HomeScreen(mainGame: Main) : KtxScreen {
 
             // Conteúdo da página aqui
             //it.draw(mainCharacterAnim.getKeyFrame(main.animationManager.elapsed), 20.0f, 20.0f)
+            it.draw(image1)
+
 
             // PopUP - deve ser desenhado por último, mas antes da HUD
             main.textBoxManager.draw(it)

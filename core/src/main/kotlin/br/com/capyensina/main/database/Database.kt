@@ -40,7 +40,8 @@ class Database(main: Main) {
     }
 
     fun getDatabase() : Array<User> {
-        val url = URL("https://capyensina-api-production.up.railway.app")
+        // url para acessar o banco de dados
+        val url = URL("https://capyensina-api-production.up.railway.app/ranking")
         val urlConnection = url.openConnection() as HttpURLConnection
         val content = urlConnection.inputStream.bufferedReader().readText()
 
