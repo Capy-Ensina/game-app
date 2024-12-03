@@ -22,6 +22,8 @@ class QuizQuestion(
     private val questionWidth = 900f
 
     private val textPosition = Vector2(430f, 2180f)
+    private val textSingleLineOffset = 50f
+    private val charactersNeededToUseOffset = 23
     private val textSpace = 310f
 
     private val selectedColor = ColorTheme.PEACH_YELLOW
@@ -71,6 +73,8 @@ class QuizQuestion(
         // DESENHAR FUNDOS
         batch.draw(questionBox)
         for ((index, answer) in answerBoxes.withIndex()) {
+            // essa aberração aqui em baixo é o que "pinta" a caixa de texto quando tá selecionada
+            // se precisar mudar de cor, muda pela variável selectedColor
             batch.draw(answer, if (answerTable.selected[index]) selectedColor else Color.WHITE)
         }
 
@@ -86,9 +90,15 @@ class QuizQuestion(
             layout.setText(customFontBold, answer, Color.BLACK, answerWidth,
                 -1,
                 true)
-            customFontBold.draw(batch, layout,
-                textPosition.x + answerTablePosition.x,
-                (textPosition.y - (textSpace * index)) + answerTablePosition.y)
+            if (answer.length > charactersNeededToUseOffset) { // sem offset
+                customFontBold.draw(batch, layout,
+                    textPosition.x + answerTablePosition.x,
+                    (textPosition.y - (textSpace * index)) + answerTablePosition.y)
+            } else { // com offset
+                customFontBold.draw(batch, layout,
+                    textPosition.x + answerTablePosition.x,
+                    (textPosition.y - (textSpace * index)) + answerTablePosition.y - textSingleLineOffset)
+            }
         }
     }
 

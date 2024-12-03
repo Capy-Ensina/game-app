@@ -63,7 +63,7 @@ class TextBoxManager(mainGame: Main) {
                 AssetManager.redButton,
                 Rectangle(200f, 1350f, 950f, 400f)
             ) {
-                TextManager.actualTextActivity = TextManager.financeLessonOne
+                TextManager.actualTextActivity = TextManager.debugLesson
                 mainGame.setScreen<TextScreen>()
                 moduleOneTextBox.isActive = false
               },

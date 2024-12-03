@@ -147,4 +147,71 @@ object QuizQuestions {
         )
     )
 
+    val debugQuestions = listOf(
+        QuizQuestion(
+            id = 1,
+            subject = "Naruto",
+            questionText = "Qual é o principal desejo de Naruto, segundo o texto?",
+            answerTable = QuizAnswerTable(
+                answerA = "M".repeat(18),
+                answerB = "M".repeat(15),
+                answerC = "<".repeat(25),
+                answerD = "Fazer uma quantidade grotesca, absurda e tremenda de amigos",
+                correctIndex = 1
+            ),
+            difficulty = 1
+        ),
+        QuizQuestion(
+            id = 1,
+            subject = "Naruto",
+            questionText = "Qual é o principal desejo de Naruto, segundo o texto?",
+            answerTable = QuizAnswerTable(
+                answerA = "Ser o mais forte da aldeia.",
+                answerB = "Ser respeitado.",
+                answerC = "Nunca mais chorar.",
+                answerD = "Fazer uma quantidade grotesca, absurda e tremenda de amigos",
+                correctIndex = 1
+            ),
+            difficulty = 1
+        ),
+        QuizQuestion(
+            id = 1,
+            subject = "Naruto",
+            questionText = "Qual é o principal desejo de Naruto, segundo o texto?",
+            answerTable = QuizAnswerTable(
+                answerA = "Ser o mais forte da aldeia.",
+                answerB = "Ser respeitado.",
+                answerC = "Nunca mais chorar.",
+                answerD = "Fazer uma quantidade grotesca, absurda e tremenda de amigos",
+                correctIndex = 1
+            ),
+            difficulty = 1
+        ),
+        QuizQuestion(
+            id = 1,
+            subject = "Naruto",
+            questionText = "Qual é o principal desejo de Naruto, segundo o texto?",
+            answerTable = QuizAnswerTable(
+                answerA = "Ser o mais forte da aldeia.",
+                answerB = "Ser respeitado.",
+                answerC = "Nunca mais chorar.",
+                answerD = "Fazer uma quantidade grotesca, absurda e tremenda de amigos",
+                correctIndex = 1
+            ),
+            difficulty = 1
+        ),
+        QuizQuestion(
+            id = 1,
+            subject = "Naruto",
+            questionText = "Qual é o principal desejo de Naruto, segundo o texto?",
+            answerTable = QuizAnswerTable(
+                answerA = "Ser o mais forte da aldeia.",
+                answerB = "Ser respeitado.",
+                answerC = "Nunca mais chorar.",
+                answerD = "Fazer uma quantidade grotesca, absurda e tremenda de amigos",
+                correctIndex = 1
+            ),
+            difficulty = 1
+        ),
+    )
 }
