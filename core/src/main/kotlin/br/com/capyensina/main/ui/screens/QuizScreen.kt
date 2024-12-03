@@ -3,25 +3,17 @@ package br.com.capyensina.main.ui.screens
 import br.com.capyensina.main.Main
 import br.com.capyensina.main.components.Clickable
 import br.com.capyensina.main.components.disposeSafely
-import br.com.capyensina.main.minigame.quiz.QuizManager
 import br.com.capyensina.main.util.AssetManager
 import br.com.capyensina.main.util.ColorTheme
 import br.com.capyensina.main.util.MySpriteBatch
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
-import com.badlogic.gdx.graphics.Texture
-import com.badlogic.gdx.graphics.g2d.BitmapFont
-import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.viewport.ExtendViewport
 import ktx.app.KtxScreen
 import ktx.assets.disposeSafely
-import ktx.assets.toInternalFile
 import ktx.graphics.use
 
 class QuizScreen (val main: Main) : KtxScreen {
@@ -70,9 +62,6 @@ class QuizScreen (val main: Main) : KtxScreen {
         if (Gdx.input.justTouched()) {
             // Transforma o click na tela em uma posição dentro do mundo
             val worldPos = viewport.unproject(Vector2(Gdx.input.x.toFloat(), Gdx.input.y.toFloat()))
-
-            // Verifica cliquesna Hud
-            main.hudManager.input(worldPos)
 
             // Verifica cliques nos popups
             main.textBoxManager.input(worldPos)

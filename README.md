@@ -62,6 +62,13 @@
 </details>
 <!-- END: Tabela de resumo -->
 
+<!-- Descrição de projeto -->
+## Descrição de projeto
+<a id="#desc"></a>
+Esse jogo foi desenvolvido como trabalho de conclusão de curso para o instituto proa.
+O Capy Ensina é um jogo de simuação, nele você aprende e aplica métodos de planejamento 
+financeiro, aprende sobre economia e investimentos.
+
 <!-- SOBRE O PROA -->
 ## Sobre o Proa
 <a id="#sobre-o-proa"></a>
@@ -71,16 +78,13 @@ O Instituto PROA nasceu em 2007 com o objetivo de capacitar e inserir jovens de 
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 
-<!-- Descrição de projeto -->
-## Descrição de projeto
-<a id="#desc"></a>
-
-
 <!-- Funcionalidades -->
 #### Funcionalidades
 
-- **exemplo** blablalba
-
+- **Textos Educativos** Dentro do menu de matérias, você terá as opções de Finanças, Economia e Investimentos;
+- **Minigames** Sempre que terminar um texto educativo, você será direcionado para um minigame;
+- **Configurações** É possível alterar opções de sons :D
+ 
 <!-- END: Funcionalidades -->
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
@@ -89,16 +93,16 @@ O Instituto PROA nasceu em 2007 com o objetivo de capacitar e inserir jovens de 
 <!-- Tecnologias -->
 ## Tecnologias Utilizadas
 
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=kotlin,androidstudio,discord,github,nodejs,stackoverflow,idea,gradle,java"/>
+  </a>
+</p>
+
+- Framework: LibKTX (fork da LibGDX para Kotlin)
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 <!-- END: Tecnologias -->
-
-<!-- Como Executar o Projeto -->
-## Como Executar o Projeto
-
-
-<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
-<!-- END: Como Executar o Projeto -->
 
 <!-- Capturas de tela -->
 ## Capturas de tela
@@ -107,15 +111,28 @@ O Instituto PROA nasceu em 2007 com o objetivo de capacitar e inserir jovens de 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
 <!-- END: Capturas de tela -->
 
-<!-- Desafios Implementados -->
-## Desafios Implementados
-
-
-<p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>
-<!-- END: Desafios Implementados -->
-
 <!-- Futuras Melhorias -->
 ## Futuras Melhorias
+### Médio Prazo
+
+- [ ] Adição de novas matérias: Finanças I, II, III
+- [ ] Adição de novas matérias: Economia I, II, III
+- [ ] Adição de novas matérias: Investimentos I, II, III
+- [ ] Mudança de cores
+- [ ] Mudançã de fonte
+- [ ] Customização de casa
+- [ ] Customização de personagem
+- [ ] Loja de itens para casa e personagem
+
+
+### Longo Prazo
+
+- [ ] Multiplayer
+- [ ] Salvar progresso em nuvem
+- [ ] Minigames em equipe
+- [ ] Sistema de empresas (Guilda)
+- [ ] Trabalhos em empresas
+
 
 
 <p align="right">(<a href="#readme-top">voltar ao topo</a>)</p>

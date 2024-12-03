@@ -85,7 +85,7 @@ class TextBoxManager(mainGame: Main) {
 
         moduleOneTextBox.textContent = arrayOf(
             Textable(
-                "MÓDULO I",
+                "MATÉRIAS",
                 AssetManager.getFont(),
                 Vector2(400f, 1790f)
             ),
@@ -97,7 +97,7 @@ class TextBoxManager(mainGame: Main) {
             Textable(
                 "Economia I",
                 AssetManager.getFontTextBold(),
-                Vector2(500f, 1350f)
+                Vector2(500f, 1335f)
             ),
             Textable(
                 "Investimento I",
@@ -141,7 +141,7 @@ class TextBoxManager(mainGame: Main) {
     fun updateScoreText() {
         scoreTextBox.textContent = arrayOf(
             Textable(
-                "Parabéns!",
+                "Fim do Quiz!",
                 AssetManager.getFont(),
                 Vector2(400f, 2030f)
             ),
@@ -151,7 +151,7 @@ class TextBoxManager(mainGame: Main) {
                 Vector2(240f, 1700f)
             ),
             Textable(
-                "Tempo: ${main.playerScoreManager.lastTime}",
+                "Tempo: ${main.playerScoreManager.lastTime}s",
                 AssetManager.getFont(),
                 Vector2(240f, 1600f)
             )
