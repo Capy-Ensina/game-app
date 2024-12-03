@@ -2,6 +2,7 @@ package br.com.capyensina.main
 
 import br.com.capyensina.main.minigame.PlayerScoreManager
 import br.com.capyensina.main.minigame.quiz.QuizManager
+import br.com.capyensina.main.sound.AudioManager
 import br.com.capyensina.main.ui.AnimationManager
 import br.com.capyensina.main.ui.HudManager
 import br.com.capyensina.main.ui.TextBoxManager
@@ -34,6 +35,9 @@ class Main : KtxGame<KtxScreen>() {
     lateinit var animationManager: AnimationManager
         private set
     lateinit var textInputListener: MyTextInputListener
+        private set
+    lateinit var audioManager: AudioManager
+        private set
     //lateinit var database: Database
         //private set
 
@@ -48,6 +52,7 @@ class Main : KtxGame<KtxScreen>() {
         quizManager = QuizManager()
         animationManager = AnimationManager(this)
         textInputListener = MyTextInputListener(this)
+        audioManager = AudioManager(this)
         //database = Database(this)
 
         // Initialize Screens

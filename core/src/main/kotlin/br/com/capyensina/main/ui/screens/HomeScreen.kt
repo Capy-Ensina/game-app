@@ -42,6 +42,7 @@ class HomeScreen(mainGame: Main) : KtxScreen {
     }
 
     override fun render(delta: Float) {
+        main.audioManager.startMusic()
         // Atualiza os valores da câmera, e manda o batch e o shapeRenderer usarem ela
         camera.update()
         batch.projectionMatrix = camera.combined
