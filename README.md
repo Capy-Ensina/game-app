@@ -13,8 +13,8 @@
   <h2 align="center">Capy Ensina</h2>
 
   <p align="center">
-    Este repositório representa as atividades que desenvolvi enquanto estava estudando no proa!
-    <br/>
+    O Capy Ensina é um jogo de simualção onde você aplica conhecimentos financeiros na prática.
+    </br>
   </p>
 </div>
 <!-- END: PROJECT LOGO -->
