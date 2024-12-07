@@ -19,6 +19,7 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport
 class HomeScreen(mainGame: Main) : KtxScreen {
     private val batch = MySpriteBatch()
     private val main = mainGame
+    private val customFont = AssetManager.getFontTextBold()
 
     private val camera = OrthographicCamera()
     private val viewport = ExtendViewport(main.WORLD_WIDTH, main.WORLD_HEIGHT, camera)
@@ -107,6 +108,12 @@ class HomeScreen(mainGame: Main) : KtxScreen {
 
             // HUD
             main.hudManager.draw(it)
+
+            customFont.draw(it, "1000 C$", 115f, 2900f)
+
+            customFont.draw(it, "Mês 1", 500f, 2910f)
+
+            customFont.draw(it, "Nv 1", 820f, 2910f)
         }
     }
 }
