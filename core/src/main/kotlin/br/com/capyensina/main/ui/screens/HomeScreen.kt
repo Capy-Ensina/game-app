@@ -48,7 +48,7 @@ class HomeScreen(mainGame: Main) : KtxScreen {
         Rectangle(600f, 325f, 1200f, 1200f)
     )
 
-    // Animação do personagem
+    // Animação da personagem
     private val violetFrameOne = Texture("characters/framesviolettaidle/violettaframesum.png".toInternalFile())
     private val violetFrameTwo = Texture("characters/framesviolettaidle/violettaframesdois.png".toInternalFile())
 
@@ -167,11 +167,11 @@ class HomeScreen(mainGame: Main) : KtxScreen {
             // HUD
             main.hudManager.draw(it)
 
-            customFont.draw(it, "1000 C$", 115f, 2900f)
+            customFont.draw(it, "1000 C$", 115f, 2895f)
 
-            customFont.draw(it, "Mês 1", 500f, 2900f)
+            customFont.draw(it, "Mês 1", 500f, 2895f)
 
-            customFont.draw(it, "Nv 1", 820f, 2900f)
+            customFont.draw(it, "Nv 1", 820f, 2895f)
         }
     }
 }

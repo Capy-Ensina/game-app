@@ -23,11 +23,11 @@ class HudManager(mainGame: Main) {
     //todo imagens e botao da hud superior
     private val capicoinInfo = Clickable(
         AssetManager.capicoinInfo,
-        Rectangle(20f, main.WORLD_HEIGHT - 250f, 400f, 250f)
+        Rectangle(20f, main.WORLD_HEIGHT - 255f, 400f, 250f)
     ) { }
     private val hudInfoOne = Clickable(
         AssetManager.hudInfo,
-        Rectangle(200f, main.WORLD_HEIGHT - 610f, 1000f, 1000f)
+        Rectangle(170f, main.WORLD_HEIGHT - 610f, 1085f, 1000f)
     ) { }
     private val hudInfoTwo = Clickable(
         AssetManager.hudInfo,
