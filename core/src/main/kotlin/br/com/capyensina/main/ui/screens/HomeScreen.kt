@@ -11,9 +11,15 @@ import ktx.graphics.use
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
+import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.viewport.ExtendViewport
+import ktx.assets.toInternalFile
+import com.badlogic.gdx.graphics.g2d.Animation
+import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.g2d.TextureRegion
+import com.badlogic.gdx.utils.ScreenUtils
 
 
 class HomeScreen(mainGame: Main) : KtxScreen {
@@ -24,10 +30,36 @@ class HomeScreen(mainGame: Main) : KtxScreen {
     private val camera = OrthographicCamera()
     private val viewport = ExtendViewport(main.WORLD_WIDTH, main.WORLD_HEIGHT, camera)
 
-    private val image1 = Clickable(
-        AssetManager.closeButton,
-        Rectangle(0f , 0f, 100f, 100f)
+
+    private val bookShelf = Clickable(
+        AssetManager.bookShelf,
+        Rectangle(505f, 1000f, 1000f, 1000f)
     )
+
+    private val desk = Clickable(
+        AssetManager.desk,
+        Rectangle(730f, 300f, 600f, 600f)
+    )
+
+    private val computer = Clickable(
+        AssetManager.computer,
+        Rectangle(600f, 325f, 1200f, 1200f)
+    )
+
+    // Animação do personagem
+    private val violetFrameOne = Texture("characters/framesviolettaidle/violettaframesum.png".toInternalFile())
+    private val violetFrameTwo = Texture("characters/framesviolettaidle/violettaframesdois.png".toInternalFile())
+
+    private val violetAnimation = Animation<TextureRegion>(
+        0.5f, // Duração de cada frame (em segundos)
+        TextureRegion(violetFrameOne),
+        TextureRegion(violetFrameTwo)
+    ).apply {
+        playMode = Animation.PlayMode.LOOP // A animação irá repetir
+    }
+
+    private var stateTime = 0f // Tempo acumulado para a animação
+
 
 
     /* A camera precisa ser posicionada de modo que a tela inteira seja visivel, ou seja,
@@ -48,6 +80,8 @@ class HomeScreen(mainGame: Main) : KtxScreen {
         camera.update()
         batch.projectionMatrix = camera.combined
 
+        stateTime += delta // Atualizar o tempo da animação
+
         input()
         logic()
         draw()
@@ -60,6 +94,8 @@ class HomeScreen(mainGame: Main) : KtxScreen {
 
     override fun dispose() {
         batch.disposeSafely()
+        violetFrameOne.dispose()
+        violetFrameTwo.dispose()
     }
 
     private fun input(){
@@ -98,10 +134,13 @@ class HomeScreen(mainGame: Main) : KtxScreen {
 
             // Conteúdo da página aqui
             //it.draw(mainCharacterAnim.getKeyFrame(main.animationManager.elapsed), 20.0f, 20.0f)
-            it.draw(image1)
 
+            it.draw(bookShelf)
+            it.draw(desk)
+            it.draw(computer)
 
-
+            val currentFrame = violetAnimation.getKeyFrame(stateTime)
+            it.draw(currentFrame, 80f, 500f, 900f, 900f)
 
             // PopUP - deve ser desenhado por último, mas antes da HUD
             main.textBoxManager.draw(it)

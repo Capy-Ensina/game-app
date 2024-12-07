@@ -10,8 +10,10 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.OrthographicCamera
 import com.badlogic.gdx.graphics.Texture
+import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Rectangle
 import com.badlogic.gdx.math.Vector2
@@ -27,6 +29,25 @@ class SplashScreen (mainGame: Main) : KtxScreen {
     private val customFont = AssetManager.getFont()
     private val camera = OrthographicCamera()
     private val viewport = ExtendViewport(main.WORLD_WIDTH, main.WORLD_HEIGHT, camera)
+
+
+    // frames da animacao
+    private val loadingOne = Texture("loadingframes/loadingone.png".toInternalFile())
+    private val loadingTwo = Texture("loadingframes/loadingtwo.png".toInternalFile())
+    private val loadingThree = Texture("loadingframes/loadingthree.png".toInternalFile())
+    private val loadingFour = Texture("loadingframes/loadingfour.png".toInternalFile())
+
+    private val loadingAnimation = Animation<TextureRegion>(
+        0.5f, // Duração de cada frame (em segundos)
+        TextureRegion(loadingOne),
+        TextureRegion(loadingTwo),
+        TextureRegion(loadingThree),
+        TextureRegion(loadingFour)
+    ).apply {
+        playMode = Animation.PlayMode.LOOP // A animação irá repetir
+    }
+
+    private var stateTime = 0f // Tempo acumulado para a animação
 
 
     // Botões
@@ -46,10 +67,10 @@ class SplashScreen (mainGame: Main) : KtxScreen {
         AssetManager.capicoinIcon,
         Rectangle(300f, 1200f, 700f, 700f)
     )
-    private val loadingBar = Clickable(
+    /*private val loadingBar = Clickable(
         AssetManager.loadingOneIcon,
         Rectangle(200f, 920f, 900f, 400f)
-    )
+    )*/
 
     private var isLoading = true
 
@@ -66,6 +87,8 @@ class SplashScreen (mainGame: Main) : KtxScreen {
         camera.update()
         batch.projectionMatrix = camera.combined
 
+        stateTime += delta // Atualizar o tempo da animação
+
         input()
         logic()
         draw()
@@ -76,7 +99,7 @@ class SplashScreen (mainGame: Main) : KtxScreen {
     }
 
     override fun dispose() {
-        loadingBar.disposeSafely()
+        //loadingBar.disposeSafely()
         capicoin.disposeSafely()
         startButton.disposeSafely()
     }
@@ -114,11 +137,16 @@ class SplashScreen (mainGame: Main) : KtxScreen {
             it.draw(capicoin)
 
             if (isLoading){
-                it.draw(loadingBar)
-                customFont.draw(it, "CARREGANDO...", 300f, 980f)
+                val currentFrame = loadingAnimation.getKeyFrame(stateTime)
+                it.draw(currentFrame, 180f, 900f, 1000f, 300f)
+                customFont.draw(it, "CARREGANDO", 330f, 900f)
             } else {
                 it.draw(startButton)
             }
+
+
+
+
         }
     }
 }

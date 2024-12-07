@@ -17,7 +17,7 @@ object AssetManager {
 
     // Icons
     val capicoinIcon = Texture("capicoin.png".toInternalFile())
-    val loadingOneIcon = Texture("loadingum.png".toInternalFile())
+    //val loadingOneIcon = Texture("loadingum.png".toInternalFile())
     val starIcon = Texture("stars/estrela.png".toInternalFile())
 
     // Buttons
@@ -61,6 +61,13 @@ object AssetManager {
     val answerB = Texture("button/blueanswerB.png".toInternalFile())
     val answerC = Texture("button/blueanswerC.png".toInternalFile())
     val answerD = Texture("button/blueanswerD.png".toInternalFile())
+
+    //HOME
+     val bookShelf = Texture("home/estante.png".toInternalFile())
+     val desk = Texture("home/mesas.png".toInternalFile())
+     val computer = Texture("home/pc.png".toInternalFile())
+
+
 
     // Fontes TITULOS MAIS IMPORTANTES
     fun getFont(): BitmapFont {
