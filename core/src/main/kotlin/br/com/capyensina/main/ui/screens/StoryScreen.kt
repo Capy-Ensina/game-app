@@ -98,13 +98,13 @@ class StoryScreen  (mainGame: Main) : KtxScreen {
             it.draw(skipButton)
 
             // TODO agrupar a criação da TextBox com o texto nela contido
-            customFont.draw(it, "A história", 400f, 2050f)
+            customFont.draw(it, "A história", 380f, 2050f)
 
 
-            val text = "Violetta perdeu tudo e agora vive de aluguel. Ajude-a a organizar suas finanças para pagar as contas em dia, melhorar seu lar e ter mais qualidade de vida."
+            val text = "Violetta, de 19 anos, concluiu o ensino médio com apoio do pai, mas enfrenta dificuldades. Trabalhou seis meses em escala 6x1 num mercado até ser demitida. Sem saber gerenciar suas finanças, encontra uma mágica capivara falante que decide ajudá-la."
 
-            val textWidth = 900f
-            val x = 280f
+            val textWidth = 1030f
+            val x = 200f
             val y = 1920f
 
             layout.setText(customFontBold, text, Color.BLACK, textWidth, -1, true)
