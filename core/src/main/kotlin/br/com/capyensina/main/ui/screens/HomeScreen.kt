@@ -20,6 +20,8 @@ import com.badlogic.gdx.graphics.g2d.Animation
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.utils.ScreenUtils
+import com.badlogic.gdx.audio.Music
+
 
 
 class HomeScreen(mainGame: Main) : KtxScreen {
@@ -60,6 +62,22 @@ class HomeScreen(mainGame: Main) : KtxScreen {
 
     private var stateTime = 0f // Tempo acumulado para a animação
 
+   // BGM -
+    private lateinit var backgroundMusic: Music
+    init {
+        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/capyEnsinaTheme.mp3"))
+        backgroundMusic.isLooping = true
+        backgroundMusic.volume = 0.5f
+    }
+
+    override fun show() {
+        backgroundMusic.play() // Iniciar a música ao exibir a tela
+    }
+
+    override fun hide() {
+        backgroundMusic.stop() // Parar a música ao ocultar a tela
+    }
+
 
 
     /* A camera precisa ser posicionada de modo que a tela inteira seja visivel, ou seja,
@@ -96,6 +114,7 @@ class HomeScreen(mainGame: Main) : KtxScreen {
         batch.disposeSafely()
         violetFrameOne.dispose()
         violetFrameTwo.dispose()
+        backgroundMusic.dispose()
     }
 
     private fun input(){
@@ -150,9 +169,9 @@ class HomeScreen(mainGame: Main) : KtxScreen {
 
             customFont.draw(it, "1000 C$", 115f, 2900f)
 
-            customFont.draw(it, "Mês 1", 500f, 2910f)
+            customFont.draw(it, "Mês 1", 500f, 2900f)
 
-            customFont.draw(it, "Nv 1", 820f, 2910f)
+            customFont.draw(it, "Nv 1", 820f, 2900f)
         }
     }
 }

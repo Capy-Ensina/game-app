@@ -27,11 +27,11 @@ class HudManager(mainGame: Main) {
     ) { }
     private val hudInfoOne = Clickable(
         AssetManager.hudInfo,
-        Rectangle(200f, main.WORLD_HEIGHT - 600f, 1000f, 1000f)
+        Rectangle(200f, main.WORLD_HEIGHT - 610f, 1000f, 1000f)
     ) { }
     private val hudInfoTwo = Clickable(
         AssetManager.hudInfo,
-        Rectangle(500f, main.WORLD_HEIGHT - 600f, 1000f, 1000f)
+        Rectangle(500f, main.WORLD_HEIGHT - 610f, 1000f, 1000f)
     ) { }
 
     private val configButton = Clickable(
