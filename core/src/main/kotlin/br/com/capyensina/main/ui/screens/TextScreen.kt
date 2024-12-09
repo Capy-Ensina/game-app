@@ -45,6 +45,8 @@ class TextScreen(mainGame: Main) : KtxScreen {
     private val camera = OrthographicCamera()
     private val viewport = ExtendViewport(main.WORLD_WIDTH, main.WORLD_HEIGHT, camera)
 
+
+
     // Retângulos
     private val hudTopColor = ColorTheme.ORANGE
 

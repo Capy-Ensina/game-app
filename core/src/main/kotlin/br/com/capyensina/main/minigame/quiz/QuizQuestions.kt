@@ -3,67 +3,67 @@ package br.com.capyensina.main.minigame.quiz
 object QuizQuestions {
 
     val financeQuestions = listOf(
-        QuizQuestion(
+        QuizQuestion( //atualizada - elas tem no maximo 35 caracteres
             id = 1,
             subject = "finanças",
-            questionText = "Por que educação financeira é importante?",
+            questionText = "Título de Renda Fixa isento de IR:",
             answerTable = QuizAnswerTable(
-                answerA = "Porque capivaras gostam de dinheiro.",
-                answerB = "Para aprender a gerir o próprio dinheiro.",
-                answerC = "Porque capivaras são capitalistas.",
-                answerD = "Porque o apocapivaras está chegando.",
-                correctIndex = 1
+                answerA = "CDB.",
+                answerB = "Debêntures comuns.",
+                answerC = "LCI (Letra de Crédito Imobiliário).",
+                answerD = "Tesouro Prefixado.",
+                correctIndex = 3
             ),
             difficulty = 1
-        ),QuizQuestion(
+        ),QuizQuestion( // atualizada
             id = 2,
             subject = "finanças",
-            questionText = "Qual é a primeira etapa do planejamento financeiro?",
+            questionText = "Título emitido pelo governo:",
             answerTable = QuizAnswerTable(
-                answerA = "Definir objetivos financeiros.",
-                answerB = "Investir em ações de risco.",
-                answerC = "Comprar uma casa.",
-                answerD = "Gastar todo o salário.",
-                correctIndex = 0
+                answerA = "CDB (Certificado de Depósito Bancário).",
+                answerB = "Tesouro Selic.",
+                answerC = " LCI (Letra de Crédito Imobiliário).",
+                answerD = "Debêntures.",
+                correctIndex = 2
             ),
             difficulty = 1
-        ),QuizQuestion(
+        ),QuizQuestion( //atualizada
             id = 3,
             subject = "finanças",
-            questionText = "O que significa criar um orçamento pessoal?",
+            questionText = "Característica de Renda Fixa:",
             answerTable = QuizAnswerTable(
-                answerA = "Registrar e planejar receitas e despesas.",
-                answerB = "Investir em criptomoedas.",
-                answerC = "Evitar qualquer tipo de dívida.",
-                answerD = "Gastar sem se preocupar.",
-                correctIndex = 0
+                answerA = "Rentabilidade fixa.",
+                answerB = "Risco maior que ações.",
+                answerC = "Rentabilidade variável.",
+                answerD = "Sem liquidez diária.",
+                correctIndex = 1
             ),
             difficulty = 1
-        ),QuizQuestion(
+        ),QuizQuestion(  //atualizada
             id = 4,
             subject = "finanças",
-            questionText = "Qual é a importância de um fundo de emergência?",
+            questionText = "Com garantia do FGC:",
             answerTable = QuizAnswerTable(
-                answerA = "Permite gastar mais em lazer.",
-                answerB = "Ajuda a lidar com imprevistos financeiros.",
-                answerC = "Serve para aumentar o limite do cartão de crédito.",
-                answerD = "É desnecessário se você já tem dívidas.",
-                correctIndex = 1
+                answerA = "Tesouro Direto.",
+                answerB = "Debêntures incentivadas.",
+                answerC = "CDB (Certificado de Depósito Bancário).",
+                answerD = "Ações.",
+                correctIndex = 3
             ),
             difficulty = 1
-        ),QuizQuestion(
+        ),QuizQuestion( // atualizada
             id = 5,
             subject = "finanças",
-            questionText = "O que é um objetivo financeiro SMART?",
+            questionText = "Vantagem do CDB com liquidez:",
             answerTable = QuizAnswerTable(
-                answerA = "Objetivo baseado em sorte.",
-                answerB = "específico, mensurável, atingível, relevante e com prazo.",
-                answerC = "Objetivo que depende de empréstimos.",
-                answerD = "Objetivo focado exclusivamente em investimentos de risco.",
-                correctIndex = 1
+                answerA = "Taxas superiores.",
+                answerB = "Resgate sem perda.",
+                answerC = "Isenção de Imposto de Renda.",
+                answerD = "Proteção contra a inflação.",
+                correctIndex = 2
             ),
             difficulty = 2
-        ),QuizQuestion(
+        ),QuizQuestion( // apagar a sexta
             id = 6,
             subject = "finanças",
             questionText = "Qual a principal vantagem de controlar despesas mensais?",
@@ -80,136 +80,136 @@ object QuizQuestions {
 
     // todo trocar esse placeholder
     val economyQuestions = listOf(
-        QuizQuestion(
+        QuizQuestion( // atualizada
             id = 1,
-            subject = "Naruto",
-            questionText = "Qual é o principal desejo de Naruto, segundo o texto?",
+            subject = "Economia",
+            questionText = "Característica de Renda Variável:",
             answerTable = QuizAnswerTable(
-                answerA = "Ser o mais forte da aldeia.",
-                answerB = "Ser respeitado.",
-                answerC = "Nunca mais chorar.",
-                answerD = "Fazer muitos amigos.",
-                correctIndex = 1
-            ),
-            difficulty = 1
-        ),
-        QuizQuestion(
-            id = 2,
-            subject = "Naruto",
-            questionText = "O que caracteriza a atitude de Naruto diante das dificuldades?",
-            answerTable = QuizAnswerTable(
-                answerA = "Ele chora e fica zangado frequentemente.",
-                answerB = "Ele desiste facilmente.",
-                answerC = "Ele está sempre disposto a melhorar.",
-                answerD = "Ele evita lidar com problemas.",
+                answerA = "Rentabilidade fixa.",
+                answerB = "Alta volatilidade.",
+                answerC = "Garantia acima da inflação.",
+                answerD = "Sem taxas de corretagem.",
                 correctIndex = 2
             ),
             difficulty = 1
         ),
-        QuizQuestion(
+        QuizQuestion( // atualizada
+            id = 2,
+            subject = "Economia",
+            questionText = "Exemplo de Renda Variável:",
+            answerTable = QuizAnswerTable(
+                answerA = "CDB (Certificado de Depósito Bancário).",
+                answerB = "Tesouro Selic.",
+                answerC = "Ações.",
+                answerD = "LCI (Letra de Crédito Imobiliário).",
+                correctIndex = 3
+            ),
+            difficulty = 1
+        ),
+        QuizQuestion( // atualizada
             id = 3,
-            subject = "Naruto",
-            questionText = "Qual é o contexto familiar de Naruto mencionado no texto?",
+            subject = "Economia",
+            questionText = "Significado de 'dividendo':",
             answerTable = QuizAnswerTable(
-                answerA = "Ele foi criado por seus pais.",
-                answerB = "Ele cresceu sem pai e sem conhecer sua mãe.",
-                answerC = "Ele tem muitos amigos desde a infância.",
-                answerD = "Ele viveu em outra aldeia.",
-                correctIndex = 1
+                answerA = "Taxa de corretagem.",
+                answerB = "Lucro pago ao acionista.",
+                answerC = "Garantia pelo FGC.",
+                answerD = "Rentabilidade fixa,",
+                correctIndex = 2
             ),
             difficulty = 1
         ),
-        QuizQuestion(
+        QuizQuestion( // atualizada
             id = 4,
-            subject = "Naruto",
-            questionText = "Por que Naruto decidiu agir em vez de continuar chorando?",
+            subject = "Economia",
+            questionText = "Ganhos em ações:",
             answerTable = QuizAnswerTable(
-                answerA = "Porque ele quer impressionar seus amigos.",
-                answerB = "Porque ele se cansou de chorar e decidiu fazer algo a respeito.",
-                answerC = "Porque ele foi forçado pela aldeia.",
-                answerD = "Porque ele deseja ser o líder imediatamente.",
-                correctIndex = 1
+                answerA = "Apenas dividendos.",
+                answerB = "Apenas valorização.",
+                answerC = "Dividendos e valorização.",
+                answerD = "Compra no mercado primário.",
+                correctIndex = 3
             ),
             difficulty = 1
         ),
-        QuizQuestion(
+        QuizQuestion( // atualizada
             id = 5,
-            subject = "Naruto",
-            questionText = "O que Naruto estaria disposto a fazer para alcançar seu sonho?",
+            subject = "Economia",
+            questionText = "Risco de ações em recuperação:",
             answerTable = QuizAnswerTable(
-                answerA = "Desistir facilmente.",
-                answerB = "Dar a vida sem hesitar.",
-                answerC = "Isolar-se da aldeia.",
-                answerD = "Esconder suas emoções.",
-                correctIndex = 1
+                answerA = "Falta de liquidez.",
+                answerB = "Fim dos dividendos.",
+                answerC = "Perda total.",
+                answerD = "Altas taxas.",
+                correctIndex = 3
             ),
             difficulty = 2
         )
     )
 
     val debugQuestions = listOf(
-        QuizQuestion(
+        QuizQuestion( // atualizada
             id = 1,
-            subject = "Naruto",
-            questionText = "Qual é o principal desejo de Naruto, segundo o texto?",
+            subject = "Investimento",
+            questionText = "Rendimento principal de FIIs:",
             answerTable = QuizAnswerTable(
-                answerA = "M".repeat(18),
-                answerB = "M".repeat(15),
-                answerC = "<".repeat(25),
-                answerD = "Fazer uma quantidade grotesca, absurda e tremenda de amigos",
+                answerA = "Valorização das cotas.",
+                answerB = "Aluguéis.",
+                answerC = "Juros do governo.",
+                answerD = "Rendimentos fixos.",
                 correctIndex = 1
             ),
             difficulty = 1
         ),
-        QuizQuestion(
-            id = 1,
-            subject = "Naruto",
-            questionText = "Qual é o principal desejo de Naruto, segundo o texto?",
+        QuizQuestion( // atualizada
+            id = 2,
+            subject = "Investimento",
+            questionText = "Vantagem dos FIIs:",
             answerTable = QuizAnswerTable(
-                answerA = "Ser o mais forte da aldeia.",
-                answerB = "Ser respeitado.",
-                answerC = "Nunca mais chorar.",
-                answerD = "Fazer uma quantidade grotesca, absurda e tremenda de amigos",
-                correctIndex = 1
+                answerA = "Proteção do mercado.",
+                answerB = "Sem custos de imóvel.",
+                answerC = "Retorno fixo mensal.",
+                answerD = "Controle administrativo.",
+                correctIndex = 2
+            ),
+            difficulty = 1
+        ),
+        QuizQuestion( // atualizada
+            id = 3,
+            subject = "Investimento",
+            questionText = "Prazo mínimo da poupança:",
+            answerTable = QuizAnswerTable(
+                answerA = "15 dias.",
+                answerB = "30 dias.",
+                answerC = "90 dias.",
+                answerD = "180 dias.",
+                correctIndex = 2
+            ),
+            difficulty = 1
+        ),
+        QuizQuestion( // atualizada
+            id = 4,
+            subject = "Investimento",
+            questionText = "Vantagem da poupança:",
+            answerTable = QuizAnswerTable(
+                answerA = "Alta rentabilidade.",
+                answerB = "Isenção de IR.",
+                answerC = "Garantia ilimitada.",
+                answerD = "Proteção da inflação.",
+                correctIndex = 2
             ),
             difficulty = 1
         ),
         QuizQuestion(
-            id = 1,
-            subject = "Naruto",
-            questionText = "Qual é o principal desejo de Naruto, segundo o texto?",
+            id = 5,
+            subject = "Investimento",
+            questionText = "Quem garante a poupança:",
             answerTable = QuizAnswerTable(
-                answerA = "Ser o mais forte da aldeia.",
-                answerB = "Ser respeitado.",
-                answerC = "Nunca mais chorar.",
-                answerD = "Fazer uma quantidade grotesca, absurda e tremenda de amigos",
-                correctIndex = 1
-            ),
-            difficulty = 1
-        ),
-        QuizQuestion(
-            id = 1,
-            subject = "Naruto",
-            questionText = "Qual é o principal desejo de Naruto, segundo o texto?",
-            answerTable = QuizAnswerTable(
-                answerA = "Ser o mais forte da aldeia.",
-                answerB = "Ser respeitado.",
-                answerC = "Nunca mais chorar.",
-                answerD = "Fazer uma quantidade grotesca, absurda e tremenda de amigos",
-                correctIndex = 1
-            ),
-            difficulty = 1
-        ),
-        QuizQuestion(
-            id = 1,
-            subject = "Naruto",
-            questionText = "Qual é o principal desejo de Naruto, segundo o texto?",
-            answerTable = QuizAnswerTable(
-                answerA = "Ser o mais forte da aldeia.",
-                answerB = "Ser respeitado.",
-                answerC = "Nunca mais chorar.",
-                answerD = "Fazer uma quantidade grotesca, absurda e tremenda de amigos",
-                correctIndex = 1
+                answerA = "O Fundo Monetário Internacional (FMI).",
+                answerB = "O Fundo Garantidor de Créditos (FGC).",
+                answerC = "O Banco Central Europeu.",
+                answerD = " A corretora.",
+                correctIndex = 2
             ),
             difficulty = 1
         ),

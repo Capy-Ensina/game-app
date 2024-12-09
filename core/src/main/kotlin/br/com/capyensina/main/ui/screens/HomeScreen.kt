@@ -76,6 +76,7 @@ class HomeScreen(mainGame: Main) : KtxScreen {
 
     override fun hide() {
         backgroundMusic.stop() // Parar a música ao ocultar a tela
+
     }
 
 
