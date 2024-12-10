@@ -78,7 +78,6 @@ object QuizQuestions {
         )
     )
 
-    // todo trocar esse placeholder
     val economyQuestions = listOf(
         QuizQuestion( // atualizada
             id = 1,

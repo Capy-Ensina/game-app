@@ -62,25 +62,6 @@ class HomeScreen(mainGame: Main) : KtxScreen {
 
     private var stateTime = 0f // Tempo acumulado para a animação
 
-   // BGM -
-    private lateinit var backgroundMusic: Music
-    init {
-        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("music/capyEnsinaTheme.mp3"))
-        backgroundMusic.isLooping = true
-        backgroundMusic.volume = 0.5f
-    }
-
-    override fun show() {
-        backgroundMusic.play() // Iniciar a música ao exibir a tela
-    }
-
-    override fun hide() {
-        backgroundMusic.stop() // Parar a música ao ocultar a tela
-
-    }
-
-
-
     /* A camera precisa ser posicionada de modo que a tela inteira seja visivel, ou seja,
      * no meio da viewport
      */
@@ -94,7 +75,6 @@ class HomeScreen(mainGame: Main) : KtxScreen {
     }
 
     override fun render(delta: Float) {
-        main.audioManager.startMusic()
         // Atualiza os valores da câmera, e manda o batch e o shapeRenderer usarem ela
         camera.update()
         batch.projectionMatrix = camera.combined
@@ -115,7 +95,6 @@ class HomeScreen(mainGame: Main) : KtxScreen {
         batch.disposeSafely()
         violetFrameOne.dispose()
         violetFrameTwo.dispose()
-        backgroundMusic.dispose()
     }
 
     private fun input(){
@@ -125,8 +104,6 @@ class HomeScreen(mainGame: Main) : KtxScreen {
 
             // Verifica cliques na Hud
             main.hudManager.input(worldPos)
-
-
 
             // Verifica cliques nos popups
             main.textBoxManager.input(worldPos)

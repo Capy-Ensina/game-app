@@ -83,6 +83,10 @@ class SplashScreen (mainGame: Main) : KtxScreen {
         viewport.apply()
     }
 
+    override fun show() {
+        main.audioManager.startMusic()
+    }
+
     override fun render(delta: Float) {
         camera.update()
         batch.projectionMatrix = camera.combined

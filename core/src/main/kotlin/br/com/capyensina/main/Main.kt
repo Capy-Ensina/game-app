@@ -15,6 +15,7 @@ import br.com.capyensina.main.ui.screens.StoryScreen
 import br.com.capyensina.main.ui.screens.TextScreen
 import br.com.capyensina.main.ui.screens.debug.DebugScreen
 import br.com.capyensina.main.util.MyTextInputListener
+import com.badlogic.gdx.Gdx
 import ktx.app.KtxGame
 import ktx.app.KtxScreen
 import ktx.async.KtxAsync
@@ -78,5 +79,7 @@ class Main : KtxGame<KtxScreen>() {
     private fun logic(){
         animationManager.logic()
         quizManager.logic()
+
+        if (Gdx.input.justTouched()) this.audioManager.playClick()
     }
 }

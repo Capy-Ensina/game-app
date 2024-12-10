@@ -138,8 +138,12 @@ class TextBoxManager(mainGame: Main) {
     private fun changeConfigTextBoxSoundIcon(index: Int){
         if (main.textBoxManager.configTextBox.content[index].texture == AssetManager.soundOn){
             main.textBoxManager.configTextBox.content[index].texture = AssetManager.soundOff
+            if (index == 0) main.audioManager.isSoundOn = false
+            else if (index == 1) main.audioManager.stopMusic()
         } else  {
             main.textBoxManager.configTextBox.content[index].texture = AssetManager.soundOn
+            if (index == 0) main.audioManager.isSoundOn = true
+            else if (index == 1) main.audioManager.startMusic()
         }
 
     }
