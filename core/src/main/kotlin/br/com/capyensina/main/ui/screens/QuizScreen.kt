@@ -100,7 +100,7 @@ class QuizScreen (val main: Main) : KtxScreen {
     private fun nextQuestion(){
         if (!main.quizManager.nextQuestion()) {
             main.playerScoreManager.lastScore = main.quizManager.score
-            main.playerScoreManager.lastTime = main.quizManager.timerSeconds
+            main.playerScoreManager.lastTime = main.quizManager.timer
 
             main.textBoxManager.updateScoreText()
             main.textBoxManager.scoreTextBox.isActive = true

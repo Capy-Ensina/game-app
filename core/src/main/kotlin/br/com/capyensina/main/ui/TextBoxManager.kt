@@ -165,7 +165,7 @@ class TextBoxManager(mainGame: Main) {
                 Vector2(240f, 1700f)
             ),
             Textable(
-                "Tempo: ${main.playerScoreManager.lastTime}s",
+                "Tempo: ${main.playerScoreManager.lastTime.toInt()}s",
                 AssetManager.getFont(),
                 Vector2(240f, 1600f)
             )

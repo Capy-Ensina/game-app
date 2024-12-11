@@ -14,7 +14,7 @@ class QuizManager {
 
     private lateinit var setOfQuestions: List<QuizQuestion>
 
-    private var timer = 0f
+    var timer = 0f
     var timerSeconds = 0
 
     init {
@@ -91,10 +91,5 @@ class QuizManager {
         if (!isRunning) return
 
         timer += Gdx.graphics.deltaTime
-
-        if (timer >= 1f){
-            timer = 0f
-            timerSeconds += 1
-        }
     }
 }

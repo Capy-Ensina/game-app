@@ -1,5 +1,6 @@
 package br.com.capyensina.main
 
+import br.com.capyensina.main.database.Database
 import br.com.capyensina.main.minigame.PlayerScoreManager
 import br.com.capyensina.main.minigame.quiz.QuizManager
 import br.com.capyensina.main.sound.AudioManager
@@ -39,8 +40,8 @@ class Main : KtxGame<KtxScreen>() {
         private set
     lateinit var audioManager: AudioManager
         private set
-    //lateinit var database: Database
-        //private set
+    lateinit var database: Database
+        private set
 
     override fun create() {
         KtxAsync.initiate()
@@ -54,7 +55,7 @@ class Main : KtxGame<KtxScreen>() {
         animationManager = AnimationManager(this)
         textInputListener = MyTextInputListener(this)
         audioManager = AudioManager(this)
-        //database = Database(this)
+        database = Database(this)
 
         // Initialize Screens
         addScreen(HomeScreen(this))

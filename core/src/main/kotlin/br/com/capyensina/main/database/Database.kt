@@ -11,6 +11,8 @@ import ktx.async.httpRequest
 import java.io.BufferedReader
 import java.net.HttpURLConnection
 import java.net.URL
+import com.badlogic.gdx.Net
+import org.json.JSONObject
 
 /* Nota Malcoln 02/12 11:58
  * A classe não está sendo iniciada na Main, se alterar algo nela, atualiza lá
@@ -18,12 +20,9 @@ import java.net.URL
  */
 
 class Database(main: Main) {
-    var users: Array<User>
 
     init {
         //sendGet()
-        users = getDatabase()
-        println(users)
     }
 
     fun sendGet() {
@@ -44,32 +43,61 @@ class Database(main: Main) {
         }
     }
 
-    fun sendPost() {
+    fun sendPost1() {
         var httpResponseListener: HttpResponseListener
         var requestBuilder = HttpRequestBuilder()
         var request = requestBuilder
             .newRequest()
             .method(HttpMethods.POST)
-            .url("web-api-capyensina.up.railway.app")
+            .url("web-api-capyensina.up.railway.app/ranking")
             .build()
         //Gdx.net.sendHttpRequest(request, httpResponseListener)
 
     }
 
-    fun getDatabase() : Array<User> {
-        // url para acessar o banco de dados
-        val url = URL("https://capyensina-api-production.up.railway.app/ranking")
-        val urlConnection = url.openConnection() as HttpURLConnection
-        val content = urlConnection.inputStream.bufferedReader().readText()
+    fun sendRankingData(name: String, points: Int, time: Float, onResponse: (String) -> Unit = {}, onError: (Throwable) -> Unit = {}) {
+        // URL da API
+        val url = "https://web-api-capyensina.up.railway.app/ranking"
 
-        val json = Json()
-        var response: Array<User> = emptyArray()
-        try {
-            response = arrayOf(json.fromJson(User::class.java ,content))
-        } catch (e: SerializationException){
-            println(e)
-        }
+        // Cria o objeto JSON com os dados a serem enviados
+        val json = JSONObject()
+        json.put("usuario", name)
+        json.put("pontuacao", points)
+        json.put("tempo", time.toDouble())
+        json.put("minigame", "674fa3f04986613a96c7527c")
 
-        return response
+        // Constrói a requisição HTTP POST
+        val httpRequest = HttpRequestBuilder()
+            .newRequest()
+            .method(Net.HttpMethods.POST)
+            .url(url)
+            .header("Content-Type", "application/json") // Define o tipo de conteúdo
+            .content(json.toString()) // Converte o JSON para string
+
+        // Envia a requisição usando o cliente HTTP do LibGDX
+        Gdx.net.sendHttpRequest(httpRequest.build(), object : Net.HttpResponseListener {
+            override fun handleHttpResponse(response: Net.HttpResponse) {
+                val statusCode = response.status.statusCode
+                if (statusCode == 200 || statusCode == 201) {
+                    // Callback de sucesso com a resposta do servidor
+                    onResponse(response.resultAsString)
+                } else {
+                    // Trata erros retornados pelo servidor
+                    onError(Exception("Erro HTTP: $statusCode - ${response.resultAsString}"))
+                }
+            }
+
+            override fun failed(t: Throwable) {
+                // Callback de erro caso a requisição falhe
+                onError(t)
+            }
+
+            override fun cancelled() {
+                // Callback se a requisição for cancelada
+                onError(Exception("Requisição cancelada"))
+            }
+        })
     }
+
+
 }
