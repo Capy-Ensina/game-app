@@ -71,7 +71,7 @@ class Main : KtxGame<KtxScreen>() {
         addScreen(DebugScreen(this))
 
         // Set start screen, at least, must be after adding screens
-        setScreen<ByeScreen>()
+        setScreen<SplashScreen>()
     }
 
     override fun render() {
