@@ -70,7 +70,7 @@ class TextBoxManager(mainGame: Main) {
                 AssetManager.redButton,
                 Rectangle(200f, 1350f, 950f, 400f)
             ) {
-                TextManager.actualTextActivity = TextManager.debugLesson
+                TextManager.actualTextActivity = TextManager.financeLessonOne
                 mainGame.setScreen<TextScreen>()
                 moduleOneTextBox.isActive = false
               },
@@ -79,7 +79,7 @@ class TextBoxManager(mainGame: Main) {
                 AssetManager.redButton,
                 Rectangle(200f, 1100f, 950f, 400f)
             ){
-                TextManager.actualTextActivity = TextManager.financeLessonTwo
+                TextManager.actualTextActivity = TextManager.economyLessonOne
                 mainGame.setScreen<TextScreen>()
                 moduleOneTextBox.isActive = false
              },
@@ -87,7 +87,11 @@ class TextBoxManager(mainGame: Main) {
             Clickable(
                 AssetManager.redButton,
                 Rectangle(200f, 850f, 950f, 400f)
-            )
+            ) {
+                TextManager.actualTextActivity = TextManager.investmentLessonOne
+                mainGame.setScreen<TextScreen>()
+                moduleOneTextBox.isActive = false
+            }
         )
 
         moduleOneTextBox.textContent = arrayOf(

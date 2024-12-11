@@ -146,6 +146,74 @@ object QuizQuestions {
         )
     )
 
+    val investmentQuestions = listOf(
+        QuizQuestion( // atualizada
+            id = 1,
+            subject = "Investimento",
+            questionText = "Rendimento principal de FIIs:",
+            answerTable = QuizAnswerTable(
+                answerA = "Valorização das cotas.",
+                answerB = "Aluguéis.",
+                answerC = "Juros do governo.",
+                answerD = "Rendimentos fixos.",
+                correctIndex = 1
+            ),
+            difficulty = 1
+        ),
+        QuizQuestion( // atualizada
+            id = 2,
+            subject = "Investimento",
+            questionText = "Vantagem dos FIIs:",
+            answerTable = QuizAnswerTable(
+                answerA = "Proteção do mercado.",
+                answerB = "Sem custos de imóvel.",
+                answerC = "Retorno fixo mensal.",
+                answerD = "Controle administrativo.",
+                correctIndex = 2
+            ),
+            difficulty = 1
+        ),
+        QuizQuestion( // atualizada
+            id = 3,
+            subject = "Investimento",
+            questionText = "Prazo mínimo da poupança:",
+            answerTable = QuizAnswerTable(
+                answerA = "15 dias.",
+                answerB = "30 dias.",
+                answerC = "90 dias.",
+                answerD = "180 dias.",
+                correctIndex = 2
+            ),
+            difficulty = 1
+        ),
+        QuizQuestion( // atualizada
+            id = 4,
+            subject = "Investimento",
+            questionText = "Vantagem da poupança:",
+            answerTable = QuizAnswerTable(
+                answerA = "Alta rentabilidade.",
+                answerB = "Isenção de IR.",
+                answerC = "Garantia ilimitada.",
+                answerD = "Proteção da inflação.",
+                correctIndex = 2
+            ),
+            difficulty = 1
+        ),
+        QuizQuestion(
+            id = 5,
+            subject = "Investimento",
+            questionText = "Quem garante a poupança:",
+            answerTable = QuizAnswerTable(
+                answerA = "O Fundo Monetário Internacional (FMI).",
+                answerB = "O Fundo Garantidor de Créditos (FGC).",
+                answerC = "O Banco Central Europeu.",
+                answerD = " A corretora.",
+                correctIndex = 2
+            ),
+            difficulty = 1
+        ),
+    )
+
     val debugQuestions = listOf(
         QuizQuestion( // atualizada
             id = 1,
