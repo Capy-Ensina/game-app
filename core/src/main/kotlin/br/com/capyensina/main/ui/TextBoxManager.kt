@@ -4,6 +4,7 @@ import br.com.capyensina.main.Main
 import br.com.capyensina.main.components.Clickable
 import br.com.capyensina.main.components.TextBox
 import br.com.capyensina.main.components.Textable
+import br.com.capyensina.main.ui.screens.ByeScreen
 import br.com.capyensina.main.ui.screens.HomeScreen
 import br.com.capyensina.main.ui.screens.TextScreen
 import br.com.capyensina.main.util.AssetManager
@@ -121,7 +122,7 @@ class TextBoxManager(mainGame: Main) {
             Clickable(
                 Texture("button/continuarbutton.png".toInternalFile()),
                 Rectangle(200f, 950f, 900f, 450f)
-            ) { main.setScreen<HomeScreen>(); scoreTextBox.isActive = false }
+            ) { main.setScreen<ByeScreen>(); scoreTextBox.isActive = false }
         )
 
         updateScoreText() // O texto é feito nesta função, pois ele precisa ser atualizado depois

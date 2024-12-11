@@ -66,7 +66,7 @@ object QuizQuestions {
         ),QuizQuestion( // apagar a sexta
             id = 6,
             subject = "finanças",
-            questionText = "Qual a principal vantagem de controlar despesas mensais?",
+            questionText = "Qual a vantagem de controlar despesas mensais?",
             answerTable = QuizAnswerTable(
                 answerA = "Saber exatamente para onde vai seu dinheiro.",
                 answerB = "Evitar pagar impostos.",
@@ -88,7 +88,7 @@ object QuizQuestions {
                 answerB = "Alta volatilidade.",
                 answerC = "Garantia acima da inflação.",
                 answerD = "Sem taxas de corretagem.",
-                correctIndex = 2
+                correctIndex = 1
             ),
             difficulty = 1
         ),
@@ -101,7 +101,7 @@ object QuizQuestions {
                 answerB = "Tesouro Selic.",
                 answerC = "Ações.",
                 answerD = "LCI (Letra de Crédito Imobiliário).",
-                correctIndex = 3
+                correctIndex = 2
             ),
             difficulty = 1
         ),
@@ -114,7 +114,7 @@ object QuizQuestions {
                 answerB = "Lucro pago ao acionista.",
                 answerC = "Garantia pelo FGC.",
                 answerD = "Rentabilidade fixa,",
-                correctIndex = 2
+                correctIndex = 1
             ),
             difficulty = 1
         ),
@@ -127,7 +127,7 @@ object QuizQuestions {
                 answerB = "Apenas valorização.",
                 answerC = "Dividendos e valorização.",
                 answerD = "Compra no mercado primário.",
-                correctIndex = 3
+                correctIndex = 2
             ),
             difficulty = 1
         ),
@@ -140,7 +140,7 @@ object QuizQuestions {
                 answerB = "Fim dos dividendos.",
                 answerC = "Perda total.",
                 answerD = "Altas taxas.",
-                correctIndex = 3
+                correctIndex = 2
             ),
             difficulty = 2
         )

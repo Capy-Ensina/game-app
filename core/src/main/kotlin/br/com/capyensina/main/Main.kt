@@ -7,6 +7,7 @@ import br.com.capyensina.main.sound.AudioManager
 import br.com.capyensina.main.ui.AnimationManager
 import br.com.capyensina.main.ui.HudManager
 import br.com.capyensina.main.ui.TextBoxManager
+import br.com.capyensina.main.ui.screens.ByeScreen
 import br.com.capyensina.main.ui.screens.HomeScreen
 import br.com.capyensina.main.ui.screens.NameScreen
 import br.com.capyensina.main.ui.screens.QuizScreen
@@ -65,11 +66,12 @@ class Main : KtxGame<KtxScreen>() {
         addScreen(ScoreScreen(this))
         addScreen(NameScreen(this))
         addScreen(StoryScreen(this))
+        addScreen(ByeScreen(this))
 
         addScreen(DebugScreen(this))
 
         // Set start screen, at least, must be after adding screens
-        setScreen<SplashScreen>()
+        setScreen<ByeScreen>()
     }
 
     override fun render() {

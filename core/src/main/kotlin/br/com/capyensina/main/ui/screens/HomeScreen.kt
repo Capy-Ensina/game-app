@@ -46,7 +46,11 @@ class HomeScreen(mainGame: Main) : KtxScreen {
     private val computer = Clickable(
         AssetManager.computer,
         Rectangle(600f, 325f, 1200f, 1200f)
-    )
+    ) { // todo mudar isso quando for para produção, tá ruim
+        main.textBoxManager.scoreTextBox.close()
+        main.textBoxManager.configTextBox.close()
+        main.textBoxManager.moduleOneTextBox.show(true)
+    }
 
     // Animação da personagem
     private val violetFrameOne = Texture("characters/framesviolettaidle/violettaframesum.png".toInternalFile())
@@ -107,6 +111,8 @@ class HomeScreen(mainGame: Main) : KtxScreen {
 
             // Verifica cliques nos popups
             main.textBoxManager.input(worldPos)
+
+            if (computer.collider.contains(worldPos)) computer.action()
         }
     }
 
