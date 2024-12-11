@@ -1,8 +1,13 @@
 package br.com.capyensina.main.database
 
 import br.com.capyensina.main.Main
+import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.Net.HttpMethods
+import com.badlogic.gdx.Net.HttpResponseListener
+import com.badlogic.gdx.net.HttpRequestBuilder
 import com.badlogic.gdx.utils.Json
 import com.badlogic.gdx.utils.SerializationException
+import ktx.async.httpRequest
 import java.io.BufferedReader
 import java.net.HttpURLConnection
 import java.net.URL
@@ -37,6 +42,18 @@ class Database(main: Main) {
             }
             reader.close()
         }
+    }
+
+    fun sendPost() {
+        var httpResponseListener: HttpResponseListener
+        var requestBuilder = HttpRequestBuilder()
+        var request = requestBuilder
+            .newRequest()
+            .method(HttpMethods.POST)
+            .url("web-api-capyensina.up.railway.app")
+            .build()
+        //Gdx.net.sendHttpRequest(request, httpResponseListener)
+
     }
 
     fun getDatabase() : Array<User> {
