@@ -12,7 +12,7 @@ object QuizQuestions {
                 answerB = "Debêntures comuns.",
                 answerC = "LCI (Letra de Crédito Imobiliário).",
                 answerD = "Tesouro Prefixado.",
-                correctIndex = 3
+                correctIndex = 2
             ),
             difficulty = 1
         ),QuizQuestion( // atualizada
@@ -24,7 +24,7 @@ object QuizQuestions {
                 answerB = "Tesouro Selic.",
                 answerC = " LCI (Letra de Crédito Imobiliário).",
                 answerD = "Debêntures.",
-                correctIndex = 2
+                correctIndex = 1
             ),
             difficulty = 1
         ),QuizQuestion( //atualizada
@@ -36,7 +36,7 @@ object QuizQuestions {
                 answerB = "Risco maior que ações.",
                 answerC = "Rentabilidade variável.",
                 answerD = "Sem liquidez diária.",
-                correctIndex = 1
+                correctIndex = 0
             ),
             difficulty = 1
         ),QuizQuestion(  //atualizada
@@ -48,7 +48,7 @@ object QuizQuestions {
                 answerB = "Debêntures incentivadas.",
                 answerC = "CDB (Certificado de Depósito Bancário).",
                 answerD = "Ações.",
-                correctIndex = 3
+                correctIndex = 2
             ),
             difficulty = 1
         ),QuizQuestion( // atualizada
@@ -60,7 +60,7 @@ object QuizQuestions {
                 answerB = "Resgate sem perda.",
                 answerC = "Isenção de Imposto de Renda.",
                 answerD = "Proteção contra a inflação.",
-                correctIndex = 2
+                correctIndex = 1
             ),
             difficulty = 2
         ),QuizQuestion( // apagar a sexta
@@ -74,7 +74,7 @@ object QuizQuestions {
                 answerD = "Ficar mais confuso com suas finanças.",
                 correctIndex = 0
             ),
-            difficulty = 1
+            difficulty = 0
         )
     )
 
@@ -134,7 +134,7 @@ object QuizQuestions {
         QuizQuestion( // atualizada
             id = 5,
             subject = "Economia",
-            questionText = "Risco de ações em recuperação:",
+            questionText = "Risco de vender ações em recuperação:",
             answerTable = QuizAnswerTable(
                 answerA = "Falta de liquidez.",
                 answerB = "Fim dos dividendos.",
@@ -182,7 +182,7 @@ object QuizQuestions {
                 answerB = "30 dias.",
                 answerC = "90 dias.",
                 answerD = "180 dias.",
-                correctIndex = 2
+                correctIndex = 1
             ),
             difficulty = 1
         ),
@@ -195,7 +195,7 @@ object QuizQuestions {
                 answerB = "Isenção de IR.",
                 answerC = "Garantia ilimitada.",
                 answerD = "Proteção da inflação.",
-                correctIndex = 2
+                correctIndex = 1
             ),
             difficulty = 1
         ),
@@ -208,7 +208,7 @@ object QuizQuestions {
                 answerB = "O Fundo Garantidor de Créditos (FGC).",
                 answerC = "O Banco Central Europeu.",
                 answerD = " A corretora.",
-                correctIndex = 2
+                correctIndex = 1
             ),
             difficulty = 1
         ),
